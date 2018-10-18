@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>用纯CSS制作按钮文字滑动特效</title>
+    <style>
+        /*按钮居中*/
+        html, body{
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /*设置按钮的尺寸和文字样式*/
+        .box{
+            width: 200px;
+            height: 60px;
+            border: 2px solid black;
+            text-align: center;
+            font-size: 30px;
+            line-height: 60px;
+            font-family: sans-serif;
+            overflow: hidden;
+        }
+
+        /*按钮的每个字母都设置为行内块级元素，以便单独设置动效*/
+        .box span {
+            display: inline-block;
+            color: blue;
+        }
+
+        .box span:nth-child(odd) {
+            transform: translateY(-100%);
+        }
+
+        .box span:nth-child(even) {
+            transform: translateY(100%);
+        }
+
+        /*用伪元素为每个字母增加一个副本*/
+        .box span::before {
+            content: attr(data-text);
+            position: absolute;
+            color: red;
+        }
+
+        /*让伪元素也交错显示，位置与原始位置相对*/
+        .box span:nth-child(odd)::before {
+            transform: translateY(100%);
+        }
+
+        .box span:nth-child(even)::before{
+            transform: translateY(-100%);
+        }
+
+        /*添加滑动样式，设置动画时间*/
+        .box:hover span {
+            transform: translateY(0);
+        }
+
+        .box span {
+            transition: 0.5s;
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <span data-text="B">B</span>
+    <span data-text="U">U</span>
+    <span data-text="T">T</span>
+    <span data-text="T">T</span>
+    <span data-text="O">O</span>
+    <span data-text="N">N</span>
+</div>
+</body>
+</html>
