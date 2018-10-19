@@ -10,6 +10,7 @@
 - nth-child
 
 ### DAY2
+用纯CSS制作一个矩形旋转loader
 #### 知识点
 - @keyframes
 - animation-duration
