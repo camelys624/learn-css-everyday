@@ -8,3 +8,15 @@
 - data-*
 - content
 - nth-child
+
+### DAY2
+#### 知识点
+- @keyframes
+- animation-duration
+- rotateY
+- ntn-child
+- z-index
+- ::before
+- ::after
+
+添加z-index主要是为了营造3D效果
