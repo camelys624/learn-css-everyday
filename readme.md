@@ -21,3 +21,13 @@
 - ::after
 
 添加z-index主要是为了营造3D效果
+
+### DAY3
+用纯CSS创作一个容器厚边条纹特效
+#### 知识点
+- linear-gradient
+- box-shadow
+- @keyframes
+- background-size
+- background-position
+- lorem ipsum

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>纯css制作一个厚边条纹边框特效</title>
+    <style>
+        /*内容居中显示*/
+        html,body {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /*画条纹背景*/
+        .box {
+            width: 300px;
+            height: 300px;
+            background: linear-gradient(
+                -45deg,
+                white 0%,
+                white 25%,
+                hotpink 25%,
+                hotpink 50%,
+                white 50%,
+                white 75%,
+                hotpink 75%,
+                hotpink 100%);
+            background-size: 10% 10%
+        }
+
+        /*box容器留出厚边框，content容器嵌在其中：*/
+        .box .content {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .box {
+            box-sizing: border-box;
+            padding: 15px;
+        }
+
+        .box .content {
+            background-color: white;
+        }
+
+        /*设置厚边框的立体效果*/
+        .box,
+        .box .content {
+            box-shadow: 0 0 2px deeppink,
+                        0 0 5px rgba(0, 0, 0, 1),
+                        inset 0 0 5px rgba(0, 0, 0, 1);
+            border-radius: 10px;
+        }
+
+        /*内容布局*/
+        .box .content {
+            flex-direction: column;
+            box-sizing: border-box;
+            padding: 30px;
+            text-align: center;
+            font-family: sans-serif;
+        }
+
+        .box .content h2 {
+            color: deeppink;
+        }
+
+        .box .conten p {
+            color: dimgray;
+        }
+
+        /*定义动画效果*/
+        @keyframes animate {
+            from {
+                background-position: 0;
+            }
+
+            to {
+                background-position: 11%;
+            }
+        }
+
+        /*应用动画效果*/
+        .box {
+            animation: animate 2s linear infinite;
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <!--在box容器内定义一个名为content的容器-->
+    <div class="content">
+        <h2>What is Lorem Ipsum?</h2>
+        <p>Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...</p>
+    </div>
+</div>
+</body>
+</html>
