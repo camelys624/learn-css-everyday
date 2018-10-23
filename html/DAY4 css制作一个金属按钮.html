@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        /*容器居中显示*/
+        html,body {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: skyblue;
+        }
+
+        /*设置按钮的2d样式，为了便于调整按钮尺寸，使用了变量*/
+        .box {
+            background: linear-gradient(to right, gold, darkorange);
+            color: white;
+            --width: 250px;
+            --height: calc(var(--width) / 3);
+            width: var(--width);
+            height: var(--height);
+            text-align: center;
+            line-height: var(--height);
+            font-size: calc(var(--height) / 2.5);
+            font-family: sans-serif;
+            letter-spacing: 0.2em;
+            border: 1px solid darkgoldenrod;
+            border-radius: 2em;
+        }
+
+        /*设置按钮的3d样式*/
+        .box {
+            transform: perspective(500px) rotateY(-15deg);
+            text-shadow: 6px 3px 2px rgba(0, 0, 0, .2);
+            box-shadow: 2px 0 0 5px rgba(0, 0, 0, .2);
+        }
+
+        /*定义按钮的鼠标划过的动画效果*/
+        .box:hover {
+            transform: perspective(500px) rotateY(15deg);
+            text-shadow: -6px 3px 2px rgba(0, 0, 0, .2);
+            box-shadow: -2px 0 0 5px rgba(0, 0, 0, .2);
+        }
+
+        .box {
+            transition: 0.5s
+        }
+
+        /*用为元素增加光泽*/
+        .box {
+            position: relative;
+        }
+
+        .box::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to right, transparent, white, transparent);
+            left: 0;
+        }
+
+        /*定义光泽动画效果：*/
+        .box::before {
+            left: -100%;
+            transition: 0.5s;
+        }
+
+        .box:hover::before {
+            left: 100%;
+        }
+
+        /*最后，隐藏容器之外的内容：*/
+        .box {
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+<div class="box">BUTTON</div>
+</body>
+</html>
