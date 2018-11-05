@@ -41,3 +41,12 @@
 - perspective
 - text-shadow
 - box-shadow
+
+### DAY5
+使用CSS创作一个立体滑动toggle交互控件
+#### 知识点
+- linear-gradient()
+- box-shadow
+- calc()
+- ::before
+- jquery toggleClass
