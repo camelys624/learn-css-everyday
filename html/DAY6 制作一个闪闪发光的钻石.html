@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>css制作一个闪闪发光的钻石</title>
+    <style>
+        /*居中显示*/
+        html,
+        body {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /*画出第一组刻面的形状*/
+        .diamond {
+            display: grid;
+        }
+
+        .diamond span {
+            border-width: 50px;
+            border-style: solid;
+        }
+
+        /*为第一组刻面上色，因为后面还要用到这些色值，所以使用变量*/
+        :root {
+            --color1: deepskyblue;
+            --color2: steelblue;
+            --color3: royalblue;
+            --color4: dodgerblue;
+        }
+
+        .diamond span {
+            border-color: var(--color1) var(--color2) var(--color3) var(--color4);
+        }
+
+        /*把4组刻面先组成田字格，再转换成钻石形状*/
+        .diamond {
+            grid-template-columns: 1fr 1fr;
+            transform: rotate(45deg);
+        }
+
+        .diamond span:first-child {
+            border-color: transparent var(--color2) var(--color3) transparent;
+        }
+
+        /*定义动画效果*/
+        @keyframes animate {
+            0% {
+                border-color: var(--color1) var(--color2) var(--color3) var(--color4);
+            }
+            25% {
+                border-color: var(--color4) var(--color1) var(--color2) var(--color3);
+            }
+            50% {
+                border-color: var(--color3) var(--color4) var(--color1) var(--color2);
+            }
+            75% {
+                border-color: var(--color2) var(--color3) var(--color4) var(--color1);
+            }
+            100% {
+                border-color: var(--color1) var(--color2) var(--color3) var(--color4);
+            }
+        }
+
+        /*最后把动画效果应用到除第一组以外的刻面上*/
+        .diamond span:not(:first-child) {
+            animation: animate 2s linear infinite;
+        }
+    </style>
+</head>
+<body>
+<!--定义一个DOM，容器中包含一个元素-->
+<div class="diamond">
+    <span></span>
+    <!--dom容器中再增加3组刻面-->
+    <span></span>
+    <span></span>
+    <span></span>
+</div>
+</body>
+</html>

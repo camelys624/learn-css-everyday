@@ -50,3 +50,12 @@
 - calc()
 - ::before
 - jquery toggleClass
+
+### DAY6
+使用CSS创作一个闪闪发光的钻石
+#### 知识点
+- variables
+- border-width
+- border-color
+- grid-template-column
+- rotate()
