@@ -59,3 +59,11 @@
 - border-color
 - grid-template-column
 - rotate()
+
+### DAY7
+使用CSS制作一个3D文字跑马灯特效
+#### 知识点
+- [transform-origin](https://developer.mozilla.org/zh-CN/docs/Web/CSS/transform-origin)
+- [perspective](https://developer.mozilla.org/zh-CN/docs/Web/CSS/perspective)
+- [rotateY](https://developer.mozilla.org/en-US/docs/Web/CSS/transform-function/rotateY)
+- [animation-delay](https://developer.mozilla.org/zh-CN/docs/Web/CSS/animation-delay)

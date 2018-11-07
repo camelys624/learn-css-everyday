@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>用CSS制作3D文字跑马灯特效</title>
+    <style>
+        /*居中显示*/
+        html,
+        body {
+            height: 100%;
+            display:flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /*设置容器的尺寸和文字的样式*/
+        .box {
+            display: flex;
+        }
+
+        .box .inner {
+            width: 400px;
+            height: 200px;
+            line-height: 200px;
+            font-size: 4em;
+            font-family: sans-serif;
+            font-weight: bold;
+            white-space: nowrap;
+        }
+
+        /*配色*/
+        .box .inner:first-child {
+            background-color: indianred;
+            color:darkred;
+        }
+
+        .box .inner:last-child {
+            background-color: lightcoral;
+            color: antiquewhite;
+        }
+
+        /*设置3D效果*/
+        .box .inner:first-child {
+            transform-origin: right;
+            transform: perspective(100px) rotateY(-15deg);
+        }
+
+        .box .inner:last-child {
+            transform-origin: left;
+            transform: perspective(100px) rotateY(15deg);
+        }
+
+        /*定义动画效果*/
+        @keyframes marquee {
+            from {
+                left: 100%;
+            }
+            to {
+                left: -100%;
+            }
+        }
+
+        /*把动画效果应用到文字上，并隐藏容器外的内容*/
+        .box .inner span {
+            position: absolute;
+            animation: marquee 5s linear infinite;
+        }
+
+        .box .inner {
+            overflow: hidden;
+        }
+
+        /*让左侧的文字延迟运动，模拟2组文字连贯运动的效果*/
+        .box .inner:first-child span {
+            animation-delay: 2.5s;
+            left: -100%;
+        }
+    </style>
+</head>
+<body>
+<!--定义DOM，包含两组重复着的文字-->
+<div class="box">
+    <div class="inner">
+        <span>Hello World</span>
+    </div>
+    <div class="inner">
+        <span>Hello World</span>
+    </div>
+</div>
+</body>
+</html>
