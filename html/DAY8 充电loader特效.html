@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>用CSS创建一个充电loader特效</title>
+    <style>
+        /*居中显示*/
+        html,
+        body {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /*画出电池主体轮廓*/
+        .battery {
+            width: 6em;
+            height: 3em;
+            color: midnightblue;
+            border: 0.5em solid currentColor;
+            border-radius: 0.2em;
+            font-size: 2em;
+        }
+
+        /*画出电池的突起*/
+        .battery {
+            position: relative;
+        }
+
+        .battery::after {
+            content: '';
+            position: absolute;
+            width: 0.5em;
+            height: 2em;
+            background-color: currentColor;
+            top: 0.5em;
+            right: -1em;
+            border-radius: 0 0.2em 0.2em 0;
+        }
+
+        /*画出充电电量*/
+        .battery {
+            background-image: linear-gradient(to right, limegreen,limegreen);
+            background-repeat: no-repeat;
+            background-size: 30% 80%;
+            background-position: 0.3em 50%;
+        }
+
+        /*定义和应用动画效果*/
+        @keyframes charge {
+            from {
+                background-size: 10% 80%;
+            }
+            to {
+                background-size: 95% 80%;
+            }
+        }
+        .battery {
+            animation: charge 5s steps(8) infinite;
+        }
+    </style>
+</head>
+<body>
+<!--定义DOM，只有一个元素-->
+<div class="battery"></div>
+</body>
+</html>

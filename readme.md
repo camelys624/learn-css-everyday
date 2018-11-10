@@ -67,3 +67,13 @@
 - [perspective](https://developer.mozilla.org/zh-CN/docs/Web/CSS/perspective)
 - [rotateY](https://developer.mozilla.org/en-US/docs/Web/CSS/transform-function/rotateY)
 - [animation-delay](https://developer.mozilla.org/zh-CN/docs/Web/CSS/animation-delay)
+
+### DAY8
+使用CSS制作一个充电loader特效
+#### 知识点
+- [linear-gradient()](https://developer.mozilla.org/zh-CN/docs/Web/CSS/linear-gradient)
+- [background-size](https://developer.mozilla.org/zh-CN/docs/Web/CSS/background-size)
+- [background-position](https://developer.mozilla.org/zh-CN/docs/Web/CSS/background-position)
+- [steps()](https://developer.mozilla.org/en-US/docs/Web/CSS/single-transition-timing-function#Timing_functions)
+- [currentColor](https://developer.mozilla.org/zh-CN/docs/Web/CSS/color_value#currentColor_%E5%85%B3%E9%94%AE%E5%AD%97)
+- [border-radius](https://developer.mozilla.org/zh-CN/docs/Web/CSS/border-radius)
