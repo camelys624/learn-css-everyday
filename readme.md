@@ -77,3 +77,11 @@
 - [steps()](https://developer.mozilla.org/en-US/docs/Web/CSS/single-transition-timing-function#Timing_functions)
 - [currentColor](https://developer.mozilla.org/zh-CN/docs/Web/CSS/color_value#currentColor_%E5%85%B3%E9%94%AE%E5%AD%97)
 - [border-radius](https://developer.mozilla.org/zh-CN/docs/Web/CSS/border-radius)
+
+### DAY9
+使用CSS制作一个按钮被瞄准的交互特效
+#### 知识点
+- [:not](https://developer.mozilla.org/zh-CN/docs/Web/CSS/:not)
+- [:first-child](https://developer.mozilla.org/zh-CN/docs/Web/CSS/:first-child)
+- [:filter functions](https://developer.mozilla.org/zh-CN/docs/Web/CSS/filter)
+- [animation-direction](https://developer.mozilla.org/zh-CN/docs/Web/CSS/animation-direction)
