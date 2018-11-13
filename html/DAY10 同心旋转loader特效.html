@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>制作一个同心旋转loader特效</title>
+    <style>
+        html,
+        body,
+        .circle {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: black;
+        }
+
+        /*一共画出三层圆弧，先画最外面一层的样式：*/
+        .circle {
+            width: 10em;
+            height: 10em;
+            border-width: 0.4em;
+            border-style: solid;
+            border-radius: 50%;
+            border-left-color: transparent;
+            border-right-color: transparent;
+            border-top-color: red;
+            border-bottom-color: blue;
+        }
+
+        /*再用伪元素画中间一层的样式：*/
+        .circle {
+            position: relative;
+        }
+
+        .circle::before {
+            content: '';
+            position: absolute;
+            width: 75%;
+            height: 75%;
+            border-width: 0.4em;
+            border-style: solid;
+            border-radius: 50%;
+            border-left-color: transparent; /* 透明 */
+            border-right-color: transparent;
+            border-top-color: orange;
+            border-bottom-color: cyan;
+        }
+
+        .circle::after {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 50%;
+            border-width: 0.4em;
+            border-style: solid;
+            border-radius: 50%;
+            border-left-color: transparent;
+            border-right-color: transparent;
+            border-top-color: yellow;
+            border-bottom-color: limegreen;
+        }
+
+        /*定义动画效果：*/
+        @keyframes animate {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(1440deg);
+            }
+        }
+
+        /*应用动画到每层*/
+        .circle {
+            animation: animate 4s ease-in-out infinite alternate;
+        }
+
+        .circle::before {
+            animation: animate 8s ease-in-out infinite alternate;
+        }
+
+        .circle::after {
+            animation: animate 16s ease-in-out infinite alternate;
+        }
+    </style>
+</head>
+<body>
+<div class="circle"></div>
+</body>
+</html>

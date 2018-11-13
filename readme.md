@@ -85,3 +85,12 @@
 - [:first-child](https://developer.mozilla.org/zh-CN/docs/Web/CSS/:first-child)
 - [:filter functions](https://developer.mozilla.org/zh-CN/docs/Web/CSS/filter)
 - [animation-direction](https://developer.mozilla.org/zh-CN/docs/Web/CSS/animation-direction)
+
+### DAY10
+使用CSS制作一个同心旋转loader特效
+#### 知识点
+- [border-left-color](https://developer.mozilla.org/zh-CN/docs/Web/CSS/border-left-color)
+- [border-right-color](https://developer.mozilla.org/zh-CN/docs/Web/CSS/border-right-color)
+- [border-top-color](https://developer.mozilla.org/zh-CN/docs/Web/CSS/border-top-color)
+- [border-bottom-color](https://developer.mozilla.org/zh-CN/docs/Web/CSS/border-bottom-color)
+- [animation-duration](https://developer.mozilla.org/zh-CN/docs/Web/CSS/animation-duration)
