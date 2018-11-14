@@ -94,3 +94,12 @@
 - [border-top-color](https://developer.mozilla.org/zh-CN/docs/Web/CSS/border-top-color)
 - [border-bottom-color](https://developer.mozilla.org/zh-CN/docs/Web/CSS/border-bottom-color)
 - [animation-duration](https://developer.mozilla.org/zh-CN/docs/Web/CSS/animation-duration)
+
+### DAY11
+使用CSS制作一个荧光脉冲loader特效
+#### 知识点
+- [variable](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Variables)
+- [calc](https://developer.mozilla.org/zh-CN/docs/Web/CSS/calc)
+- [animation-timing-function](https://developer.mozilla.org/zh-CN/docs/Web/CSS/animation-timing-function)
+- [filter](https://developer.mozilla.org/zh-CN/docs/Web/CSS/filter)
+- [box-shadow](https://developer.mozilla.org/zh-CN/docs/Web/CSS/box-shadow)
