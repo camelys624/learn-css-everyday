@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>制作一个文字断开特效</title>
+    <style>
+        /*居中显示*/
+        html, body {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /*设置渐变色背景*/
+        body {
+            background: linear-gradient(brown, sandybrown);
+        }
+
+        /*设置文本的字体字号*/
+        .text {
+            position: relative;
+            font-size: 5em;
+            font-family: "arial black";
+        }
+
+        .text::before,
+        .text::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            color: lightyellow;
+        }
+
+        /*设置左侧文字的遮罩*/
+        .text::before {
+            /*background-color: darkgreen;*/
+            clip-path: polygon(0 0, 60% 0, 30% 100%, 0 100%);
+        }
+
+        /*设置右侧文字的背景和遮罩*/
+        .text::after {
+            /*background-color: darkblue;*/
+            clip-path: polygon(60% 0, 100% 0, 100% 100%, 30% 100%);
+        }
+
+        /*当鼠标划过时，遮罩的文字分别向两侧偏移*/
+        .text::before,
+        .text::after {
+            transition: .2s;
+        }
+
+        .text:hover::before {
+            left: -0.15em;
+        }
+
+        .text:hover::after {
+            left: 0.15em;
+        }
+
+        /*隐藏辅助元素，包括元素文字和伪元素背景色*/
+        .text {
+            color: transparent;
+        }
+
+        .text::before {
+            /*background-color: darkgreen;*/
+        }
+
+        .text::after {
+            /*background-color: darkblue;*/
+        }
+
+        /*两侧文字添加斜体效果*/
+        .text:hover::before {
+            transform: rotate(-5deg);
+            /*微调文字高度*/
+            top: -0.05em;
+        }
+
+        .text:hover:after {
+            transform: rotate(5deg);
+            top: 0.05em;
+        }
+
+
+    </style>
+</head>
+<body>
+<!--定义dom，只有一个元素，元素有一个data-text属性，属性值等于元素内的文本：-->
+<div class="text" data-text="BREAK">BREAK</div>
+</body>
+</html>

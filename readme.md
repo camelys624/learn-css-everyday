@@ -103,3 +103,13 @@
 - [animation-timing-function](https://developer.mozilla.org/zh-CN/docs/Web/CSS/animation-timing-function)
 - [filter](https://developer.mozilla.org/zh-CN/docs/Web/CSS/filter)
 - [box-shadow](https://developer.mozilla.org/zh-CN/docs/Web/CSS/box-shadow)
+
+### DAY12
+使用CSS制作一个文字断开交互特效
+#### 知识点
+- [data-*](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Global_attributes/data-*)
+- [clip-path](https://developer.mozilla.org/zh-CN/docs/Web/CSS/clip-path)
+- [shape functions](https://developer.mozilla.org/zh-CN/docs/Web/CSS/basic-shape)
+- [rotate](https://developer.mozilla.org/zh-CN/docs/Web/CSS/transform-function/rotate)
+- [::before](https://developer.mozilla.org/zh-CN/docs/Web/CSS/::before)
+- [::after](https://developer.mozilla.org/zh-CN/docs/Web/CSS/::after)
