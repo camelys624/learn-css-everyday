@@ -124,3 +124,12 @@
 - [translateY()](https://developer.mozilla.org/zh-CN/docs/Web/CSS/transform-function/translateY)
 - [filter](https://developer.mozilla.org/zh-CN/docs/Web/CSS/filter)
 - [animation-delay](https://developer.mozilla.org/zh-CN/docs/Web/CSS/animation-delay)
+
+### DAY14
+使用CSS制作一个侧立图书效果
+#### 知识点
+- [justify-content](https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content)
+- [skewY()](https://developer.mozilla.org/en-US/docs/Web/CSS/transform-function/skewY)
+- [skewX()](https://developer.mozilla.org/en-US/docs/Web/CSS/transform-function/skewX)
+- [transform-origin](https://developer.mozilla.org/en-US/docs/Web/CSS/transform-origin)
+- [brightness()](https://developer.mozilla.org/en-US/docs/Web/CSS/filter-function/brightness)

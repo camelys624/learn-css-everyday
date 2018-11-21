@@ -140,5 +140,36 @@
     <!--dom元素添加托盘-->
     <div class="plate"></div>
 </div>
+<script>
+    // 构造函数
+    var Gadget = function () {
+    };
+
+    // 公有静态方法
+    Gadget.isShiny = function () {
+        return "you bet";
+    };
+
+    // 原型上添加的正常方法
+    Gadget.prototype.setPrice = function (price) {
+        this.price = price;
+    };
+
+    Gadget.prototype.getPrice = function () {
+        return this.price;
+    }
+
+    // 调用静态方法
+    console.log(Gadget.isShiny()); // "you bet"
+
+    // 创建实例，然后调用方法
+    var iphone = new Gadget();
+    iphone.setPrice(500);
+
+    console.log(typeof Gadget.getPrice); // "undefined"
+    console.log(iphone.getPrice()); // "undefined"
+    Gadget.prototype.isShiny = Gadget.isShiny;
+    console.log(iphone.isShiny()); // "you bet"
+</script>
 </body>
 </html>

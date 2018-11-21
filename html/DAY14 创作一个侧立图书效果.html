@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>制作一个侧立图书效果</title>
+    <style>
+        /*居中显示*/
+        html, body {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(to top left, white, dimgray);
+        }
+
+        /*画出书的正面*/
+        .book {
+            width: 12em;
+            height: 18em;
+            background: linear-gradient(navy, deeppink, tomato);
+        }
+
+        /*画出书的侧面*/
+        .book {
+            position: relative;
+        }
+
+        .book::before {
+            content: '';
+            position: absolute;
+            width: 1.5em;
+            height: 100%;
+            background: linear-gradient(navy, deeppink, tomato);
+            top: 0;
+            left: -1.5em;
+            transform: skewY(45deg);
+            transform-origin: right;
+            filter: brightness(0.6);
+        }
+
+        /*画出书的顶面*/
+        .book::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 1.5em;
+            background: white;
+            top: -1.5em;
+            left: 0;
+            transform-origin: bottom;
+            transform: skewX(45deg);
+            filter: brightness(0.9);
+        }
+
+        /*给书加阴影，使他显得更立体*/
+        .book {
+            box-shadow: -10px 5px 30px rgba(0, 0, 0, .5);
+        }
+
+        /*设置文字样式*/
+        .book span {
+            color: whitesmoke;
+            font-size: 2.2rem;
+            font-family: sans-serif;
+            display: block;
+            background: silver;
+            text-align: center;
+            height: 8rem;
+            margin-top: 5rem;
+            padding-top: 2rem;
+            box-sizing: border-box;
+            text-shadow: -2px 2px 10px rgba(0, 0, 0, .3);
+            position: absolute;
+            width: 100%;
+        }
+
+        /*画出文字侧面，与画图书侧面的方式相似*/
+        .book span {
+            position: relative;
+        }
+
+        .book span::before {
+            content: '';
+            position: absolute;
+            width: 1.5rem;
+            height: 100%;
+            background: silver;
+            top: 0;
+            left: -1.5rem;
+            transform-origin: right;
+            transform: skewY(45deg);
+            filter: brightness(0.6);
+        }
+
+        /*文字下增加一行小字号文字*/
+        .book span::after {
+            content: 'development';
+            display: block;
+            font-size: 1rem;
+        }
+
+        /*三本书布局*/
+        .books {
+            display: flex;
+            width: calc(12rem * 3 + 3rem * 2);
+            justify-content: space-between;
+            margin-top: 6rem;
+        }
+
+        .book:nth-child(2) {
+            top: -3rem;
+        }
+
+        .book:nth-child(3) {
+            top: -6rem;
+        }
+
+        /*三本书配色*/
+        .book.html span,
+        .book.html span::before {
+            background: orange;
+        }
+
+        .book.css span,
+        .book.css span::before {
+            background: yellowgreen;
+        }
+
+        .book.js span,
+        .book.js span::before {
+            background: royalblue;
+        }
+
+        /*设置三本书的小字号文字*/
+        .book.html span::after {
+            content: '<devolopment />';
+        }
+
+        .book.css span::after {
+            content: '.devolopment::';
+        }
+
+        .book.js span::after {
+            content: '{ devolopment }';
+        }
+
+        /*最后为图书增加鼠标划过特效*/
+        .book {
+            transition: 0.3s;
+        }
+
+        .book:hover {
+            margin-top: -1.5rem;
+        }
+    </style>
+</head>
+<body>
+<!--定义dom，一个容器中包含一个span，span内有文字-->
+<div class="books">
+    <div class="book html">
+        <span>HTML</span>
+    </div>
+    <div class="book css">
+        <span>CSS</span>
+    </div>
+    <div class="book js">
+        <span>JavaScript</span>
+    </div>
+</div>
+</body>
+</html>
