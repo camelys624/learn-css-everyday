@@ -133,3 +133,13 @@
 - [skewX()](https://developer.mozilla.org/en-US/docs/Web/CSS/transform-function/skewX)
 - [transform-origin](https://developer.mozilla.org/en-US/docs/Web/CSS/transform-origin)
 - [brightness()](https://developer.mozilla.org/en-US/docs/Web/CSS/filter-function/brightness)
+
+### DAY15
+纯CSS制作条形图，不使用任何图形库
+#### 知识点
+- [linear-gradient()](https://developer.mozilla.org/en-US/docs/Web/CSS/linear-gradient)
+- [translateY()](https://developer.mozilla.org/en-US/docs/Web/CSS/transform-function/translateY)
+- [background-image](https://developer.mozilla.org/en-US/docs/Web/CSS/background-image)
+- [background-repeat](https://developer.mozilla.org/en-US/docs/Web/CSS/background-repeat)
+- [background-position](https://developer.mozilla.org/en-US/docs/Web/CSS/background-position)
+- [background-size]()
