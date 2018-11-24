@@ -143,3 +143,11 @@
 - [background-repeat](https://developer.mozilla.org/en-US/docs/Web/CSS/background-repeat)
 - [background-position](https://developer.mozilla.org/en-US/docs/Web/CSS/background-position)
 - [background-size]()
+
+### DAY16
+纯CSS制作一个渐变色动画边框特效
+#### 知识点
+- [z-index](https://developer.mozilla.org/en-US/docs/Web/CSS/z-index)
+- [background-image](https://developer.mozilla.org/en-US/docs/Web/CSS/background-image)
+- [background-size](https://developer.mozilla.org/en-US/docs/Web/CSS/background-size)
+- [background-position](https://developer.mozilla.org/en-US/docs/Web/CSS/background-position)
