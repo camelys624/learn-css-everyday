@@ -142,7 +142,7 @@
 - [background-image](https://developer.mozilla.org/en-US/docs/Web/CSS/background-image)
 - [background-repeat](https://developer.mozilla.org/en-US/docs/Web/CSS/background-repeat)
 - [background-position](https://developer.mozilla.org/en-US/docs/Web/CSS/background-position)
-- [background-size]()
+- [background-size](https://developer.mozilla.org/en-US/docs/Web/CSS/background-size)
 
 ### DAY16
 纯CSS制作一个渐变色动画边框特效
@@ -151,3 +151,13 @@
 - [background-image](https://developer.mozilla.org/en-US/docs/Web/CSS/background-image)
 - [background-size](https://developer.mozilla.org/en-US/docs/Web/CSS/background-size)
 - [background-position](https://developer.mozilla.org/en-US/docs/Web/CSS/background-position)
+
+### DAY17
+纯CSS制作炫酷的同心矩阵旋转动画
+#### 知识点
+- [border-color](https://developer.mozilla.org/en-US/docs/Web/CSS/border-color)
+- [calc()](https://developer.mozilla.org/en-US/docs/Web/CSS/calc)
+- [rotate()](https://developer.mozilla.org/en-US/docs/Web/CSS/transform-function/rotate)
+- [animation-delay](https://developer.mozilla.org/en-US/docs/Web/CSS/animation-delay)
+- [box-sizing](https://developer.mozilla.org/en-US/docs/Web/CSS/box-sizing)
+- **一些专家甚至建议所有的Web开发者将所有的元素的box-sizing都设置为border-box**
