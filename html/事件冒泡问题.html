@@ -2,9 +2,60 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>事件冒泡问题</title>
+    <style>
+        html, body {
+            height: 100%;
+        }
+        #parent {
+            background: #333333;
+            width: 300px;
+            height: 100px;
+        }
+
+        .child {
+            background: violet;
+            width: 200px;
+            height: 60px;
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 <body>
-$END$
+<div id="parent">
+    <div id="child" class="child">
+        <input type="button" id="grandson" value="grandson">
+    </div>
+</div>
+<div style="display: none" id="show">
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+    </ul>
+</div>
+<script>
+    document.body.addEventListener('click', function (e) {
+        $('#show').hide();
+        console.log('parent事件被触发' + e.target.id);
+    });
+    document.getElementById('child').addEventListener('click', function (e) {
+        console.log('child事件被触发' + e.target.id);
+        $('#show').toggle();
+        e.stopPropagation();
+    });
+    document.getElementById('grandson').addEventListener('click', function (e) {
+        console.log('grandson事件被触发', e.target.id);
+        e.stopPropagation();
+    });
+
+    $('ul').on('click', 'li', function (e) {
+        $(this).css('background', '#333').siblings().css('background-color', 'white');
+        console.log(e);
+        e.stopPropagation();
+    });
+    $("<li>item7</li>").appendTo("ul");
+</script>
 </body>
 </html>
