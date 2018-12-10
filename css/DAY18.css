@@ -1,0 +1,123 @@
+/*居中显示*/
+html, body {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(gray, silver);
+}
+
+/*整体布局*/
+.four-zero-four {
+    display: flex;
+    width: 33em;
+    justify-content: space-between;
+}
+
+.four-zero-four p {
+    width: 10em;
+    height: 10em;
+    /*border: 1px dashed white;*/
+    display: inline-block;
+    margin: 1em;
+    position: relative;
+}
+
+/*设置笔划共有属性*/
+.four-zero-four p span {
+    position: absolute;
+    box-sizing: border-box;
+    filter: opacity(.8);
+    /*设置缓动时长:*/
+    transition: .3s;
+}
+
+/*设置划过数字时笔划的变化效果*/
+.four-zero-four:hover p span {
+    /*border: 1px solid black;*/
+    background-color: whitesmoke;
+    filter: opacity(.5);
+    transition: .3s;
+}
+
+/*画出4的笔划*/
+.four span:nth-child(1) {
+    width: 20%;
+    height: 80%;
+    left: 10%;
+    /*给笔划上色*/
+    background-color: yellowgreen;
+}
+
+.four span:nth-child(2) {
+    width: 100%;
+    height: 20%;
+    top: 50%;
+    background-color: turquoise;
+}
+
+.four span:nth-child(3) {
+    width: 20%;
+    height: 100%;
+    right: 10%;
+    background-color: pink;
+}
+
+/*画出数字0的笔划*/
+.zero span:nth-child(1) {
+    width: 20%;
+    height: 100%;
+    left: 10%;
+    background-color: skyblue;
+}
+
+.zero span:nth-child(2) {
+    width: 100%;
+    height: 20%;
+    top: 10%;
+    background-color: plum;
+}
+
+.zero span:nth-child(3) {
+    width: 20%;
+    height: 100%;
+    right: 10%;
+    background-color: lightcoral;
+}
+
+.zero span:nth-child(4) {
+    width: 100%;
+    height: 20%;
+    bottom: 10%;
+    background-color: peachpuff;
+}
+
+/*设置划过数字时笔划的偏移量*/
+.four-zero-four:hover .four span:nth-child(1) {
+    left: 0;
+    top: 20%
+}
+
+.four-zero-four:hover .four span:nth-child(2) {
+    top: 0;
+}
+
+.four-zero-four:hover .four span:nth-child(3) {
+    right: 0;
+}
+
+.four-zero-four:hover .zero span:nth-child(1) {
+    left: 0;
+}
+
+.four-zero-four:hover .zero span:nth-child(2) {
+    top: 0;
+}
+
+.four-zero-four:hover .zero span:nth-child(3) {
+    right: 0;
+}
+
+.four-zero-four:hover .zero span:nth-child(4) {
+    bottom: 0;
+}

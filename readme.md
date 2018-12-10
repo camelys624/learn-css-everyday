@@ -161,3 +161,20 @@
 - [animation-delay](https://developer.mozilla.org/en-US/docs/Web/CSS/animation-delay)
 - [box-sizing](https://developer.mozilla.org/en-US/docs/Web/CSS/box-sizing)
 - **一些专家甚至建议所有的Web开发者将所有的元素的box-sizing都设置为border-box**
+
+### DAY18
+纯CSS制作404文字变形为NON文字的特效
+#### 知识点
+- [opacity](https://developer.mozilla.org/en-US/docs/Web/CSS/filter#Functions)
+- [nth-child()](https://developer.mozilla.org/en-US/docs/Web/CSS/:nth-child)
+- [transition](https://developer.mozilla.org/en-US/docs/Web/CSS/transition)
+
+### DAY19
+纯CSS制作一种有削铁如泥感觉的菜单导航特效
+#### 知识点
+- [border-top](https://developer.mozilla.org/en-US/docs/Web/CSS/border-top)
+- [content](https://developer.mozilla.org/en-US/docs/Web/CSS/content)
+- [attr](https://developer.mozilla.org/en-US/docs/Web/CSS/attr)
+- [clip-path](https://developer.mozilla.org/en-US/docs/Web/CSS/clip-path)
+- [transition-delay](https://developer.mozilla.org/en-US/docs/Web/CSS/transition-delay)
+- [nth-child()](https://developer.mozilla.org/en-US/docs/Web/CSS/:nth-child#Syntax)

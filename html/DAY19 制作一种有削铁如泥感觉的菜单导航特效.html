@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>纯CSS创作一种有削铁如泥感觉的菜单导航特效</title>
+</head>
+<style>
+    /*居中显示*/
+    html,
+    body {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: black;
+    }
+
+    /*设置文本样式*/
+    .menu {
+        padding: 0;
+    }
+
+    .menu li {
+        list-style-type: none;
+        color: white;
+        font-size: 3em;
+        font-weight: bold;
+        text-transform: uppercase;
+        text-align: center;
+        line-height: 1em;
+        width: 7em;
+        margin: 0.5em;
+    }
+
+    /*画出文字的分割线*/
+    .menu li {
+        border-top: 1px solid yellow;
+    }
+
+    /*隐藏文本*/
+    .menu li {
+        color: transparent;
+    }
+
+    /*用伪元素增加文本*/
+    .menu li {
+        position: relative;
+    }
+
+    .menu li::before,
+    .menu li::after {
+        content: attr(data-text);
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        color: silver;
+    }
+
+    /*把伪元素文本向上移，竖跨分割线*/
+    .menu li::before,
+    .menu li::after {
+        top: -0.5em;
+    }
+
+    /*用遮罩切出分割线上下两个部分的文本*/
+    .menu li::before {
+        clip-path: polygon(0 0, 100% 0,100% 50%, 0 50%);/*这是四个点的坐标*/
+    }
+
+    .menu li::after {
+        clip-path: polygon(0 50%, 100% 50%, 100% 100%, 0 100%);
+    }
+
+    /*为分割线增加动画效果*/
+    .menu li {
+        border-top: 1px solid transparent;
+        transition: 0.3s;
+    }
+
+    .menu li:hover {
+        border-top:1px solid yellow;
+    }
+
+    /*为文字增加动画效果*/
+    .menu li::before,
+    .menu li::after {
+        transition: 0.3s ease-out;
+    }
+
+    .menu li:hover::before,
+    .menu li:hover::after {
+        color: yellow;
+        transition: left 0.3s ease-out;
+        transition-delay: 0.2s;
+    }
+
+    .menu li:nth-child(odd):hover::before,
+    .menu li:nth-child(even):hover::after {
+        left: -0.15em;
+    }
+
+    .menu li:nth-child(even):hover::before,
+    .menu li:nth-child(odd):hover::after {
+        left: 0.15em;
+    }
+</style>
+<body>
+<!--定义dom，一个列表中包含一个列表项，列表项有一个data-text属性-->
+<ul class="menu">
+    <li data-text="New Game">New Game</li>
+    <li data-text="Load Game">Load Game</li>
+    <li data-text="Options">Options</li>
+    <li data-text="Exit">Exit</li>
+</ul>
+</body>
+</html>
