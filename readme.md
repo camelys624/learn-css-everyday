@@ -178,3 +178,20 @@
 - [clip-path](https://developer.mozilla.org/en-US/docs/Web/CSS/clip-path)
 - [transition-delay](https://developer.mozilla.org/en-US/docs/Web/CSS/transition-delay)
 - [nth-child()](https://developer.mozilla.org/en-US/docs/Web/CSS/:nth-child#Syntax)
+
+### DAY20
+纯CSS为母亲节创作一颗像素风格的爱心
+#### 知识点
+- [grid-template-columns](https://developer.mozilla.org/en-US/docs/Web/CSS/grid-template-columns)
+- [grid-gap](https://developer.mozilla.org/en-US/docs/Web/CSS/grid-gap)
+- [:nth-of-type()](https://developer.mozilla.org/en-US/docs/Web/CSS/:nth-of-type)
+- [animation-delay](https://developer.mozilla.org/en-US/docs/Web/CSS/animation-delay)
+- [translateY()](https://developer.mozilla.org/en-US/docs/Web/CSS/transform-function/translateY)
+- [filter](https://developer.mozilla.org/en-US/docs/Web/CSS/filter)
+
+### DAY21
+纯CSS创作文本滑动特效的UI界面
+#### 知识点
+- [rotate](https://developer.mozilla.org/en-US/docs/Web/CSS/transform-function/rotate)
+- [filter](https://developer.mozilla.org/en-US/docs/Web/CSS/filter)
+- [transition](https://developer.mozilla.org/en-US/docs/Web/CSS/transition)
