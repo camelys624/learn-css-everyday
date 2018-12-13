@@ -195,3 +195,12 @@
 - [rotate](https://developer.mozilla.org/en-US/docs/Web/CSS/transform-function/rotate)
 - [filter](https://developer.mozilla.org/en-US/docs/Web/CSS/filter)
 - [transition](https://developer.mozilla.org/en-US/docs/Web/CSS/transition)
+
+### DAY22
+纯CSS创作出美丽的彩虹条纹文字
+#### 知识点
+- [content](https://developer.mozilla.org/en-US/docs/Web/CSS/content)
+- [attr()](https://developer.mozilla.org/en-US/docs/Web/CSS/attr)
+- [calc()](https://developer.mozilla.org/en-US/docs/Web/CSS/calc)
+- [z-index](https://developer.mozilla.org/en-US/docs/Web/CSS/z-index)
+- [:nth-child()](https://developer.mozilla.org/en-US/docs/Web/CSS/:nth-child)
