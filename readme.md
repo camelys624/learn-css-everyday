@@ -204,3 +204,10 @@
 - [calc()](https://developer.mozilla.org/en-US/docs/Web/CSS/calc)
 - [z-index](https://developer.mozilla.org/en-US/docs/Web/CSS/z-index)
 - [:nth-child()](https://developer.mozilla.org/en-US/docs/Web/CSS/:nth-child)
+
+### DAY23
+纯CSS创作一个菜单反色填充特效
+#### 知识点
+- [mix-blend-mode](https://developer.mozilla.org/en-US/docs/Web/CSS/mix-blend-mode)
+- [var()](https://developer.mozilla.org/en-US/docs/Web/CSS/var)
+- [calc()](https://developer.mozilla.org/en-US/docs/Web/CSS/calc)
