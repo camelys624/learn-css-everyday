@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>创作出平滑的层叠海浪特效</title>
+    <style>
+        /*居中显示*/
+        html, body {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(antiquewhite, navajowhite);
+        }
+
+        /*设置容器样式*/
+        .sea {
+            width: 300px;
+            height: 300px;
+            background-color: whitesmoke;
+            background-image: linear-gradient(
+                darkblue,
+                rgba(255, 255, 255, 0) 80%,
+                rgba(255, 255, 255, .5)
+            );
+            border-radius: 5px;
+            box-shadow: 0 2px 30px rgba(0, 0, 0, .2);
+        }
+
+        /*设置文字样式*/
+        .sea {
+            position: relative;
+        }
+
+        .sea .title {
+            color: white;
+            font-size: 24px;
+            font-family: serif;
+            text-align: center;
+            line-height: 250px;
+            text-transform: uppercase;  /*设置字体为大写还是小写*/
+            letter-spacing: 0.4em;
+            position: absolute;
+            z-index: 1;
+            width: 100%;
+        }
+
+        /*制作海浪动画效果*/
+        .sea .wave {
+            position: absolute;
+            top: -250px;
+            left: -100px;
+            width: 500px;
+            height: 500px;
+            background: deepskyblue;
+            border-radius: 43%;
+            filter: opacity(0.4);
+            animation: drift linear infinite;
+        }
+
+        .sea .wave:nth-of-type(1) {
+            animation-duration: 5s;
+        }
+
+        .sea .wave:nth-of-type(2) {
+            animation-duration: 7s;
+        }
+
+        .sea .wave:nth-of-type(3) {
+            animation-duration: 9s;
+        }
+
+        @keyframes drift {
+            from {
+                transform: rotate(360deg);
+            }
+        }
+
+        /*加大海浪的波动幅度，增加颜色差异*/
+        .sea .wave {
+            transform-origin: 50% 48%;
+        }
+
+        .sea .wave:nth-of-type(3) {
+            background-color: orangered;
+            filter: opacity(0.1);
+        }
+
+        /*最后，隐藏容器外的内容*/
+        .sea {
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+<!--定义dom，容器中包含一行文本和3条做海浪特效的<span>-->
+<div class="sea">
+    <p class="title">the sea</p>
+    <span class="wave"></span>
+    <span class="wave"></span>
+    <span class="wave"></span>
+</div>
+</body>
+</html>

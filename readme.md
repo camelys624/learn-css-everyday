@@ -211,3 +211,8 @@
 - [mix-blend-mode](https://developer.mozilla.org/en-US/docs/Web/CSS/mix-blend-mode)
 - [var()](https://developer.mozilla.org/en-US/docs/Web/CSS/var)
 - [calc()](https://developer.mozilla.org/en-US/docs/Web/CSS/calc)
+
+### DAY24
+纯CSS创作出平滑的层叠海浪特效
+### 原理
+使用三个正方形，border设置为43%，旋转360度，每个的旋转速度不一致，即可实现。
