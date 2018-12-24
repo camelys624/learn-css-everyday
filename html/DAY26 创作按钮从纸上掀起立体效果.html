@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>创作按钮从纸上掀起立体效果</title>
+    <style>
+        /*居中显示*/
+        html, body{
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(cadetblue, darkcyan);
+        }
+
+        /*设置容器的样式，把背景色生命为变量*/
+        nav {
+            width: 300px;
+            height: 300px;
+            --bgcolor: lemonchiffon;
+            background-color: var(--bgcolor);
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            padding: 30px 0;
+            box-sizing: border-box;
+        }
+
+        /*去掉列表符，让菜单项居中显示*/
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            /*justify-content: center;*/
+            /*调整菜单项布局*/
+            justify-content: space-between;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        /*设置菜单项文字样式*/
+        nav ul li {
+            padding: 0.5em 1em;
+            border-radius: 0.5em;
+            transition: 0.5s ease-out;
+        }
+
+        nav ul li:hover {
+            box-shadow: 0 4px 4px rgba(0, 0, 0, .1),
+                        0 6px 6px rgba(0, 0, 0, .1),
+                        0 8px 8px rgba(0, 0, 0, .1),
+                        0 12px 12px rgba(0, 0, 0, .1);
+            transform: scale(1.05) translateY(-0.25em) perspective(300px) rotateX(20deg);
+        }
+    </style>
+</head>
+<body>
+<!--定义DOM，标准的导航版式-->
+<nav>
+    <ul>
+        <li>Home</li>
+        <li>Products</li>
+        <li>Services</li>
+        <li>Contact</li>
+    </ul>
+</nav>
+</body>
+</html>

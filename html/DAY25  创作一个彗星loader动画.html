@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .load {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            margin: 0 auto;
+        }
+
+        .load .face {
+            position: absolute;
+            border-radius: 50%;
+            border: 2px solid transparent;
+            border-top-color: var(--color);
+            border-left-color: var(--color);
+            animation: animate 1.6s linear infinite;
+        }
+
+        .load .face:nth-child(1) {
+            width: 100%;
+            height: 100%;
+            --color: rgb(53, 157, 218);
+            --deg: 0deg;
+        }
+
+        .load .face:nth-child(2) {
+            width: 70%;
+            height: 70%;
+            --color: tomato;
+            --deg: 180deg;
+            animation-direction: reverse;
+        }
+
+        .load.no-circle .face .circle {
+            display: none;
+        }
+
+        .load .face .circle {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 50%;
+            height: 1px;
+            background-color: transparent;
+            transform-origin: left;
+            transform: rotate(calc(var(--deg) - 45deg));
+        }
+
+        .load .face .circle::after {
+            position: absolute;
+            top: -3px;
+            right: -3px;
+            content: ' ';
+            background-color: var(--color);
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            box-shadow: 0 0 1px var(--color),
+            0 0 2px var(--color),
+            0 0 3px var(--color),
+            0 0 4px var(--color),
+            0 0 5px var(--color),
+            0 0 0 1px rgba(255, 255, 0, .1);
+        }
+
+        @keyframes animate {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .load .face::before {
+            position: absolute;
+            content: ' ';
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            border-radius: 50%;
+            background: linear-gradient(to right, transparent, white);
+        }
+
+        .load .face:nth-child(1)::before {
+            transform: rotate(-45deg);
+            background: linear-gradient(to right, white, transparent);
+        }
+
+        .load .face:nth-child(2)::before {
+            transform: rotate(-45deg);
+        }
+        /*居中显示*/
+        html,
+        body, .loader {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: black;
+        }
+
+        /*定义容器尺寸*/
+        .loader {
+            width: 200px;
+            height: 200px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .loader .face {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border: 2px solid transparent;
+            border-radius: 50%;
+        }
+
+        .loader .face {
+            --color: gold;
+            border-top-color: var(--color);
+            border-left-color: var(--color);
+        }
+
+        .loader .face::before {
+            position: absolute;
+            content: ' ';
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            border-radius: 50%;
+            background: linear-gradient(to right, transparent, gold);
+        }
+
+        /*画出弧线的端点*/
+        .loader .face .circle {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 50%;
+            height: 1px;
+            background-color: white;
+            transform-origin: left;
+            transform: rotate(-45deg);
+        }
+
+        .loader .face .circle::before {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            content: '';
+            background-color: var(--color);
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+
+        /*给端点增加光晕效果*/
+        .loader .face .circle::before{
+            box-shadow: 0 0 20px var(--color),
+            0 0 40px var(--color),
+            0 0 60px var(--color),
+            0 0 80px var(--color),
+            0 0 100px var(--color),
+            0 0 0 5px rgba(255, 255, 0, 0.1);
+        }
+
+        /*隐藏辅助线*/
+        /*.loader .face {*/
+            /*border: 2px solid transparent;*/
+        /*}*/
+
+        .loader .face .circle {
+            background-color: transparent;
+        }
+
+        /*调整两条弧线的直径，变成同心圆*/
+        .loader .face:nth-child(1) {
+            width: 100%;
+            height: 100%;
+            --color: gold;
+        }
+
+        .loader .face:nth-child(2) {
+            width: 70%;
+            height: 70%;
+            --color: lime;
+        }
+
+        /*调整2条弧线的端点位置*/
+        .loader .face:nth-child(1) {
+            --deg: 0deg;
+        }
+
+        .loader .face:nth-child(2) {
+            --deg: 180deg;
+        }
+
+        .load .face:nth-child(1)::before {
+            transform: rotate(-45deg);
+            background: linear-gradient(to right, gold, transparent);
+        }
+
+        .load .face:nth-child(2)::before {
+            transform: rotate(-45deg);
+            background: linear-gradient(to right, transparent, lime);
+        }
+
+        .loader .face .circle {
+            transform: rotate(calc(var(--deg) - 45deg));
+        }
+
+        /*定义动画效果*/
+        .loader .face {
+            animation: animate 3s linear infinite;
+        }
+
+        @keyframes animate {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(1turn);
+            }
+        }
+
+        /*最后，让第二条弧线反响旋转*/
+        .loader .face:nth-child(2) {
+            animation-direction: reverse;
+        }
+    </style>
+</head>
+<body>
+<!--定义dom，设置3层容器-->
+<div class="loader">
+    <div class="face">
+        <div class="circle"></div>
+    </div>
+    <!--在dom中间再增加一条弧线-->
+    <div class="face">
+        <div class="circle"></div>
+    </div>
+</div>
+</body>
+</html>
