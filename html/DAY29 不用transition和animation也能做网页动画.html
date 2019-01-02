@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>不用transition和animation也能做网页动画</title>
+    <style>
+        /*居中显示*/
+        body {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /*定义容器尺寸*/
+        .frame {
+            width: 100vmin;
+            height: 100vmin;
+            background-color: whitesmoke;
+        }
+
+        /*隐藏超出容器的内容*/
+        .wall {
+            overflow: hidden;
+        }
+
+        /*把4个元素向四个方向旋转，相互垂直*/
+        .wall {
+            transform-origin: 0 0;
+
+        }
+
+        .wall.top {
+            transform: rotate(0deg);
+        }
+
+        .wall.right {
+            transform: rotate(90deg);
+        }
+
+        .wall.bottom {
+            transform: rotate(180deg);
+        }
+
+        .wall.left {
+            transform: rotate(270deg);
+        }
+
+        /*定位，形成一个正方形*/
+        .frame {
+            position: relative;
+        }
+
+        .wall {
+            position: absolute;
+            width: 100%;
+        }
+
+        .wall.top {
+            top: 0;
+            left: 0;
+        }
+
+        .wall.right {
+            top: 0;
+            left: 100%;
+        }
+
+        .wall.bottom {
+            top: 100%;
+            left: 100%;
+        }
+
+        .wall.left {
+            top: 100%;
+            left: 0;
+        }
+
+        /*对4个元素进行3d旋转*/
+        .frame {
+            perspective: 40vmin;
+        }
+
+        .wall.top {
+            transform: rotate(0deg) rotateX(-90deg);
+        }
+
+        .wall.right {
+            transform: rotate(90deg) rotateX(-90deg);
+        }
+
+        .wall.bottom {
+            transform: rotate(180deg) rotateX(-90deg);
+        }
+
+        .wall.left {
+            transform: rotate( 270deg) rotateX(-90deg);
+        }
+
+        /*把斜体加粗放大*/
+        .wall {
+            font-size: 75vmin;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+<div class="frame">
+    <div class="wall top">
+        <marquee>
+            ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        </marquee>
+    </div>
+    <div class="wall right">
+        <marquee>
+            ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        </marquee>
+    </div>
+    <div class="wall bottom">
+        <marquee>
+            ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        </marquee>
+    </div>
+    <div class="wall left">
+        <marquee>
+            ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        </marquee>
+    </div>
+</div>
+</body>
+</html>
