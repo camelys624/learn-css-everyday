@@ -217,7 +217,7 @@
 ### 原理
 使用三个正方形，border设置为43%，旋转360度，每个的旋转速度不一致，即可实现。
 
-### DAY30
+### DAY29
 不使用transition和animation也能做网页动画
 #### 不清楚的地方
 - [perspective](https://developer.mozilla.org/en-US/docs/Web/CSS/perspective)

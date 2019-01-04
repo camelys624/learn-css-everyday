@@ -1,0 +1,97 @@
+/*居中显示*/
+html, body {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: radial-gradient(circle at center 60%, white, sandybrown);
+}
+
+/*定义公告牌的整体尺寸*/
+.signboard {
+    width: 400px;
+    height: 300px;
+}
+
+/*设置木板的样式*/
+.signboard {
+    position: relative;
+}
+
+.sign {
+    width: 100%;
+    height: 200px;
+    background: burlywood;
+    border-radius: 15px;
+    position: absolute;
+    bottom: 0;
+}
+
+/*设置有雕刻效果的文字样式*/
+.sign {
+    color: saddlebrown;
+    font-family: sans-serif;
+    font-weight: bold;
+    text-align: center;
+    line-height: 200px;
+    text-shadow: 0 2px 0 rgba(255, 255, 255, 0.3),
+    0 -2px 0 rgba(0, 0, 0, 0.7);
+}
+
+/*画出细绳*/
+.strings {
+    width: 150px;
+    height: 150px;
+    border: 5px solid brown;
+    position: absolute;
+    border-right: none;
+    border-bottom: none;
+    transform: rotate(45deg);
+    top: 38px;
+    left: 122px;
+}
+
+/*画出细绳顶部的图钉*/
+.pin {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    position: absolute;
+}
+
+.pin.top {
+    background: gray;
+    left: 187px;
+}
+
+/*画出木板上左右两侧的图钉*/
+.pin.left,
+.pin.right {
+    background: brown;
+    top: 110px;
+    box-shadow: 0 2px 0 rgba(255, 255, 255, 0.3);
+}
+
+.pin.left {
+    left: 80px;
+}
+
+.pin.right {
+    right: 80px;
+}
+
+/*最后，让公示牌晃动起来*/
+.signboard {
+    animation: swing 1.5s ease-in-out infinite alternate;
+    transform-origin: 200px 13px;
+}
+
+@keyframes swing {
+    from {
+        transform: rotate(10deg);
+    }
+    to {
+        transform: rotate(-10deg);
+    }
+}
