@@ -224,3 +224,11 @@
 - [transform](https://developer.mozilla.org/zh-CN/docs/Web/CSS/transform)
 1. perspective: 三维透视
 2. transform: 
+
+### DAY 37
+如何把握好transition和animation的时序，创作描边按钮特效
+
+#### 知识点
+- [transition](https://developer.mozilla.org/zh-CN/docs/Web/CSS/transition)
+
+transition过渡

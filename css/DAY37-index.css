@@ -1,0 +1,127 @@
+:root {
+    --color: dodgerblue;
+    --time-solt-length: 0.1s;
+    --t1x: var(--time-solt-length);
+    --t2x: calc(var(--time-solt-length) * 2);
+    --t3x: calc(var(--time-solt-length) * 3);
+    --t4x: calc(var(--time-solt-length) * 4);
+}
+
+/*居中显示*/
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: black;
+}
+
+/*定义文本和按钮边框样式*/
+nav ul {
+    padding: 0;
+}
+
+nav ul li {
+    color: white;
+    list-style-type: none;
+    font-family: sans-serif;
+    text-transform: uppercase;
+    width: 8em;
+    height: 3em;
+    border: 1px solid rgba(255, 255, 255, .2);
+    border-radius: 0.1em;
+    line-height: 3em;
+    letter-spacing: 0.1em;
+    position: relative;
+    margin: 1em;
+    text-align: center;
+}
+
+/*用before伪元素定义边框和右边框，其中边框颜色因会多次被用到，所以采用变量*/
+nav ul li::before {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    visibility: hidden;
+    top: -1px;
+    left: 0;
+    border-top: 1px solid var(--color);
+    border-right: 1px solid var(--color);
+    border-radius: 0.1em;
+}
+
+/*类似的，用after伪元素定义右边框和下边框*/
+nav ul li::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    visibility: hidden;
+    bottom: -1px;
+    right: 0;
+    border-bottom: 1px solid var(--color);
+    border-left: 1px solid var(--color);
+    border-radius: 0.1em;
+}
+
+/*设计边框入场的动画效果，按上、右、下、左的顺序一次显示边框，为方便调整动画的速度设置了与时间相关的变量*/
+nav ul li:hover::before,
+nav ul li:hover::after {
+    width: 100%;
+    height: 100%;
+    visibility: visible;
+}
+
+nav ul li:hover::before {
+    transition:
+        visibility 0s,
+        width linear var(--t1x),
+        height linear var(--t1x) var(--t1x);
+}
+
+nav ul li:hover::after {
+    transition:
+        visibility 0s var(--t2x),
+        width linear var(--t1x) var(--t2x),
+        height linear var(--t1x) var(--t3x);
+}
+
+/*设计边框出场的动画效果，与入场的顺序相反*/
+nav ul li::before {
+    transition:
+        height linear var(--t1x) var(--t2x),
+        width linear var(--t1x) var(--t3x),
+        visibility 0s var(--t4x);
+}
+
+nav ul li::after {
+    transition:
+        height linear var(--t1x),
+        width linear var(--t1x) var(--t1x),
+        visibility 0s var(--t2x);
+}
+
+/*让按钮文字在描边期间变色*/
+nav ul li {
+    transition: var(--t4x);
+}
+
+nav ul li:hover {
+    color: var(--color);
+}
+
+/*最后，在描边结束后，在按钮四周增加一个脉冲动画，加强动感*/
+nav ul li:hover {
+    animation: pulse ease-out 1s var(--t4x);
+}
+
+@keyframes pulse {
+    from {
+        box-shadow: 0 0 rgba(30, 144, 255, 0.4);
+    }
+    to {
+        box-shadow: 0 0 0 1em rgba(30, 144, 255, 0);
+    }
+}
