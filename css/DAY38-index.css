@@ -1,0 +1,69 @@
+/*居中显示*/
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: black;
+}
+
+/*设置文字样式*/
+.container p {
+    color: white;
+    font-size: 60px;
+    font-family: sans-serif;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.container p span {
+    display: block;
+    text-align: center;
+}
+
+/*把段落的行高改为1行文本高，3个段落各占一行*/
+.container p {
+    margin: 0;
+    height: 1em;
+    overflow: hidden;
+}
+
+.container p span {
+    line-height: 1em;
+}
+
+/*让文字倾斜变形*/
+.container p:nth-child(odd) {
+    transform: skewY(-30deg) skewX(45deg) scaleY(1.3333);
+}
+
+.container p:nth-child(even) {
+    transform: skewY(-30deg) scaleY(1.3333);
+}
+
+/*对齐文字*/
+.container p:nth-child(2) {
+    margin-left: 1.3em;
+}
+
+.container p:nth-child(3) {
+    margin-left: 2.6em;
+}
+
+/*定义让文字上下移动的动画*/
+.container p span {
+    animation: lettering 3s infinite ease-in-out alternate;
+}
+
+@keyframes lettering {
+    to {
+        transform: translateY(-100%);
+    }
+}
+
+/*最后，让文字偏左一点，抵消因倾斜造成的位移*/
+.container p {
+    position: relative;
+    left: -0.8em;
+}
