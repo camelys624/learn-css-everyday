@@ -231,4 +231,4 @@
 #### 知识点
 - [transition](https://developer.mozilla.org/zh-CN/docs/Web/CSS/transition)
 
-transition过渡士大夫杀害艰苦奋斗啥叫客户的接口
+transition

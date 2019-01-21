@@ -1,0 +1,82 @@
+/*居中显示*/
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: lightskyblue;
+}
+
+/*定义铅笔的尺寸*/
+.pencil {
+    position: absolute;
+    width: 50em;
+    height: 3.5em;
+    font-size: 10px;
+    /*最后，增加阴影*/
+    filter: drop-shadow(5px 10px 3px gray);
+}
+
+/*画出笔杆*/
+.pencil .barrel {
+    position: absolute;
+    width: 40em;
+    left: 4em;
+    background-color: green;
+    border-top: 1em solid forestgreen;
+    border-bottom: 1em solid darkgreen;
+
+    /*设置笔杆上文字的样式*/
+    line-height: 1.5em;
+    font-family: sans-serif;
+    text-transform: uppercase;
+    color: silver;
+    text-align: center;
+    letter-spacing: 0.1em;
+}
+
+/*用伪元素画出笔头*/
+.pencil .taper::before,
+.pencil .taper::after {
+    content: '';
+    position: absolute;
+    left: -4em;
+    border-style: solid;
+    border-width: calc(3.5em / 2) 4em;
+}
+
+.pencil .taper::before {
+    border-color: transparent burlywood transparent transparent;
+}
+
+.pencil .taper::after {
+    border-color: transparent black transparent transparent;
+    transform: scale(0.3);
+}
+
+/*画出橡皮*/
+.pencil .eraser {
+    position: absolute;
+    right: 0;
+    width: 6em;
+    height: 1.5em;
+    background-color: lightpink;
+    border-top: 1em solid pink;
+    border-bottom: 1em solid lightcoral;
+    border-top-right-radius: 0.5em;
+    border-bottom-right-radius: 0.5em;
+}
+
+/*用伪元素画出橡皮上的铁箍*/
+.pencil .eraser::before {
+    content: '';
+    position: absolute;
+    top: -1em;
+    left: 0;
+    width: 1.5em;
+    height: 1.5em;
+    background-color: silver;
+    border-top: 1em solid lightgray;
+    border-bottom: 1em solid gray;
+}
