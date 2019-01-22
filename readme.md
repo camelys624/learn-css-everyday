@@ -231,4 +231,26 @@
 #### 知识点
 - [transition](https://developer.mozilla.org/zh-CN/docs/Web/CSS/transition)
 
-transition
+transition: 过渡，可以与 transform 搭配使用
+
+```css
+nav ul li:hover::before {
+    transition:
+        visibility 0s,
+        width linear var(--t1x),
+        height linear var(--t1x) var(--t1x);
+}
+```
+
+### DAY 42
+创作一个均衡器loader动画
+
+#### 知识点
+- [clip-path](https://developer.mozilla.org/zh-CN/docs/Web/CSS/clip-path)
+
+```css
+.clip{
+    clip-path: inset(10% 0 0 0);
+}
+``` 
+inset中的值就如同padding的值一样，属于内部切割。
