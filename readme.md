@@ -254,3 +254,29 @@ nav ul li:hover::before {
 }
 ``` 
 inset中的值就如同padding的值一样，属于内部切割。
+
+### DAY 43
+CSS绘制一个充满动感的Vue logo
+
+#### 知识点
+- [border-top-color](https://developer.mozilla.org/en-US/docs/Web/CSS/border-top-color)
+
+```css
+.outer, .middle, .inner {
+    position: absolute;
+    border-style: solid;
+    /*border-color: var(--c);*/
+    border-color: transparent;
+    border-top-width: var(--h);
+    border-top-color: var(--c);
+    border-left-width: calc(var(--w) / 2);
+    /*border-left-color: transparent;*/
+    border-right-width: calc(var(--w) / 2);
+    /*border-bottom-color: transparent;*/
+    /*border-bottom-width: var(--h);*/
+}
+```
+
+根据MDN上的演示效果及实际运行效果，可以通过设置border的宽度创建三角形
+
+![border-top-color](./img/border-top.png)
