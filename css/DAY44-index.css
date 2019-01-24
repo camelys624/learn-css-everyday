@@ -1,0 +1,99 @@
+/*居中显示*/
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(to right bottom, dimgray, black);
+}
+
+/*定义文字样式*/
+ul {
+    padding: 0;
+}
+
+/*在单词左侧增加一条鼠标悬停时变亮的竖线*/
+li {
+    list-style-type: none;
+    padding-left: 2em;
+    border-left-style: solid;
+    border-left-width: 1px;
+    border-left-color: silver;
+    transition: 500ms;
+    /* 最后文字居中对齐,调整一下按钮间距 */
+    text-align: center;
+    margin: 1em 0;
+}
+
+li:hover {
+    border-left-color: white;
+}
+
+li span {
+    color: white;
+    font-size: 50px;
+    font-family: monospace;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+/*当鼠标悬停时,用伪元素绘制倾斜的背景色块*/
+li span {
+    position: relative;
+    transition: 500ms;
+}
+
+li:hover span {
+    color: #333;
+    transition-delay: calc(80ms * var(--n) + 10ms);
+}
+
+li span::before {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 0;
+    z-index: -1;
+    transition: 500ms;
+}
+
+li:hover span::before {
+    width: 70%;
+    transform: rotate(-25deg);
+    background: white;
+    transition-delay: calc(80ms * var(--n));
+}
+
+/*设置缓动延时,增加动画效果*/
+li span:nth-child(1) {
+    --n: 1;
+}
+
+li span:nth-child(2) {
+    --n: 2;
+}
+
+li span:nth-child(3) {
+    --n: 3;
+}
+
+li span:nth-child(4) {
+    --n: 4;
+}
+
+li span:nth-child(5) {
+    --n: 5;
+}
+
+li span:nth-child(6) {
+    --n: 6;
+}
+
+li span:nth-child(7) {
+    --n: 7;
+}
+
+li span:nth-child(8) {
+    --n: 8;
+}
