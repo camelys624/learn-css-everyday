@@ -280,3 +280,35 @@ CSS绘制一个充满动感的Vue logo
 根据MDN上的演示效果及实际运行效果，可以通过设置border的宽度创建三角形
 
 ![border-top-color](./img/border-top.png)
+
+### DAY45 
+纯CSS创作一个菱形 loader 动画
+
+#### 知识点
+- [grid MDN](https://developer.mozilla.org/zh-CN/docs/Web/CSS/grid)
+- [grid 网格线](https://www.html.cn/archives/8510)
+
+`grid`是一个CSS简写属性,可以用来设置显式网格属性和隐式网格属性.
+
+```css
+.loader {
+    width: 10em;
+    height: 10em;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 0.5em;
+}
+```
+
+`grid-grap`里面item之间的间距.
+
+`grip-template`定义网格的行和列,如果定义包含多个重复值,则使用 `repeat()` 来简化定义.
+
+`fr` 单元允许使用等分网格容器剩余的可用空间来设置 网格轨道(Grid Track) 的大小.剩余可用空间是
+除去所有非灵活网格项之后计算得到的.在下面这个例子中,可用空间减去50px后,再给 `fr` 单元的值3等分.
+
+```css
+.container {
+    grid-template-columns: 1fr 50px 1fr 1fr;
+}
+```
