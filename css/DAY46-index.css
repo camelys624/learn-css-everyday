@@ -1,0 +1,73 @@
+/*居中显示*/
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: black;
+}
+
+/*定义容器的尺寸*/
+.loader {
+    width: 10em;
+    height: 3em;
+    border: 0.3em solid silver;
+    border-radius: 3em;
+    font-size: 30px;
+}
+
+/*把容器左右两侧分别涂上不同的颜色*/
+.loader {
+    border-left-color: hotpink;
+    border-right-color: dodgerblue;
+}
+
+/*在容器中画一个小球*/
+.loader {
+    position: relative;
+}
+
+.loader::before {
+    position: absolute;
+    content: '';
+    top: 0;
+    left: 0;
+    width: 3em;
+    height: 3em;
+    border-radius: 50%;
+    background-color: dodgerblue;
+}
+
+/*让小球在容器中往复移动*/
+/*再让小球在撞到两端时变色*/
+.loader::before {
+    animation: shift 3s linear infinite,
+        change-color 3s linear infinite;
+}
+
+@keyframes shift {
+    50% {
+        left: 7em;
+    }
+}
+
+@keyframes change-color {
+    0%, 55% {
+        background-color: dodgerblue;
+    }
+    5%, 50% {
+        background-color: hotpink;
+    }
+}
+
+/*最后，让容器不停地旋转*/
+.loader {
+    animation: spin 3s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
