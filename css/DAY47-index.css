@@ -1,0 +1,96 @@
+/*居中显示*/
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(gray, lightyellow, gray);
+}
+
+/*定义蝴蝶的尺寸*/
+.butterfly {
+    position: relative;
+    width: 10em;
+    height: 10em;
+}
+
+/*先画左半边*/
+.butterfly .left,
+.butterfly .right {
+    position: absolute;
+    width: inherit;
+    height: inherit;
+}
+
+/*用第一个子元素画出翅膀的上半部分*/
+.butterfly span {
+    position: absolute;
+    border-radius: 50%;
+}
+
+.butterfly span:nth-child(1) {
+    width: 5em;
+    height: 7em;
+    background-color: gold;
+}
+
+/*用第二个子元素画出翅膀的下半部分*/
+.butterfly span:nth-child(2) {
+    width: 5.5em;
+    height: 3.3em;
+    background-color: orangered;
+    top: 5em;
+    left: -2.5em;
+    filter: opacity(0.6);
+}
+
+/*用第三个子元素画出触角*/
+.butterfly span:nth-child(3) {
+    width: 6em;
+    height: 6em;
+    border-right: 0.3em solid orangered;
+    top: -0.5em;
+}
+
+/*把左半边复制一份到右半边*/
+.butterfly .right {
+    /*主要是这一段话*/
+    transform: rotateY(180deg) rotate(-90deg);
+    top: 0.4em;
+    left: 0.4em;
+}
+
+/*把标本装到展示框里*/
+.butterfly::before {
+    content: '';
+    position: absolute;
+    box-sizing: border-box;
+    top: -2.5em;
+    left: -8em;
+    width: 24em;
+    height: 18em;
+    background-color: black;
+    border: 0.2em inset silver;
+}
+
+.butterfly::after {
+    content: '';
+    position: absolute;
+    box-sizing: border-box;
+    width: 40em;
+    height: 30em;
+    background-color: lightyellow;
+    top: -9em;
+    left: -16em;
+    border: 2em solid burlywood;
+    border-radius: 3em;
+    box-shadow: 0 0.3em 2em 0.4em rgba(0, 0, 0, 0.3),
+        inset 0.4em 0.4em 0.1em 0.5em rgba(0, 0, 0, .4);
+    z-index: -1;
+}
+
+/*最后调整一下因图案倾斜引起的位移*/
+.butterfly {
+    transform: translateX(1em);
+}
