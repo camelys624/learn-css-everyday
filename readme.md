@@ -312,3 +312,50 @@ CSS绘制一个充满动感的Vue logo
     grid-template-columns: 1fr 50px 1fr 1fr;
 }
 ```
+
+### DAY48
+纯CSS创作一盘蚊香
+
+#### 知识点
+- [border-radius](https://developer.mozilla.org/zh-CN/docs/Web/CSS/border-radius)
+
+语句
+
+```css
+.coil span:nth-child(odd) {
+    border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+}
+
+.coil span:nth-child(even) {
+    border-radius: 0 0 50% 50% / 0 0 100% 100%;
+}
+```
+
+解释
+
+```css
+.example {
+    border-radius: 1em/5em;
+    
+    /* 等价于： */
+    
+    border-top-left-radius:     1em 5em;
+    border-top-right-radius:    1em 5em;
+    border-bottom-right-radius: 1em 5em;
+    border-bottom-left-radius:  1em 5em;
+}
+```
+
+```css
+.example {
+    border-radius: 4px 3px 6px / 2px 4px;
+    
+    /* 等价于： */
+    
+    border-top-left-radius:     4px 2px;
+    border-top-right-radius:    3px 4px;
+    border-bottom-right-radius: 6px 2px;
+    border-bottom-left-radius:  3px 4px;
+}
+
+```

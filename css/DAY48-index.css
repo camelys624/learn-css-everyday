@@ -1,0 +1,119 @@
+/*居中显示*/
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: radial-gradient(circle at center, midnightblue, black);
+}
+
+/*画出蚊香盘要用的框线*/
+.coil {
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.coil span {
+    position: absolute;
+    width: calc((var(--n) * 2 - 1) * 1em);
+    height: calc((var(--n) - 0.5) * 1em);
+    border: 1em solid darkgreen;
+}
+
+.coil span:nth-child(1) {
+    --n: 1;
+}
+
+.coil span:nth-child(2) {
+    --n: 2;
+}
+
+.coil span:nth-child(3) {
+    --n: 3;
+}
+
+.coil span:nth-child(4) {
+    --n: 4;
+}
+
+.coil span:nth-child(5) {
+    --n: 5;
+}
+
+.coil span:nth-child(6) {
+    --n: 6;
+}
+
+.coil span:nth-child(7) {
+    --n: 7;
+}
+
+.coil span:nth-child(8) {
+    --n: 8;
+}
+
+/*把一般框线放置到上方*/
+.coil span:nth-child(odd) {
+    align-self: flex-end;
+}
+
+/*删除掉上方框线的下边框，和下方边框线的上边框*/
+.coil span:nth-child(odd) {
+    border-bottom: none;
+}
+
+.coil span:nth-child(even) {
+    border-top: none;
+}
+
+/*对齐上下边框*/
+.coil span:nth-child(even) {
+    transform: translateX(-1em);
+}
+
+/*把边框改为曲线*/
+.coil span:nth-child(odd) {
+    border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+}
+
+.coil span:nth-child(even) {
+    border-radius: 0 0 50% 50% / 0 0 100% 100%;
+}
+
+/*用伪元素画出蚊香最中间的部分*/
+/*用伪元素画出蚊香的燃点*/
+.coil::before,
+.coil::after {
+    content: '';
+    position: absolute;
+    width: 1em;
+    height: 1em;
+    border-radius: 50%;
+}
+
+.coil::before {
+    background-color: darkgreen;
+    left: -1.5em;
+    top: -0.5em;
+}
+
+.coil::after {
+    top: -0.5em;
+    background-color: darkred;
+    left: -9.5em;
+    z-index: -1;transform: scale(0.9);
+    box-shadow: 0 0 1em white;
+}
+
+/*最后增加燃点闪动特效*/
+.coil::after {
+    animation: blink 1s linear infinite alternate;
+}
+
+@keyframes blink {
+    to {
+        box-shadow: 0 0 0 white;
+    }
+}
