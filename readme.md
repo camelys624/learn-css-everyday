@@ -329,6 +329,11 @@ CSS绘制一个充满动感的Vue logo
 .coil span:nth-child(even) {
     border-radius: 0 0 50% 50% / 0 0 100% 100%;
 }
+
+/*把一般框线放置到上方*/
+.coil span:nth-child(odd) {
+    align-self: flex-end;
+}
 ```
 
 解释
@@ -357,5 +362,17 @@ CSS绘制一个充满动感的Vue logo
     border-bottom-right-radius: 6px 2px;
     border-bottom-left-radius:  3px 4px;
 }
+```
 
+解释 `align-self` 为什么会变成框线在位置上方。
+
+可能是因为使用了 `position:absolute` 属性.
+
+```css
+.coil span {
+    position: absolute;
+    width: calc((var(--n) * 2 - 1) * 1em);
+    height: calc((var(--n) - 0.5) * 1em);
+    border: 1em solid darkgreen;
+}
 ```
