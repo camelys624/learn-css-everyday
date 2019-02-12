@@ -376,3 +376,38 @@ CSS绘制一个充满动感的Vue logo
     border: 1em solid darkgreen;
 }
 ```
+
+### DAY50
+纯CSS创作一个永动的牛顿摆
+
+#### 知识点
+- [cubic-bezier](https://developer.mozilla.org/zh-CN/docs/Web/CSS/timing-function)
+
+```css
+/*最后，让最右侧的摆线晃动*/
+.loader span:last-child {
+    animation: moving-up 0.75s cubic-bezier(0.215, 0.61, 0.355, 1) infinite alternate;
+    animation-delay: 0.75s;
+    --direction: -1;
+}
+```
+
+![cubic-bezier](./img/cubic-bezier-example.png)
+
+cubic-bezier()是CSS的一个定时函数，它定义了一条[立方贝塞尔函数(cubic Bezier curve)](https://en.wikipedia.org/wiki/B%C3%A9zier_curve),
+就是像钢笔画调曲线，这些曲线是连续的，一般用于动画的平滑变换，也被称为缓动函数(easing functions)。
+
+一条立方贝塞尔曲线需要四个点来定义，P0 、P1 、P2 和 P3。P0 和 P3 是起点和终点，这两个点被作为比例固定在坐标系上，横轴为时间比例，纵轴为完成状态。
+P0 是 (0, 0)，表示初始时间和初始状态。P3 是 (1, 1) ，表示终止时间和终止状态。
+
+语法
+
+> `cubic-bezier(x1, y1, x2, y2)`
+
+CSS还支持一个定时函数:**steps()阶梯函数**
+
+| 图片 | 图片 |
+| ---- | --- |
+| ![steps1](./img/steps(2,start).png) | ![steps2](./img/steps(2,start).png) |
+| steps(2,start) | steps(4,end) |
+
