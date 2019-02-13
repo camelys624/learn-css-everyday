@@ -408,7 +408,7 @@ CSS还支持一个定时函数:**steps()阶梯函数**
 
 | 图片 | 图片 |
 | ---- | --- |
-| ![steps1](./img/steps(2,start).png) | ![steps2](./img/steps(2,start).png) |
+| ![steps1](./img/steps(2,start).png) | ![steps2](./img/steps(4,start).png) |
 | steps(2,start) | steps(4,end) |
 
 ### DAY51
