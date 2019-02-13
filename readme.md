@@ -411,3 +411,24 @@ CSS还支持一个定时函数:**steps()阶梯函数**
 | ![steps1](./img/steps(2,start).png) | ![steps2](./img/steps(2,start).png) |
 | steps(2,start) | steps(4,end) |
 
+### DAY51
+纯CSS创作一个雷达扫描动画
+
+#### 知识点
+- [linear-gradient()](https://developer.mozilla.org/en-US/docs/Web/CSS/linear-gradient)
+- [repeating-radial-gradient()](https://developer.mozilla.org/en-US/docs/Web/CSS/repeating-radial-gradient)
+
+linear-gradient()是线性渐变，repeating-radial-gradient()是重复径向渐变
+
+```css
+/*在背景上画出4个同心圆*/
+.radar {
+    background:
+        repeating-radial-gradient(
+            transparent 0,
+            transparent 0.95em,
+            darkgreen 0.95em,
+            darkgreen 1em),
+        linear-gradient(black, black);
+}
+```

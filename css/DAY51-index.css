@@ -1,0 +1,97 @@
+/*居中显示*/
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: radial-gradient(circle at center, silver, black);
+}
+
+/*设置容器的尺寸，背景为黑色*/
+.radar {
+    width: 8em;
+    height: 8em;
+    font-size: 32px;
+    background: linear-gradient(black, black);
+}
+
+/*在背景上画出4个同心圆*/
+.radar {
+    background:
+        repeating-radial-gradient(
+            transparent 0,
+            transparent 0.95em,
+            darkgreen 0.95em,
+            darkgreen 1em),
+        linear-gradient(black, black);
+}
+
+/*在背景上画出十字坐标线*/
+.radar {
+    background:
+        linear-gradient(
+            90deg,
+            transparent 49.75%,
+            darkgreen 49.75%,
+            darkgreen 50.25%,
+            transparent 50.25%),
+        linear-gradient(
+            transparent 49.75%,
+            darkgreen 49.75%,
+            darkgreen 50.25%,
+            transparent 50.25%),
+        repeating-radial-gradient(
+            transparent 0,
+            transparent 0.95em,
+            darkgreen 0.95em,
+            darkgreen 1em),
+        linear-gradient(black, black);
+}
+
+/*用伪元素画出面积等于容器面积四分之一的正方形*/
+.radar {
+    position: relative;
+}
+
+.radar::before {
+    content: '';
+    position: absolute;
+    width: calc(8em / 2);
+    height: calc(8em / 2);
+}
+
+/*把正方形变为有拖尾效果的扇形*/
+.radar::before {
+    background: linear-gradient(
+        45deg,
+        rgba(0, 0, 0, 0) 50%,
+        rgba(0, 192, 0, 1) 100%
+    );
+    border-radius: 100% 0 0 0;
+}
+
+/*把容器改为圆形*/
+.radar {
+    border-radius: 50%;
+}
+
+/*为容器增加一点边距，一边清晰的展示最外侧的同心圆*/
+.radar {
+    width: calc(8em + 1.5em);
+    height: calc(8em + 1.5em);
+}
+
+.radar::before {
+    top: calc(1.5em / 2);
+    left: calc(1.5em / 2);
+    animation: scanning 5s linear infinite;
+    transform-origin: 100% 100%;
+}
+
+/*最后，为拖尾增加转动效果*/
+@keyframes scanning {
+    to {
+        transform: rotate(360deg);
+    }
+}
