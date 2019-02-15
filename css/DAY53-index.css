@@ -1,0 +1,123 @@
+/*居中显示*/
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: black;
+}
+
+/*设置容器尺寸*/
+.loader {
+    width: 40em;
+    height: 3em;
+}
+
+/*设置文字样式*/
+.loader {
+    color: dodgerblue;
+    font-size: 1.5em;
+    text-transform: uppercase;
+    font-family: sans-serif;
+}
+
+/*设置动画延时，增强动画效果*/
+
+.loader span:nth-child(1) {
+    --n: 1;
+}
+
+.loader span:nth-child(2) {
+    --n: 2;
+}
+
+.loader span:nth-child(3) {
+    --n: 3;
+}
+
+.loader span:nth-child(4) {
+    --n: 4;
+}
+
+.loader span:nth-child(5) {
+    --n: 5;
+}
+
+.loader span:nth-child(6) {
+    --n: 6;
+}
+
+.loader span:nth-child(7) {
+    --n: 7;
+}
+
+/*设置文字旋转效果*/
+.loader {
+    position: relative;
+}
+
+.loader span {
+    position: absolute;
+    height: 3em;
+}
+
+/*给文字增加渐隐渐显动画*/
+.loader span {
+    animation: moving 2s linear infinite;
+    animation-delay: calc((var(--n) - 10) * 0.2s)
+}
+
+@keyframes moving {
+    0% {
+        filter: opacity(0);
+        transform: rotate(-180deg);
+        left: 100%;
+    }
+    33% {
+        filter: opacity(1);
+        transform: rotate(0deg);
+        left: 60%;
+    }
+    66% {
+        filter: opacity(1);
+        transform: rotate(0deg);
+        left: 40%;
+    }
+    100% {
+        filter: opacity(0);
+        transform: rotate(180deg);
+        left: 0;
+    }
+}
+
+/*增加文字变色效果*/
+.loader {
+    animation: chage-color 10s linear infinite;
+}
+
+@keyframes change-color {
+    0% {
+        color: dodgerblue;
+    }
+    20% {
+        color: hotpink;
+    }
+    40% {
+        color: gold;
+    }
+    60% {
+        color: mediumpurple;
+    }
+    80% {
+        color: lightgreen;
+    }
+    100% {
+        color: dodgerblue;
+    }
+}
+
+/*最后，把可能出现在页面外的部分隐藏掉*/
+body {
+    overflow: hidden;
+}
