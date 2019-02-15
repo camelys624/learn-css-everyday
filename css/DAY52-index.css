@@ -1,0 +1,85 @@
+/*居中显示*/
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: darkslategray;
+}
+
+/*改变盒模型*/
+* {
+    box-sizing: border-box;
+}
+
+/*画出圆环*/
+.container {
+    position: relative;
+    font-size: 20px;
+}
+
+.ring {
+    position: relative;
+    width: 10em;
+    height: 10em;
+    border: 1.5em solid paleturquoise;
+    border-radius: 50%;
+}
+
+/*在圆环的左上方画出一个小球*/
+.sphere {
+    position: absolute;
+    top: -20%;
+    left: -20%;
+}
+
+.sphere::after {
+    content: '';
+    position: absolute;
+    width: 3em;
+    height: 3em;
+    background-color: lightseagreen;
+    border-radius: 50%;
+}
+
+/*让小球在圆环的左上方盘旋*/
+.sphere {
+    width: 80%;
+    height: 80%;
+    animation:
+        rotate 1.5s linear infinite,
+        overlapping 1.5s linear infinite;
+}
+
+@keyframes rotate {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/*让小球的圆环上下穿梭*/
+.ring {
+    z-index: 2;
+}
+
+@keyframes overlapping {
+    to {
+        z-index: 2;
+    }
+}
+
+/*通过设置动画延时，制造三个小球同时盘旋的效果*/
+
+.sphere:nth-child(2) {
+    animation-delay: -0.5s;
+}
+
+.sphere:nth-child(3) {
+    animation-delay: -1s;
+}
+
+/*最后，让容器转动起来，制造小球围绕圆环盘旋的效果*/
+.container {
+    animation: rotate 5s linear infinite;
+}
