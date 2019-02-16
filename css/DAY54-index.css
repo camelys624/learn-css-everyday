@@ -1,0 +1,52 @@
+/*居中显示*/
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: darkslategray;
+}
+
+/*定义容器的背景色和尺寸 (由字号决定尺寸)*/
+.chess {
+    background-color: burlywood;
+    font-size: 32px;
+}
+
+/*划出网格状棋盘*/
+ul {
+    display: table;
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    display: table-cell;
+    width: 1.5em;
+    height: 1.5em;
+    text-align: center;
+    line-height: 1.5em;
+    /*font-weight: bold;*/
+}
+
+/*设置网格交错的颜色*/
+ul:nth-child(odd) li:nth-child(even),
+ul:nth-child(even) li:nth-child(odd) {
+    background-color: rgba(0, 0, 0, .6);
+}
+
+/*设置棋子的颜色*/
+ul:nth-child(-n+2) {
+    color: black;
+}
+
+ul:nth-child(n+7) {
+    color: white;
+}
+
+/*最后,为棋盘增加一点立体效果*/
+.chess {
+    border: 0.2em solid tan;
+    box-shadow: 0 0.3em 2em 0.4em rgba(0, 0, 0, 0.3);
+}
