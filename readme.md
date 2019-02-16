@@ -432,3 +432,11 @@ linear-gradient()是线性渐变，repeating-radial-gradient()是重复径向渐
         linear-gradient(black, black);
 }
 ```
+
+### DAY54
+纯CSS创作一副国际象棋
+
+#### 知识点
+
+- [display-CSS-TRICKS](https://css-tricks.com/almanac/properties/d/display/)
+- [display-MDN](https://developer.mozilla.org/zh-CN/docs/Web/CSS/display)
