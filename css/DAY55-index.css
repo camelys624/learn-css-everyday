@@ -1,0 +1,98 @@
+/*居中显示*/
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: black;
+}
+
+/*设置容器尺寸*/
+.container {
+    font-size: 10px;
+    width: 40em;
+    height: 40em;
+    position: relative;
+}
+
+/*画出太阳*/
+.sun {
+    position: absolute;
+    top: 15em;
+    left: 15em;
+    width: 10em;
+    height: 10em;
+    background-color: yellow;
+    border-radius: 50%;
+    box-shadow: 0 0 3em white;
+}
+
+/*画出地球和月亮的轨迹*/
+.earth, .moon {
+    position: absolute;
+    border-style: solid;
+    border-color: white transparent transparent transparent;
+    border-width: 0.1em 0.1em 0 0;
+    border-radius: 50%;
+}
+
+.earth {
+    top: 5em;
+    left: 5em;
+    width: 30em;
+    height: 30em;
+}
+
+.moon {
+    top: 0;
+    right: 0;
+    height: 8em;
+    width: 8em;
+}
+
+/*用伪元素画出地球和月亮*/
+.earth::before,
+.moon::before {
+    position: absolute;
+    border-radius: 50%;
+    content: '';
+}
+
+.earth::before {
+    top: 2.8em;
+    right: 2.8em;
+    width: 3em;
+    height: 3em;
+    background-color: aqua;
+}
+
+.moon::before {
+    top: 0.8em;
+    right: 0.2em;
+    width: 1.2em;
+    height: 1.2em;
+    background-color: silver;
+}
+
+/*设置运转动画效果*/
+/*rotation period 365.2422 days*/
+.earth {
+    animation: orbit 36.5s linear infinite;
+}
+
+/*rotation period 27.322 days*/
+.moon {
+    animation: orbit 2.7s linear infinite;
+}
+
+@keyframes orbit {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/*最后，隐藏可能出现在容器外的部分*/
+body {
+    overflow: hidden;
+}
