@@ -1,0 +1,74 @@
+/*居中显示*/
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: black;
+}
+
+/*定义容器尺寸*/
+.eyes {
+    width: 40em;
+    height: 10em;
+    font-size: 10px;
+}
+
+/*画出眼睛的轮廓*/
+.eyes {
+    position: relative;
+}
+
+.eyes > * {
+    box-sizing: border-box;
+    position: absolute;
+    width: 15em;
+    height: 10em;
+    border: solid white;
+}
+
+.eyes .left {
+    left: 0;
+}
+
+.eyes .right {
+    right: 0;
+}
+
+/*画出眼球*/
+.eyes > * {
+    border-width: 0 5em;
+}
+
+.eyes .left {
+    border-radius: 50% 0;
+}
+
+.eyes .right {
+    border-radius: 0 50%;
+}
+
+/*使双眼向内聚拢*/
+.eyes .left {
+    transform: rotate(25deg);
+}
+
+.eyes .right {
+    transform: rotate(-25deg);
+}
+
+/*定义眨眼的动画*/
+@keyframes blink {
+    40%, 60% {
+        border-width: 0 5em;
+    }
+    50% {
+        border-width: 0 7.5em;
+    }
+}
+
+/*最后，把动画效果应用到两只眼睛上*/
+.eyes > * {
+    animation: blink 2s linear infinite;
+}
