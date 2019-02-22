@@ -1,0 +1,53 @@
+/*居中显示*/
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: black;
+}
+
+/*定义文字样式*/
+p {
+    font-size: 20vw;
+    color: white;
+    font-family: sans-serif;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+/*设置彩虹背景*/
+p {
+    background-image: linear-gradient(
+        to right,
+        orange,
+        gold,
+        lightgreen,
+        cyan,
+        dodgerblue,
+        mediumpurple,
+        hotpink,
+        orangered
+    );
+    background-size: 110vw;
+}
+
+/*定义动画效果*/
+p {
+    animation: sliding 30s linear infinite;
+}
+
+@keyframes sliding {
+    to {
+        background-position: -2000vw;
+    }
+}
+
+/*最后，把彩虹背景移到文字下面*/
+p {
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    /*实现效果一样*/
+    /*color: transparent;*/
+}
