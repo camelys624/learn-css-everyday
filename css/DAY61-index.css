@@ -1,0 +1,124 @@
+/*居中显示*/
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(to right bottom, silver, dimgray);
+}
+
+/*重新定义盒模型*/
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/*定义容器尺寸*/
+.container {
+    width: 300px;
+    height: 300px;
+    background-color: snow;
+    border-radius: 50%;
+}
+
+/*画出壶的最大的部分*/
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pot {
+    width: 170px;
+    height: 170px;
+    background-color: deepskyblue;
+    border-radius: 50%;
+}
+
+/*用伪元素画出壶的上班部分*/
+.pot {
+    position: relative;
+}
+
+.pot::before {
+    content: '';
+    position: absolute;
+    width: 170px;
+    height: 86px;
+    background-color: hotpink;
+    border-radius: 86px 86px 0 0;
+}
+
+/*用伪元素画出壶嘴*/
+.pot::after {
+    content: '';
+    position: absolute;
+    width: 86px;
+    height: 20px;
+    background-color: hotpink;
+    left: 42px;
+    top: -6px;
+}
+
+/*画出把手横向的部分*/
+.pot .handle {
+    width: 166px;
+    height: 14px;
+    background-color: black;
+    border-radius: 14px;
+    position: absolute;
+    left: 26px;
+    top: 24px;
+}
+
+/*用伪元素画出把手竖向的部分*/
+.pot .handle::before {
+    content: '';
+    position: absolute;
+    width: 14px;
+    height: 100px;
+    background-color: black;
+    border-radius: 14px;
+    left: calc(170px - 14px);
+}
+
+/*接下来润色一下*/
+
+/*给壶加上阴影*/
+.pot {
+    border-right: 10px solid steelblue;
+}
+
+.pot::before {
+    border-right: 10px solid palevioletred;
+}
+
+/*再用伪元素给壶加上光影*/
+.container::after {
+    content: '';
+    position: absolute;
+    width: 140px;
+    height: 140px;
+    border: 6px solid transparent;
+    border-left-color: white;
+    border-radius: 50%;
+    left: 80px;
+    top: 80px;
+    transform: rotate(-10deg);
+}
+
+/*最后,加上动画*/
+.container {
+    animation: pouring 3s linear infinite alternate;
+}
+
+@keyframes pouring {
+    0%, 25% {
+        transform: rotate(0deg);
+    }
+    75%, 100% {
+        transform: rotate(-45deg);
+    }
+}
