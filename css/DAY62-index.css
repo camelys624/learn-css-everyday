@@ -1,0 +1,117 @@
+/*居中显示*/
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(to right bottom, violet, midnightblue);
+}
+
+/*定义容器尺寸*/
+.steamer {
+    width: 30em;
+    height: 30em;
+    background-color: snow;
+    font-size: 10px;
+    border-radius: 50%;
+}
+
+/*画出锅体*/
+.steamer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.pot {
+    position: relative;
+    width: 16em;
+    height: 12em;
+    background: darkslateblue;
+    border-radius: 0.5em 0.5em 6.5em 6.5em;
+    border-right: 1.5em solid midnightblue;
+}
+
+/*画出锅把手*/
+.steamer {
+    z-index: 1;
+}
+
+.pot::before {
+    content: '';
+    position: absolute;
+    width: 27em;
+    height: 2.5em;
+    border-radius: 1.25em;
+    background-color: tomato;
+    left: -4.7em;
+    top: 2em;
+    z-index: -1;
+}
+
+/*画出锅盖*/
+.lid {
+    width: 17em;
+    height: 6em;
+    background-color: gold;
+    position: relative;
+    border-radius: 6em 6em 0 0;
+    border-right: 1.5em solid goldenrod;
+    border-bottom: 1.2em solid goldenrod;
+    z-index: 2;
+}
+
+/*画出过锅盖的纽扣把手*/
+.lid::before {
+    content: '';
+    position: absolute;
+    width: 4em;
+    height: 4em;
+    background-color: tomato;
+    border-radius: 50%;
+    left: 7em;
+    top: -2.5em;
+}
+
+/*接下来润色一下*/
+/*为锅体增光影*/
+.pot::after {
+    content: '';
+    position: absolute;
+    width: 8em;
+    height: 8em;
+    border: 0.6em solid transparent;
+    border-left-color: white;
+    transform: rotate(-60deg);
+    border-radius: 50%;
+    top: 1em;
+    left: 2em;
+}
+
+/*为锅盖增加光影*/
+.lid::after {
+    content: '';
+    position: absolute;
+    width: 7em;
+    height: 7em;
+    border: 0.6em solid transparent;
+    border-radius: 50%;
+    border-left-color: white;
+    transform: rotate(40deg);
+    top: 0.6em;
+    left: 2.5em;
+}
+
+/*最后，增加动画效果*/
+.lid {
+    transform: translateY(-0.5em);
+    animation: animate 1s infinite alternate;
+}
+
+@keyframes animate {
+    to {
+        transform: translateY(0.5em);
+    }
+}

@@ -448,3 +448,13 @@ linear-gradient()是线性渐变，repeating-radial-gradient()是重复径向渐
 #### 知识点
 
 - [filter 滤镜](https://developer.mozilla.org/zh-CN/docs/Web/CSS/filter)
+
+### DAY61
+
+纯CSS创作一个蒸锅
+
+### 知识点
+
+- [flex-direction](https://developer.mozilla.org/en-US/docs/Web/CSS/flex-direction)
+
+改变 `display:flex` 的排列方式,默认为 row
