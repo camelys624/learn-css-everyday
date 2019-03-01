@@ -1,0 +1,158 @@
+/*居中显示*/
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(sandybrown, maroon);
+}
+
+/*定义容器尺寸*/
+.container {
+    width: 120em;
+    height: 80em;
+    background-color: green;
+    font-size: 5px;
+}
+
+.container span {
+    display: block;
+}
+
+/*定义线型*/
+.container {
+    --line: 0.3em solid white;
+}
+
+/*画出场地边线*/
+.container {
+    padding: 5em;
+}
+
+.field {
+    width: inherit;
+    height: inherit;
+    border: var(--line);
+}
+
+/*画出中线*/
+.halfway-line {
+    width: calc(120em / 2);
+    height: 80em;
+    border-right: var(--line);
+}
+
+/*画出中圈*/
+.field {
+    position: relative;
+}
+
+.centre-circle {
+    width: 20em;
+    height: 20em;
+    border: var(--line);
+    border-radius: 50%;
+    position: absolute;
+    top: calc((80em - 20em) / 2);
+    left: calc((120em - 20em - 0.3em) / 2);
+}
+
+/*画出中点*/
+.centre-mark {
+    width: 2em;
+    height: 2em;
+    background-color: white;
+    border-radius: 50%;
+    position: absolute;
+    top: calc(80em / 2 - 1em);
+    left: calc(120em / 2 - 1em + 0.3em / 2);
+}
+
+/*画出禁区*/
+.penalty-area {
+    width: 18em;
+    height: 44em;
+    border: var(--line);
+    position: absolute;
+    top: calc((80em - 44em) / 2);
+    left: -0.3em;
+}
+
+/*画出罚球点*/
+.penalty-mark {
+    width: 2em;
+    height: 2em;
+    background-color: white;
+    border-radius: 50%;
+    position: absolute;
+    top: calc(80em / 2 - 1em);
+    left: calc(12em - 1em);
+}
+
+/*画出罚球弧*/
+.penalty-arc {
+    width: 20em;
+    height: 20em;
+    border: var(--line);
+    border-radius: 50%;
+    position: absolute;
+    top: calc((80em - 20em) / 2);
+    left: calc(12em - 20em / 2);
+}
+
+/*隐藏罚球弧左侧弧线，直流右侧弧线*/
+.field {
+    z-index: 1;
+}
+
+.penalty-area {
+    background-color: green;
+}
+
+.penalty-arc {
+    z-index: -1;
+}
+
+/*画出球门区*/
+.goal-area {
+    width: 6em;
+    height: 20em;
+    border: var(--line);
+    position: absolute;
+    top: calc((80em - 20em) / 2);
+    left: -0.3em;
+}
+
+/*画出角球区*/
+.field {
+    overflow: hidden;
+}
+
+.corner-arc::before,
+.corner-arc::after {
+    content: '';
+    position: absolute;
+    width: 5em;
+    height: 5em;
+    border: var(--line);
+    border-radius: 50%;
+    --offset: calc(-5em / 2 - 0.3em);
+    left: var(--offset);
+}
+
+.corner-arc::before {
+    top: var(--offset);
+}
+
+.corner-arc::after {
+    bottom: var(--offset);
+}
+
+/*右侧样式水平翻转*/
+.right {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: rotateY(180deg);
+}
