@@ -1,0 +1,66 @@
+/*居中显示*/
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: radial-gradient(darkgreen 30%, forestgreen);
+}
+
+/*定义容器尺寸*/
+.loader {
+    width: 10em;
+    height: 10em;
+    font-size: 20px;
+}
+
+/*用 box-shadow 画出两组点阵*/
+.loader::before,
+.loader::after {
+    content: '';
+    position: absolute;
+    width: 1em;
+    height: 1em;
+    background-color: currentColor;
+    box-shadow:
+        0 0, 2em 0, 4em 0, 6em 0,
+        0 2em, 2em 2em, 4em 2em, 6em 2em,
+        0 4em, 2em 4em, 4em 4em, 6em 4em,
+        0 6em, 2em 6em, 4em 6em, 6em 6em;
+    border-radius: 50%;
+}
+
+.loader::before {
+    color: gold;
+}
+
+.loader::after {
+    color: dodgerblue;
+}
+
+/*定义动画*/
+@keyframes round {
+    0% {
+        transform: translateX(0) translateY(0);
+    }
+    25% {
+        transform: translateX(3em) translateY(0);
+    }
+    50% {
+        transform: translateX(3em) translateY(3em);
+    }
+    75% {
+        transform: translateX(0) translateY(3em);
+    }
+}
+
+/*最后把动画效果应用在点阵上*/
+.loader::before,
+.loader::after {
+    animation: round 2s ease infinite;
+}
+
+.loader::after {
+    animation-delay: -1s;
+}

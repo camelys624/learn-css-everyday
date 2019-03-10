@@ -458,3 +458,33 @@ linear-gradient()是线性渐变，repeating-radial-gradient()是重复径向渐
 - [flex-direction](https://developer.mozilla.org/en-US/docs/Web/CSS/flex-direction)
 
 改变 `display:flex` 的排列方式,默认为 row
+
+## DAY67
+
+纯 CSS 创作一个单元素点阵loader
+
+### 知识点
+
+- [box-shadow](https://developer.mozilla.org/en-US/docs/Web/CSS/box-shadow)
+
+利用 box-shadow 实现点阵
+
+```css
+/*用 box-shadow 画出两组点阵*/
+.loader::before,
+.loader::after {
+    content: '';
+    position: absolute;
+    width: 1em;
+    height: 1em;
+    background-color: currentColor;
+    box-shadow:
+        0 0, 2em 0, 4em 0, 6em 0,
+        0 2em, 2em 2em, 4em 2em, 6em 2em,
+        0 4em, 2em 4em, 4em 4em, 6em 4em,
+        0 6em, 2em 6em, 4em 6em, 6em 6em;
+    border-radius: 50%;
+}
+```
+
+通过定义 box-shadow 的位置实现，通过逗号分割，可以创建多个背景。
