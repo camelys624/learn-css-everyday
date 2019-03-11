@@ -488,3 +488,13 @@ linear-gradient()是线性渐变，repeating-radial-gradient()是重复径向渐
 ```
 
 通过定义 box-shadow 的位置实现，通过逗号分割，可以创建多个背景。
+
+## DAY68
+
+HSL 色彩模式
+
+### 知识点
+
+- [HSL](https://zh.wikipedia.org/wiki/HSL%E5%92%8CHSV%E8%89%B2%E5%BD%A9%E7%A9%BA%E9%97%B4)
+
+好的，算法太复杂，有机会再看
