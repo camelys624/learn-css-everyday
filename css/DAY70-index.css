@@ -1,0 +1,110 @@
+body {
+    margin: 0;
+    height: 100vh;
+    background-color: black;
+}
+
+/*设置前景色*/
+.monster {
+    width: 100vw;
+    height: 50vh;
+    background-color: lightcyan;
+}
+
+/*画出怪兽的身体*/
+.monster {
+    position: relative;
+}
+
+.body {
+    position: absolute;
+    width: 32vmin;
+    height: 32vmin;
+    background-color: teal;
+    border-radius: 43% 40% 43% 40%;
+    bottom: calc(-1 * 32vmin / 2 - 4vmin);
+}
+
+/*定义怪兽眼睛所在的容器*/
+.eyes {
+    width: 24vmin;
+    height: 5vmin;
+    position: absolute;
+    bottom: 2vmin;
+    left: calc(32vmin - 24vmin - 2vmin);
+}
+
+/*用伪元素画出怪兽的眼睛*/
+.eyes::before,
+.eyes::after {
+    content: '';
+    position: absolute;
+    width: 5vmin;
+    height: 5vmin;
+    border: 1.25vmin solid white;
+    box-sizing: border-box;
+    border-radius: 50%;
+}
+
+.eyes::before {
+    left: 4vmin;
+}
+
+.eyes::after {
+    right: 4vmin;
+}
+
+/*为怪兽定义轻轻跳起的动画，结合后面的动画效果，让它具有果冻的弹性：*/
+.body {
+    animation: bounce 1s infinite alternate;
+}
+
+@keyframes bounce {
+    to {
+        bottom: calc(-1 * 32vmin / 2 - 2vmin);
+    }
+}
+
+/*让怪兽的身体转动起来：*/
+@keyframes wave {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/*让怪兽徘徊行走：*/
+.monster {
+    overflow: hidden;
+}
+
+.body {
+    left: -2vmin;
+    animation: wander 5s linear infinite alternate,
+        wave 3s linear infinite,
+        bounce 1s infinite alternate;
+}
+
+.eyes {
+    animation: wander 5s linear infinite alternate;
+}
+
+@keyframes wander {
+    to {
+        left: calc(100% - 32vmin + 2vmin);
+    }
+}
+
+/*最后，让怪兽的眼睛眨一眨*/
+.eyes::before,
+.eyes::after {
+    animation: blink 3s infinite linear;
+}
+
+@keyframes blink {
+    4%, 10%, 34%, 40% {
+        transform: scaleY(1);
+    }
+    7%, 37% {
+        transform: scaleY(0);
+    }
+}
