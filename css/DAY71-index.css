@@ -1,0 +1,63 @@
+/*居中显示*/
+body {
+    margin: 0;
+    display: flex;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+    background-color: darkgoldenrod;
+}
+
+/*定义容器尺寸*/
+.loader {
+    width: 8em;
+    height: 8em;
+    font-size: 30px;
+    position: relative;
+}
+
+/*画出圆点*/
+.loader span {
+    position: absolute;
+    top: 4em;
+    width: 1em;
+    height: 1em;
+    background-color: #222;
+    border-radius: 50%;
+}
+
+/*定义动画效果*/
+.loader span {
+    transform-origin: 4em top;
+    animation: dance 1s linear infinite;
+}
+@keyframes dance {
+    to {
+        transform: rotateX(360deg) rotateZ(360deg);
+    }
+}
+
+/*最后，为各圆点增加动画延时*/
+.loader span:nth-child(1) {
+    --n: 1;
+}
+
+.loader span:nth-child(2) {
+    --n: 2;
+}
+
+.loader span:nth-child(3) {
+    --n: 3;
+}
+
+.loader span:nth-child(4) {
+    --n: 4;
+}
+
+.loader span:nth-child(5) {
+    --n: 5;
+}
+
+.loader span {
+    animation-delay: calc((var(--n) - 5) * 0.1s);
+}
