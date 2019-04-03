@@ -1,0 +1,95 @@
+/*居中显示*/
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: black;
+}
+
+/*设置按钮样式*/
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    --c: goldenrod;
+    color: var(--c);
+    font-size: 16px;
+    border: 0.3em solid var(--c);
+    border-radius: 0.5em;
+    width: 12em;
+    height: 3em;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-family: sans-serif;
+    letter-spacing: 0.1em;
+    text-align: center;
+    line-height: 3em;
+}
+
+/*在按钮下面画出气泡*/
+nav ul li {
+    position: relative;
+    /*给按钮之间流出一些空隙*/
+    margin: 1em;
+    /*隐藏按钮外的内容，形成只有悬停时气泡才出现的效果*/
+    overflow: hidden;
+}
+
+nav ul li span {
+    position: absolute;
+    width: 25%;
+    height: 100%;
+    background-color: var(--c);
+    transform: translateY(150%);
+    border-radius: 50%;
+}
+
+/*把4个气泡并排摆放*/
+nav ul li span {
+    left: calc((var(--n) - 1) * 25%);
+}
+
+nav ul li span:nth-child(1) {
+    --n: 1;
+}
+
+nav ul li span:nth-child(2) {
+    --n: 2;
+}
+
+nav ul li span:nth-child(3) {
+    --n: 3;
+}
+
+nav ul li span:nth-child(4) {
+    --n: 4;
+}
+
+/*增加当鼠标悬停在按钮上时，4个气泡依次出现的效果*/
+nav ul li span{
+    transition: 0.5s;
+    transition-delay: calc((var(--n) - 1) * 0.1s);
+}
+
+nav ul li:hover span {
+    transform: translateY(0) scale(2);
+}
+
+/*把气泡放到下层，文字放到上层*/
+nav ul li {
+    z-index: 1;
+    transition: 0.5s;
+}
+
+nav ul li span {
+    z-index: -1;
+}
+
+nav ul li:hover {
+    color: black;
+}
