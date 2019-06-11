@@ -252,7 +252,7 @@ nav ul li:hover::before {
 .clip{
     clip-path: inset(10% 0 0 0);
 }
-``` 
+```
 inset中的值就如同padding的值一样，属于内部切割。
 
 ### DAY 43
@@ -281,7 +281,7 @@ CSS绘制一个充满动感的Vue logo
 
 ![border-top-color](./img/border-top.png)
 
-### DAY45 
+### DAY45
 纯CSS创作一个菱形 loader 动画
 
 #### 知识点
@@ -341,9 +341,9 @@ CSS绘制一个充满动感的Vue logo
 ```css
 .example {
     border-radius: 1em/5em;
-    
+
     /* 等价于： */
-    
+
     border-top-left-radius:     1em 5em;
     border-top-right-radius:    1em 5em;
     border-bottom-right-radius: 1em 5em;
@@ -354,9 +354,9 @@ CSS绘制一个充满动感的Vue logo
 ```css
 .example {
     border-radius: 4px 3px 6px / 2px 4px;
-    
+
     /* 等价于： */
-    
+
     border-top-left-radius:     4px 2px;
     border-top-right-radius:    3px 4px;
     border-bottom-right-radius: 6px 2px;
@@ -509,3 +509,4 @@ HSL 色彩模式
 
 这个`vertical-align`属性主要是定义行内元素 (inline) 或单元格元素 (table-cell) 的垂直对齐方式
 
+![](img/vertical-align.png)
