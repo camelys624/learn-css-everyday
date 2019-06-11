@@ -30,7 +30,7 @@
 - @keyframes
 - background-size
 - background-position
-- lorem ipsum
+- loremipsum
 
 ### DAY4
 用纯CSS制作一个金属光泽3D按钮特效
@@ -156,7 +156,7 @@
 纯CSS制作炫酷的同心矩阵旋转动画
 #### 知识点
 - [border-color](https://developer.mozilla.org/en-US/docs/Web/CSS/border-color)
-- [calc()](https://developer.mozilla.org/en-US/docs/Web/CSS/calc)
+- **[calc()](https://developer.mozilla.org/en-US/docs/Web/CSS/calc)**
 - [rotate()](https://developer.mozilla.org/en-US/docs/Web/CSS/transform-function/rotate)
 - [animation-delay](https://developer.mozilla.org/en-US/docs/Web/CSS/animation-delay)
 - [box-sizing](https://developer.mozilla.org/en-US/docs/Web/CSS/box-sizing)
@@ -498,3 +498,14 @@ HSL 色彩模式
 - [HSL](https://zh.wikipedia.org/wiki/HSL%E5%92%8CHSV%E8%89%B2%E5%BD%A9%E7%A9%BA%E9%97%B4)
 
 好的，算法太复杂，有机会再看
+
+## DAY 78
+
+纯CSS创作windows启动界面
+
+### 知识点
+
+- [vertical-align](https://developer.mozilla.org/zh-CN/docs/Web/CSS/vertical-align)
+
+这个`vertical-align`属性主要是定义行内元素 (inline) 或单元格元素 (table-cell) 的垂直对齐方式
+
