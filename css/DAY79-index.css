@@ -1,0 +1,52 @@
+/*居中显示*/
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: radial-gradient(circle at center, darkred, black);
+}
+
+/*定义容器尺寸*/
+.mcdonalds {
+    position: relative;
+    width: 36em;
+    height: 30em;
+    font-size: 5px;
+    color: red;
+    background-color: currentColor;
+    overflow: hidden;
+}
+
+/*用伪元素画出在字母m的左半边n的形状*/
+.mcdonalds::before {
+    content: '';
+    position: absolute;
+    width: 20em;
+    height: calc(30em * 2);
+    box-sizing: border-box;
+    border: yellow solid;
+    border-width: 2.2em 4.4em;
+    border-radius: 50%;
+}
+
+/*把左半边复制一份，即是右半边n的形状，和左边一起组成了字母m*/
+.mcdonalds::before {
+    filter: drop-shadow(16em 0 0 yellow);
+}
+
+/*用伪元素遮住字母m中间竖线一点点，使两边显得更长*/
+.mcdonalds::after {
+    content: '';
+    position: absolute;
+    width: 6em;
+    height: 1.5em;
+    background-color: currentColor;
+    left: calc((30em) / 2);
+    bottom: 0;
+}
+
+.mcdonalds {
+    box-shadow: 0 0 0 10em;
+}
