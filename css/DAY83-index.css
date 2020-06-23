@@ -1,0 +1,207 @@
+/*居中显示*/
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: black;
+}
+
+/*定义容器尺寸*/
+.loader {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  width: 7em;
+}
+
+.loader span {
+  width: 1em;
+  background-color: white;
+  height: calc(var(--n) * 1em);
+}
+
+/*用变量让 5 个台阶从低到高排序*/
+.loader span:nth-child(1) {
+  --n: 1;
+}
+
+.loader span:nth-child(2) {
+  --n: 2;
+}
+
+.loader span:nth-child(3) {
+  --n: 3;
+}
+
+.loader span:nth-child(4) {
+  --n: 4;
+}
+
+.loader span:nth-child(5) {
+  --n: 5;
+}
+
+/*为台阶增加转化排序方向的动画效果*/
+.loader span {
+  animation: sort 5s infinite;
+}
+
+@keyframes sort {
+  0%, 40%, 100% {
+    height: calc(var(--n) * 1em);
+  }
+  50%, 90% {
+    height: calc(5em - (var(--n) - 1) * 1em);
+  }
+}
+
+/*下面做小球的动画，用了障眼法，使两个同色小球的交替运动看起来就像 1 个小球在做往复运动*/
+.loader::before,
+.loader::after {
+  content: '';
+  position: absolute;
+  width: 1em;
+  height: 1em;
+  background-color: white;
+  border-radius: 50%;
+  bottom: 1em;
+}
+
+.loader::before {
+  left: 0;
+}
+
+.loader::after {
+  left: 6em;
+}
+
+/*增加让小球向上运动的动画效果*/
+.loader::before,
+.loader::after {
+  animation: climbing 5s infinite;
+  visibility: hidden;
+}
+
+.loader::after {
+  animation-delay: 2.5s;
+}
+
+@keyframes climbing {
+  0% {
+    bottom: 1em;
+    visibility: visible;
+  }
+  10% {
+    bottom: 2em;
+  }
+  20% {
+    bottom: 3em;
+  }
+  30% {
+    bottom: 4em;
+  }
+  40% {
+    bottom: 5em;
+  }
+  50% {
+    bottom: 1em;
+  }
+  50%, 100% {
+    visibility: hidden;
+  }
+}
+
+/*在向上运动的同时向两侧运动，形成上台阶的动画效果*/
+.loader::before {
+  --direction: 1;
+}
+
+.loader::after {
+  --direction: -1;
+}
+
+@keyframes climbing {
+  0% {
+    bottom: 1em;
+    left: calc(3em - 2 * 1.5em * var(--direction));
+    visibility: visible;
+  }
+  10% {
+    bottom: 2em;
+    left: calc(3em - 1 * 1.5em * var(--direction));
+  }
+  20% {
+    bottom: 3em;
+    left: calc(3em - 0 * 1.5em * var(--direction));
+  }
+  30% {
+    bottom: 4em;
+    left: calc(3em + 1 * 1.5em * var(--direction));
+  }
+  40% {
+    bottom: 5em;
+    left: calc(3em + 2 * 1.5em * var(--direction));
+  }
+  50% {
+    bottom: 1em;
+    left: calc(3em + 2 * 1.5em * var(--direction));
+  }
+  50%, 100% {
+    visibility: hidden;
+  }
+}
+
+/*最后，为上台阶的动作增加拟人效果*/
+@keyframes climbing {
+  0% {
+    bottom: 1em;
+    left: calc(3em - 2 * 1.5em * var(--direction));
+    visibility: visible;
+  }
+  7% {
+    bottom: calc(2em + 0.3em);
+  }
+
+  10% {
+    bottom: 2em;
+    left: calc(3em - 1 * 1.5em * var(--direction));
+  }
+
+  17% {
+    bottom: calc(3em + 0.3em);
+  }
+
+  20% {
+    bottom: 3em;
+    left: calc(3em - 0 * 1.5em * var(--direction));
+  }
+
+  27% {
+    bottom: calc(4em + 0.3em);
+  }
+
+  30% {
+    bottom: 4em;
+    left: calc(3em + 1 * 1.5em * var(--direction));
+  }
+
+  37% {
+    bottom: calc(5em + 0.3em);
+  }
+
+  40% {
+    bottom: 5em;
+    left: calc(3em + 2 * 1.5em * var(--direction));
+  }
+
+  50% {
+    bottom: 1em;
+    left: calc(3em + 2 * 1.5em * var(--direction));
+  }
+  50%, 100% {
+    visibility: hidden;
+  }
+}
