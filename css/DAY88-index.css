@@ -1,0 +1,56 @@
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(black, maroon);
+  overflow: hidden;
+}
+
+/* 定义容器尺寸 */
+.flame {
+  width: 10em;
+  height: 12em;
+  font-size: 24px;
+  position: relative;
+  /* 用变量画出多个火苗，其中 --particles 是火苗的数量 */
+  --particles: 3;
+
+}
+
+/* 画出火苗 */
+.flame span {
+  position: absolute;
+  width: 5em;
+  height: 5em;
+  background: radial-gradient(
+    orangered 20%,
+    rgba(255, 69, 0, 0) 70%
+  );
+  border-radius: 50%;
+  bottom: 0;
+  left: calc((var(--n) - 1) * 5em / var(--particles));
+  /* 修改混合模式，使火苗重叠的部分变亮 */
+  mix-blend-mode: screen;
+  /* 增加火焰升腾的动画效果 */
+  animation: rise 1s ease-in infinite;
+  /* 用变量设置火苗升起的延时时间，使火苗陆续升起 */
+  animation-delay: calc(var(--rnd) * 1s);
+}
+
+@keyframes rise {
+  from {
+    transform: translateY(0) scale(1);
+    filter: opacity(0);
+  }
+
+  25% {
+    filter: opacity(1);
+  }
+
+  to {
+    transform: translateY(-10em) scale(0);
+    filter: (0);
+  }
+}

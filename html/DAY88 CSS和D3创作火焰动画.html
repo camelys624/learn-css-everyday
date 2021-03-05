@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>用CSS和D3创作火焰动画</title>
+  <link rel="stylesheet" href="../css/DAY88-index.css" />
+</head>
+<body>
+  <!-- 定义 dom，容器中包含 3 个元素，每个 span 代表组成火焰的 1 个火苗。 -->
+  <div class="flame">
+  </div>
+</body>
+<script>
+  // 设置火苗元素的个数
+  const COUNT_OF_PARTICLES = 100;
+
+  const container = document.querySelector('.flame');
+
+  container.style.setProperty('--particles', COUNT_OF_PARTICLES);
+
+  Array(COUNT_OF_PARTICLES).fill('').forEach((paricle, i) => {
+    let span = document.createElement('span'); 
+
+    span.style.setProperty('--n', i + 1);
+    span.style.setProperty('--rnd', Math.random());
+    container.appendChild(span);
+  })
+</script>
+</html>
