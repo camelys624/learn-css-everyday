@@ -1,0 +1,68 @@
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+}
+
+/* 定义容器尺寸 */
+.container {
+  width: 70vmin;
+  height: 70vmin;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* 用变量定义粒子的旋转角度,其中--particles-circle表示每圈的粒子数,
+  因为每圈有3个粒子,所以圈中有3个位置,每个位置有2个粒子重叠在一起,此时看起来是只有3个粒子的样子 */
+  --particle-per-circle: 14;
+  /* 用变量设置动画延时,其中--circle表示圈数;--particle表示粒子数,它等于每圈的粒子数与圈数的积 */
+  --circle: 4;
+  --particles: calc(var(--particle-per-circle) * var(--circle));
+}
+
+/* 在容器中定位<div>，并在div中用span画出粒子 */
+.container span {
+  position: absolute;
+  width: 10vmin;
+  height: 10vmin;
+  transform: rotate(calc(var(--n) / var(--particle-per-circle) * -360deg));
+}
+
+.container span::before {
+  content: '';
+  position: absolute;
+  width: inherit;
+  height: inherit;
+  border-radius: 50%;
+  background-color: orangered;
+  animation:
+   move 2s linear infinite,
+   change-color 2s linear infinite;
+  animation-delay: calc(var(--n) / var(--particles) * -2s);
+}
+
+/* 定于粒子从中心向外侧的运动效果 */
+@keyframes move {
+  from {
+    transform: translateX(0) scale(0);
+  }
+
+  70% {
+    transform: translateX(210%) scale(0.55);
+  }
+
+  to {
+    transform: translateX(300%) scale(0);
+  }
+}
+
+/* 再增加运动时让粒子变色的效果,沿色相环取了10个颜色 */
+@keyframes change-color {
+  to {
+    filter: hue-rotate(1turn);
+  }
+}
+

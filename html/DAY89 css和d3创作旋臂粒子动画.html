@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>用CSS和D3创作旋臂粒子动画</title>
+  <link rel="stylesheet" href="../css/DAY89-index.css" />
+</head>
+<body>
+  <section class="container">
+  </section>
+</body>
+<script>
+  const PARTICLES_PER_CIRCLE = 14;
+  const CIRCLES = 4;
+  const COUNT_OF_PARTICLES = PARTICLES_PER_CIRCLE * CIRCLES;
+
+  const container = document.querySelector('.container');
+  
+  for (let i = 1; i <= PARTICLES_PER_CIRCLE * CIRCLES ; i++) {
+    let span = document.createElement('span');
+    span.style.cssText = '--n: ' + i;
+    container.appendChild(span)
+  }
+</script>
+</html>
