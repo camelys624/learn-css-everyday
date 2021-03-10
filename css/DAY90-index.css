@@ -1,0 +1,75 @@
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at center, gold, black);
+}
+
+/* 定义圆形的外层容器的尺寸 */
+.container {
+  width: 20em;
+  height: 20em;
+  font-size: 20px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+/* 在六边形容器中画出1个矩形 */
+.hexagons {
+  width: inherit;
+  height: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: twist 0.5s linear infinite;
+}
+
+.hexagons span {
+  position: absolute;
+  width: calc(20em / 1.732);
+  height: inherit;
+  background-color: currentColor;
+  /* 设置变量，让六边形逐渐缩小，小六边形重叠在大六边形的上面 */
+  /* 再设置变量，让六边形依次倾斜不同的角度 */
+  transform: scale(var(--scale)) rotate(calc(var(--n) * 6deg));
+}
+
+/* 用伪元素再创建两个相同大小的矩形，一起组成一个六边形 */
+.hexagons span::before,
+.hexagons span::after {
+  content: '';
+  position: absolute;
+  width: inherit;
+  height: inherit;
+  background-color: currentColor;
+}
+
+.hexagons span::before {
+  transform: rotate(60deg);
+}
+
+.hexagons span::after {
+  transform: rotate(-60deg);
+}
+
+/* 让六边形的颜色交错呈现 */
+.hexagons span:nth-child(odd) {
+  color: gold;
+}
+
+.hexagons span:nth-child(even) {
+  color: #222;
+}
+
+/* 定义动画效果 */
+@keyframes twist {
+  from {
+    transform: rotate(0deg) scale(1);
+  }
+
+  to {
+    transform: rotate(calc(6deg * -2)) scale(1.25);
+  }
+}

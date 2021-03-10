@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS与JS创作一个无尽的六边形空间</title>
+  <link rel="stylesheet" href="../css/DAY90-index.css" />
+</head>
+<body>
+  <!-- 定义dom，容器中包含1个div -->
+  <div class="container">
+    <div class="hexagons"></div>
+  </div>
+</body>
+<script>
+  const SPAN_COUNT = 100;
+  const hexagonsDom = document.querySelector('.hexagons');
+
+  for (let i = 0; i < SPAN_COUNT; i ++) {
+    let span = document.createElement('span');
+    span.style.cssText = `--n: ${i + 1}; --scale: ${Math.pow(0.9, i)}` 
+
+    hexagonsDom.appendChild(span);
+  }
+</script>
+</html>
