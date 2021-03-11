@@ -1,0 +1,137 @@
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(#666, #333);
+}
+
+/* 定义容器尺寸 */
+.loader {
+  width: 8em;
+  height: 10em;
+  font-size: 20px;
+}
+
+/* 先画出火车的轮廓 */
+.train {
+  width: 6em;
+  height: 6em;
+  color: #444;
+  background: #bbb4ab;
+  border-radius: 1em;
+  position: relative;
+  left: 1em;
+  /* 利用径向渐变画出车灯 */
+  background:
+    radial-gradient(circle at 20% 80%, currentColor 0.6em, transparent 0.6em),
+    radial-gradient(circle at 80% 80%, currentColor 0.6em, transparent 0.6em),
+    #bbb;
+    animation: train-animate 1.5s infinite ease-in-out;
+}
+
+/* 用before伪元素画出车窗 */
+.train::before {
+  content: '';
+  position: absolute;
+  width: 80%;
+  height: 2.3em;
+  background-color: currentColor;
+  border-radius: 0.4em;
+  top: 1.2em;
+  left: 10%;
+}
+
+/* 再用after伪元素画出车窗上的信号灯 */
+.train::after {
+  content: '';
+  position: absolute;
+  width: 25%;
+  height: 0.4em;
+  background-color: currentColor;
+  border-radius: 0.3em;
+  top: 0.4em;
+  left: calc((100% - 25%) / 2);
+}
+
+/* 接下来画铁轨和枕木，
+定义铁轨的宽度，比火车稍宽 */
+.track {
+  width: 8em;
+  position: relative;
+}
+
+/* 用伪元素画出铁轨 */
+/* 把铁轨分别放置在两侧，并形成近大远小的视觉效果 */
+.track::before,
+.track::after {
+  content: '';
+  position: absolute;
+  width: 0.3em;
+  height: 4em;
+  background-color: #bbb;
+  border-radius: 0.4em;
+  transform-origin: bottom;
+}
+
+.track::before {
+  left: 0;
+  transform: skewX(-27deg);
+}
+
+.track::after {
+  right: 0;
+  transform: skewX(27deg);
+}
+
+/* 画出枕木，这是距离观察者最近的效果，目前3根枕木是重叠在一起的 */
+.track span {
+  width: inherit;
+  height: 0.3em;
+  background-color: #bbb;
+  position: absolute;
+  top: 4em;
+  animation: track-animate 1s linear infinite;
+}
+
+/* 设置铁轨的动画效果 */
+@keyframes track-animate {
+  0% {
+    transform: translateY(-0.5em) scaleX(0.9);
+    filter: opacity(0);
+  }
+
+  10%, 90% {
+    filter: opacity(1);
+  }
+
+  100% {
+    transform: translateY(-4em) scaleX(0.5);
+    filter: opacity(0);
+  }
+}
+
+/* 为另外两根枕木设置动画延时，使铁轨看起来就像永远走不完的样子 */
+.track span:nth-child(2) {
+  animation-delay: -0.33s;
+}
+
+.track span:nth-child(3) {
+  animation-delay: -0.66s;
+}
+
+/* 最后，为或者增加动画效果，看起来就像在行驶中微微晃动 */
+@keyframes train-animate {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+
+  25%, 75% {
+    transform: rotate(0.5deg);
+  }
+
+  50% {
+    transform: rotate(-0.5deg);
+  }
+}
