@@ -1,0 +1,167 @@
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(to left bottom, linen, tan);
+}
+
+/* 画出相机的轮廓 */
+.camera {
+  width: 20em;
+  height: 23em;
+  font-size: 10px;
+  border-radius: 2em;
+  position: relative;
+  /* 用线性渐变画出下方照片的出口 */
+  /* 用径向渐变画出相机上的按钮 */
+  background:
+   radial-gradient(
+     circle at 17em 7em,
+     black 0.8em,
+     darkgray 0.8em, darkgray 1em,
+     transparent 1em
+   ),
+   radial-gradient(
+     circle at 3.6em 7em,
+     tomato 1em,
+     darkgray 1em, darkgray 1.2em,
+     transparent 1.2em
+   ),
+   linear-gradient(
+     transparent 18em,
+     #333 18em, #333 19.5em,
+     transparent 19.5em
+   ) no-repeat center / 80% 100%,
+   linear-gradient(
+     blanchedalmond, blanchedalmond 10em,
+     wheat 10em, wheat 14em,
+     tan 14em
+   );
+}
+
+/* 画出镜头的轮廓 */
+.lens {
+  position: absolute;
+  width: 8em;
+  height: 8em;
+  /* 用径向渐变画出镜头上的光影 */
+  background:
+    radial-gradient(
+      circle at 60% 45%,
+      khaki 0.1em,
+      transparent 0.3em
+    ),
+    radial-gradient(
+      circle at 50% 40%,
+      khaki 0.3em,
+      transparent 0.5em
+    ),
+    radial-gradient(
+      cadetblue 2em,
+      #555 2em, #555 2.5em,
+      #333 2.5em, #333 4em
+    );
+  border-radius: 50%;
+  top: 3em;
+  left: 6em;
+}
+
+/* 接下来修饰细节。用伪元素画出相机的取景器和闪光灯 */
+.camera::before {
+  content: '';
+  position: absolute;
+  width: 4.5em;
+  height: 2em;
+  background-color: #333;
+  border-radius: 0.5em;
+  top: 1.5em;
+  left: 1.5em;
+}
+
+.camera::after {
+  content: '';
+  position: absolute;
+  width: 3em;
+  height: 3em;
+  background-color: #333;
+  background-image: radial-gradient(
+    teal 10%,
+    #333 30%,
+    transparent 40%
+  );
+  right: 1.5em;
+  top: 1.5em;
+  border-radius: 0.3em;
+}
+
+/* 接下来制作动画效果。用伪元素模拟快门 */
+.lens::before,
+.lens::after {
+  content: '';
+  position: absolute;
+  left: 1.5em;
+  width: 5em;
+  height: 0.1em;
+  background-color: #333;
+  animation: take-a-photo 3s infinite;
+}
+
+.lens::before {
+  top: 1em;
+}
+
+.lens::after {
+  bottom: 1em;
+}
+
+/* 增加快门开合动画效果 */
+@keyframes take-a-photo {
+  10% {
+    height: calc(50% - 1em);
+  }
+
+  20% {
+    height: 0.1em;
+  }
+}
+
+/* 画出照片 */
+.picture {
+  position: absolute;
+  width: inherit;
+  top: 18em;
+  height: 0em;
+  overflow: hidden;
+  animation: print 3s infinite;
+}
+
+.picture::before {
+  content: '';
+  position: absolute;
+  box-sizing: border-box;
+  width: 15em;
+  height: 15em;
+  background: #555;
+  left: 2.5em;
+  border: solid linen;
+  border-width: 0 1em 2em 1em;
+  bottom: 0;
+}
+
+/* 增加打印照片的动画效果 */
+@keyframes print {
+  30% {
+    height: 0em;
+  }
+
+  80%, 100% {
+    height: 13em;
+  }
+}
+
+/* 最后，把相机向上挪一点，保持垂直居中 */
+.camera {
+  transform: translateY(-3em);
+}
