@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS和JS创作一只扭动的蠕虫</title>
+    <link rel="stylesheet" href="../css/DAY95-index.css" />
+</head>
+<body>
+    <!-- 定义dom，容器中包含3个元素，代表蠕虫三个体节 -->
+    <div class="worm"></div>
+</body>
+<script>
+    const PARTICLES = 12;
+    const worm = document.querySelector('.worm');
+    worm.style.cssText = `--particles: ${PARTICLES};`
+
+    for (let i = 0; i < 12; i++) {
+        let span = document.createElement('span');
+        span.style.cssText = `--n: ${i + 1}`;
+        worm.append(span)
+    } 
+</script>
+</html>
