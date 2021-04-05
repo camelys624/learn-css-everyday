@@ -1,0 +1,85 @@
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: black;
+}
+
+/* 设置文字样式 */
+.text {
+    background-color: black;
+    color: white;
+    font-size: 180px;
+    font-weight: bold;
+    font-family: sans-serif;
+    text-transform: uppercase;
+}
+
+/* 用伪元素和数据属性增加文字，产生描边效果 */
+.text::before {
+    content: attr(data-text);
+    position: absolute;
+    color: white;
+    filter: blur(0.02em);
+    /* 用混色模式产生描边效果 */
+    mix-blend-mode: difference;
+}
+
+/* 设置渐变色背景 */
+.neon {
+    position: relative;
+    overflow: hidden;
+}
+
+.gradient {
+    position: absolute;
+    background: linear-gradient(45deg, red, gold, lightgreen, gold, red);
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+/* 用混色模式把背景作用到文字上 */
+.gradient {
+    mix-blend-mode: multiply;
+}
+
+/* 用径向渐变制作背景光影 */
+.spotlight {
+    position: absolute;
+    top: -100%;
+    left: -100%;
+    right: 0;
+    bottom: 0;
+    background:
+     radial-gradient(
+         circle, white,
+         transparent 25%
+     ) center / 25% 25%,
+     radial-gradient(
+         circle, white,
+         black 25%
+     ) center / 12.5% 12.5%;
+     animation: light 5s linear infinite;
+     /* 用混色模式把光影效果作用到渐变背景上 */
+     mix-blend-mode: color-dodge;
+}
+
+/* 设置光影移动的动画效果 */
+@keyframes light {
+    to {
+        transform: translate(50%, 50%);
+    }
+}
+
+/* 最后，调高亮度，并且使文字不能被选中 */
+.neon {
+    filter: brightness(200%);
+}
+
+.text {
+    user-select: none;
+}
