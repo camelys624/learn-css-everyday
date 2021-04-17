@@ -1,0 +1,57 @@
+/* 居中显示 */
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+}
+
+/* 定义容器尺寸 */
+.circles {
+    width: 60vmin;
+    height: 60vmin;
+    position: relative;
+    /* 为容器增加动画效果，抵消子元素放大，使动画限界流畅 */
+    animation: zoom 5s linear infinite;
+}
+
+/* 画出容器中的一个圆 */
+.circles span {
+    position: absolute;
+    box-sizing: border-box;
+    width: 50%;
+    height: 50%;
+    background-color: white;
+    border-radius: 50%;
+    left: 25%;
+    /* 定义变量，画出多个圆，每个圆围绕着第一个圆的底部中点旋转，围成一个更大的圆形 */
+    transform-origin: bottom center;
+    --deg: calc(360deg / var(--particles) * (var(--n) - 1));
+    transform: rotate(var(--deg));
+    /* 为子元素增加动画效果 */
+    animation: rotating 5s ease-in-out infinite;
+    /* 设置子元素混色模式，使子元素间交叠的部分显示成黑色 */
+    mix-blend-mode: difference;
+}
+
+@keyframes rotating {
+    0% {
+        transform: rotate(0);
+    }
+
+    50% {
+        transform: rotate(Var(--deg)) translateY(0);
+    }
+
+    100% {
+        transform: rotate(var(--deg)) translateY(100%) scale(2);
+    }
+}
+
+@keyframes zoom {
+    to {
+        transform: scale(0.5) translateY(-50%)
+    }
+}

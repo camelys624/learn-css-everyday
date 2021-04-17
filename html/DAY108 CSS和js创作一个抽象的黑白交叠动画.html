@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DAY108 纯CSS和js创作一个抽象的黑白交叠动画</title>
+    <link rel="stylesheet" href="../css/DAY108-index.css" />
+</head>
+<body>
+    <!-- 定义dom，容器中包含3个元素，每个子元素代表一个圆 -->
+    <div class="circles"></div>
+</body>
+<script>
+    const COUNT_OF_PARTICLES = 30;
+
+    const box = document.querySelector('.circles');
+    box.style.setProperty('--particles', COUNT_OF_PARTICLES);
+
+    for (let i = 1; i <= COUNT_OF_PARTICLES; i++) {
+        let span = document.createElement('span');
+        span.style.setProperty('--n', i);
+
+        box.appendChild(span);
+    }
+</script>
+</html>
