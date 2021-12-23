@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS和D3创作一个用文字组成的心型图案</title>
+  <link rel="stylesheet" href="../css/DAY109-index.css">
+</head>
+<body>
+  <div class="love"></div>
+</body>
+<script>
+  const words = [
+    '愛', 'Love', 'Amour', 'Liebe', 'Amore',
+    'Amor', 'Любовь', 'الحب', 'प्यार', 'Cinta',
+    'Αγάπη', '사랑', 'Liefde', 'Dashuri', 'Каханне',
+    'Ljubav', 'Láska', 'Armastus', 'Mahal', 'אהבה', 
+    'Szerelem', 'Grá', 'Mīlestība', 'Meilė', 'Любов', 
+    'Љубовта', 'Cinta', 'عشق', 'Dragoste', 'Láska', 
+    'Renmen', 'ፍቅር', 'munaña', 'Sevgi', 'Љубав', 
+    'karout', 'amà', 'amôr', 'kærleiki', 'mborayhu', 
+    'Upendo', 'sòòyayyàà', 'ljubav', 'Սեր', 'сүю', 
+    'сүйүү', 'tia', 'aroha', 'KHAIR', 'प्रेम', 
+    'kjærlighet', 'munay', 'jecel', 'Kärlek', 'soymek', 
+    'Mahal', 'ярату', 'محبت', 'sopp', 'uthando', 
+    'ความรัก', 'Aşk', 'Tình yêu', 'ליבע'
+  ];
+
+  const particles = words.length;
+
+  const loveDom = document.querySelector('.love');
+  loveDom.style.setProperty('--particles', particles);
+
+  words.forEach((item, i) => {
+    const span = document.createElement('span');
+    span.style.setProperty('--n', ++i);
+
+    const text = document.createTextNode(item);
+    span.appendChild(text);
+
+    loveDom.appendChild(span);
+  })
+</script>
+</html>
