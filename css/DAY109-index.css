@@ -1,0 +1,73 @@
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: black;
+}
+
+/* 定义容器尺寸 */
+.love {
+  width: 450px;
+  height: 450px;
+  position: relative;
+}
+
+/* 设置文本样式 */
+.love span {
+  position: absolute;
+  left: 0;
+  color: goldenrod;
+  font-family: sans-serif;
+  font-size: 20px;
+  text-shadow: 0 0 1em white;
+  /* 定义文本左右往复移动的动画 */
+  /* 添加文本沿心型运动的动画效果 */
+  animation:
+   x-move 10s ease-in-out infinite alternate,
+   y-move 20s linear infinite;
+
+  /* 设置动画延时 */
+  animation-delay: calc(20s / var(--particles) * var(--n) * -1);
+}
+
+/* 为第一个单词设置特殊的文字样式 */
+.love span:first-child {
+  color: orangered;
+  font-size: 3em;
+  text-shadow:
+   0 0 0.1em black,
+   0 0 1em white;
+  z-index: 1;
+}
+
+@keyframes x-move {
+  to {
+    left: 450px;
+  }
+}
+
+@keyframes y-move {
+  0% {transform: translateY(180px);}
+  10% {transform: translateY(45px);}
+  15% {transform: translateY(5px);}
+  18% {transform: translateY(0px);}
+  20% {transform: translateY(5px);}
+  22% {transform: translateY(35px);}
+  24% {transform: translateY(65px);}
+  25% {transform: translateY(110px);}
+  26% {transform: translateY(65px);}
+  28% {transform: translateY(35px);}
+  30% {transform: translateY(5px);}
+  32% {transform: translateY(0px);}
+  35% {transform: translateY(5px);}
+  40% {transform: translateY(45px);}
+  50% {transform: translateY(180px);}
+  71% {transform: translateY(430px);}
+  72.5% {transform: translateY(440px);}
+  75% {transform: translateY(450px);}
+  77.5% {transform: translateY(440px);}
+  79% {transform: translateY(430px);}
+  100% {transform: translateY(180px);}
+}

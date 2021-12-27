@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DAY96 CSS和JS创作一艘遨游太空的宇宙飞船</title>
+  <link rel="stylesheet" href="../css/DAY96-index.css" />
+</head>
+<body>
+  <!-- 添加星空，在dom中增加stars容器，其中包含表示星星的4个子元素 -->
+  <div class="stars"></div>
+  <!-- 定义dom，spacecraft表示飞船，容器中包含一个表示尾翼的元素fins -->
+  <div class="spacecraft">
+    <div class="fins"></div>
+  </div>
+</body>
+<script>
+  const space = document.querySelector('.stars');
+  const COUNT_OF_STARS = 40;
+
+  for (let i = 0; i < COUNT_OF_STARS; i++) {
+    let star = document.createElement('span');
+    star.style.setProperty('--left', Math.ceil(Math.random() * 100));
+    star.style.setProperty('--size', Math.random() * 1.5 + 1);
+    star.style.setProperty('--opacity', Math.random() * 0.3 + 0.5);
+    star.style.setProperty('--duration', Math.random() * 2 + 1);
+    star.style.setProperty('--delay', i * -0.05);
+
+    space.append(star);
+  }
+</script>
+</html>

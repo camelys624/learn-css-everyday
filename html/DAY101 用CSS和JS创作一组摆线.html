@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>用CSS和JS创作一组摆线</title>
+    <link rel="stylesheet" href="../css/DAY101-index.css"/>
+</head>
+<body>
+    <!-- 定义dom，容器中包含三个元素，代表三条摆线 -->
+    <div class="pendulums">
+    </div>
+</body>
+<script>
+    let pendulumsDom = document.querySelector('.pendulums');
+    const COUNT = 15;
+    for (let i = 1; i <= COUNT; i ++) {
+        let span = document.createElement('span');
+        span.style.setProperty('--n', i);
+
+        pendulumsDom.appendChild(span);
+    }
+</script>
+</html>
