@@ -1,0 +1,45 @@
+/* 居中显示 */
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: papayawhip;
+}
+
+/* 定义容器尺寸 */
+.duck {
+    width: 10em;
+    height: 10em;
+    /* 用 grid 把4个方块按2*2布局 */
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    /* 把容器旋转45度 */
+    transform: rotate(-45deg);
+}
+
+.duck span {
+    background-color: seagreen;
+}
+
+/* 设置每个正方形的圆角，组合成一个鸭子的抽象形状 */
+.duck span:nth-child(1) {
+    border-top-left-radius: 100%;
+}
+
+.duck span:nth-child(2) {
+    border-top-right-radius: 100%;
+    /* 在第二个方块用径向渐变画出一个圆点，代表鸭子的眼睛 */
+    background-image: radial-gradient(black 0.5em, transparent 0.5em);
+}
+
+.duck span:nth-child(3) {
+    border-bottom-right-radius: 100%;
+}
+
+.duck span:nth-child(4) {
+    border-bottom-left-radius: 100%;
+    /* 为最后一个方块设置有差异的颜色，使它看起来像鸭子嘴 */
+    background-color: coral;
+}
