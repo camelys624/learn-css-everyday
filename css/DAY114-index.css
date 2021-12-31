@@ -1,0 +1,57 @@
+/* 居中显示 */
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: lightyellow;
+}
+
+/* 定义容器尺寸 */
+.loader {
+  width: 30em;
+  height: 3em;
+  font-size: 10px;
+  position: relative;
+}
+
+/* 用伪元素画出2个圆角矩形，各占容器的一半宽度，放置再容器的左右两端，分别上色 */
+.loader::before,
+.loader::after {
+  content: 'loading';
+  position: absolute;
+  width: 50%;
+  height: inherit;
+  border-radius: 1em;
+  /* 为圆角矩形增加loading文本 */
+  font-size: 2.5em;
+  color: white;
+  text-align: center;
+  line-height: 1em;
+
+  /* 增加动画效果 */
+  animation: 5s move ease-in-out infinite;
+
+  /* 设置混色模式，使两个矩形相交的部分不是覆盖而是颜色重叠 */
+  mix-blend-mode: multiply;
+}
+
+.loader::before {
+  left: 0;
+  background-color: dodgerblue;
+  /* 设置运动方向变量，使它们相对运动 */
+  --direction: 1;
+}
+
+.loader::after {
+  right: 0;
+  background-color: hotpink;
+  --direction: -1;
+}
+
+@keyframes move {
+  50% {
+    transform: translateX(calc(100% * var(--direction)));
+  }
+}
