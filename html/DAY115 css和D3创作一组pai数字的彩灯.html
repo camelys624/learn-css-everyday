@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS和D3创作一组Π数字的彩灯</title>
+  <link rel="stylesheet" href="../css/DAY115-index.css">
+</head>
+<body>
+  <!-- 定义dom，容器中包含9个元素，代表9个数字 -->
+  <div class="pi"></div>
+  <script>
+    const PI = '3141592653589793238462643383279502884197169399375105820974944592307816406286208998628034825342117067';
+  
+    let dom = document.querySelector('.pi');
+    for (let i = 0; i < PI.length; i ++) {
+      let textNode = document.createTextNode(PI[i]);
+      let span = document.createElement('span');
+      span.style.setProperty('--d', PI[i]);
+      span.classList.add(`d${PI[i]}`);
+      span.appendChild(textNode);
+      dom.appendChild(span);
+    }
+  
+    let num = 1;
+    function show() {
+      let showDom = document.querySelectorAll('.pi span.d' + num % 10);
+      [...showDom].forEach(item => item.classList.add('show'));
+  
+      let hideDom = document.querySelectorAll('.pi span.d' + (num - 1) % 10);
+      [...hideDom].forEach(item => item.classList.remove('show'));
+
+      num ++;
+    }
+  
+    setInterval(show, 1000);
+  </script>
+</body>
+</html>

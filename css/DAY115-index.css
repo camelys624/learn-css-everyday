@@ -1,0 +1,50 @@
+/* 居中显示 */
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: black;
+}
+
+/* 定义容器尺寸 */
+.pi {
+  width: 30em;
+  height: 30em;
+  font-size: 12px;
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  grid-gap: 0.2em;
+}
+
+/* 将9个数字布局成3 * 3的网格 */
+.pi span {
+  color: white;
+  font-size: 1.3em;
+  background-color: hsl(0, 40%, 40%);
+  font-family: sans-serif;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+}
+
+/* 为不同的数字设置不同的背景色 */
+.pi span {
+  --c: hsl(calc(var(--d) * 36), 40%, 40%);
+  background-color: var(--c);
+}
+
+/* 使数字的颜色与背景色相同，在鼠标悬停时，高亮当前的数字 */
+.pi span {
+  color: var(--c);
+  transition: 0.3s;
+}
+
+.pi span.show {
+  background-color: white;
+  color: black;
+  box-shadow: 0 0 1em yellow;
+}
