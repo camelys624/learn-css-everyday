@@ -1,0 +1,133 @@
+/* 在顶部增加一个横条，用于显示当前状态是在线还是离线，用绿色表示在线 */
+/* :root {
+  --status-color: green;
+  --second-signal-delay: 0.2s;
+  --third-signal-delay: 0.4s;
+} */
+
+/* 居中显示 */
+body {
+  display: flex;
+  height: 100vh;
+  margin: 0;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(var(--status-color) 5vh, #ccc 5vh);
+}
+
+/* 定义容器尺寸 */
+.detector {
+  width: 40em;
+  height: 14em;
+  font-size: 10px;
+
+  /* 定义子元素（客户端、信号、服务器）的整体布局和主色 */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #333;
+}
+
+/* 设置子元素和它们的伪元素的共有属性 */
+.detector > * {
+  position: relative;
+  box-sizing: border-box;
+}
+
+.detector > *::before,
+.detector > *::after {
+  content: '';
+  position: absolute;
+  box-sizing: border-box;
+}
+
+/* 画出客户端的显示器 */
+.client {
+  width: 17em;
+  height: 10em;
+  border: 0.5em solid;
+  border-radius: 0.5em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: -4em;
+}
+
+/* 用伪元素画出显示器的底座 */
+.client::before {
+  width: 1.5em;
+  height: 3em;
+  background-color: currentColor;
+  top: 9.5em;
+}
+
+.client::after {
+  width: 5em;
+  height: 1em;
+  background-color: currentColor;
+  border-radius: 0.3em;
+  top: 12.5em;
+}
+
+/* 画出服务器的机箱 */
+.server {
+  width: 7em;
+  height: 14em;
+  border: 0.5em solid;
+  border-radius: 0.5em;
+}
+
+/* 用伪元素画出硬盘，留意此处阴影的用法，用阴影画出了第二块硬盘 */
+.server::before {
+  width: 5em;
+  height: 1em;
+  background-color: currentColor;
+  border-radius: 0.2em;
+  top: 8em;
+  left: 0.5em;
+  box-shadow: 0 1.5em 0;
+}
+
+/* 用伪元素画出按钮，和上面阴影同样的用法，这次用阴影画出了第二个按钮 */
+ .server::after {
+   width: 0.6em;
+   height: 0.6em;
+   background-color: currentColor;
+   border-radius: 50%;
+   right: 1.5em;
+   bottom: 0.5em;
+   box-shadow: 1em 0 0 0.1em;
+ }
+
+ /* 画出信号，注意配色用的是代表在线/离线的颜色，目前是绿色 */
+ .signal,
+ .signal::before,
+ .signal::after {
+   width: 1em;
+   height: 1em;
+   background-color: var(--status-color);
+   border-radius: 50%;
+   animation: blink 0.6s infinite;
+ }
+
+ .signal::before {
+   right: 2.5em;
+ }
+
+ .signal::after {
+   left: 2.5em;
+ }
+
+ @keyframes blink {
+   50% {
+     filter: opacity(0.1);
+   }
+ }
+
+ .signal::before {
+   animation-delay: var(--second-signal-delay);
+ }
+
+ .signal::after {
+   animation-delay: var(--third-signal-delay);
+ }

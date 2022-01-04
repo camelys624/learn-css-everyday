@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS和JS开发一个监控网络连接状态的页面</title>
+  <link rel="stylesheet" href="../css/DAY116-index.css">
+</head>
+<body>
+  <!-- navigator.online属性用来获取网络状态，再配合相应的事件触发，就可以开发一个在线监测工具了。整个过程分为两个部分，先画出视觉效果，再检测在线/离线状态。 -->
+
+  <!-- 定义 dom，容器中包含客户端、信号和服务器 -->
+  <div class="detector">
+    <div class="client"></div>
+    <div class="signal"></div>
+    <div class="server"></div>
+  </div>
+</body>
+<script>
+  // 定义在线状态
+  const ONLINE_THEME = {
+    statusColor: 'green',
+    secondSignalDelay: '0.2s',
+    thirdSignalDelay: '0.4s'
+  }
+
+  // 定义离线状态
+  const OFFLINE_THEME = {
+    statusColor: 'orangered',
+    secondSignalDelay: '0s',
+    thirdSignalDelay: '0s'
+  }
+
+  // 创建一个函数，用于根据在线/离线状态显示不同的主题
+  const detectOnlineStatus = function() {
+    console.log('line changed');
+    let theme = navigator.onLine ? ONLINE_THEME : OFFLINE_THEME;
+    let root = document.documentElement;
+    root.style.setProperty('--status-color', theme.statusColor);
+    root.style.setProperty('--second-signal-delay', theme.secondSignalDelay);
+    root.style.setProperty('--third-signal-delay', theme.thirdSignalDelay);
+  }
+
+  // 绑定系统事件，当连接断开或重新连接时，页面会自动设置主题
+  window.addEventListener('online', detectOnlineStatus);
+  window.addEventListener('offline', detectOnlineStatus);
+  
+  detectOnlineStatus();
+</script>
+</html>
