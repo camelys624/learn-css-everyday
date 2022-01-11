@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS和JS创作一个小鱼游动的交互动画</title>
+    <link rel="stylesheet" href="../css/DAY121-index.css">
+</head>
+<body>
+    <!-- 定义 dom，容器中包含的子元素分别代表鱼的身体、眼睛、背鳍和尾巴 -->
+    <!-- <div class="fish">
+        <span class="body"></span>
+        <span class="eye"></span>
+        <span class="fin"></span>
+        <span class="tail"></span>
+    </div> -->
+</body>
+<script>
+    let createFish = function (e) {
+        let fish = document.createElement('div');
+        fish.className = 'fish';
+        fish.style.setProperty('--size', 5 + Math.round(Math.random() * 3));
+        fish.style.setProperty('--color', -60 + Math.round(Math.random() * 75));
+        fish.style.setProperty('--duration', 3 + Math.round(Math.random() * 3));
+        fish.style.setProperty('--top', e ? e.clientY : 100 + Math.round(Math.random() * 200));
+
+        let fishBody = document.createElement('span');
+        fishBody.className = 'body';
+        let fishEye = document.createElement('span');
+        fishEye.className = 'eye';
+        let fishFin = document.createElement('span');
+        fishFin.className = 'fin';
+        let fishTail = document.createElement('span');
+        fishTail.className = 'tail';
+
+
+        fish.append(fishBody);
+        fish.append(fishEye);
+        fish.append(fishFin);
+        fish.append(fishTail);
+        document.body.append(fish);
+    }
+
+    for (let i = 0; i < 3; i++) {
+        createFish();
+    }
+
+    window.addEventListener('click', createFish);
+</script>
+</html>
