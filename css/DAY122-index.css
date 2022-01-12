@@ -1,0 +1,98 @@
+/* 居中显示 */
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #ccc;
+}
+
+/* 定义容器尺寸 */
+.icon {
+    width: 10em;
+    height: 10em;
+    font-size: 30px;
+    background-color: #eee;
+    border-radius: 20%;
+
+    /* 绘制出矩形的轮廓（边框为辅助线，最终会被删除），并放置在容器的中上方 */
+    position: relative;
+    display: flex;
+    justify-content: center;
+    box-sizing: border-box;
+    padding: 1em;
+}
+
+.icon span {
+    position: absolute;
+    width: 22.5%;
+    height: 37.5%;
+    /* border: 1px dashed black; */
+    background-color: var(--c);
+    border-radius: 50% / 30%;
+
+    /* 让 8 个矩形一次旋转固定的角度，围合成一个圆形 */
+    transform-origin: center 105%;
+    transform: rotate(0deg);
+
+    /* 设置混色模式 */
+    mix-blend-mode: multiply;
+}
+
+/* 为矩形设置下标变量 */
+/* 为矩形设置颜色变量 --c */
+.icon span:nth-child(1) {
+    --n: 9;
+    --c: rgba(243, 156, 18, 0.7);
+}
+
+.icon span:nth-child(2) {
+    --n: 2;
+    --c: rgba(241, 195, 15, 0.7);
+}
+
+.icon span:nth-child(3) {
+    --n: 3;
+    --c: rgba(46, 204, 113, 0.7);
+}
+
+.icon span:nth-child(4) {
+    --n: 4;
+    --c: rgba(27, 188, 155, 0.7);
+}
+
+.icon span:nth-child(5) {
+    --n: 5;
+    --c: rgba(65, 131, 215, 0.7);
+}
+
+.icon span:nth-child(6) {
+    --n: 6;
+    --c: rgba(102, 51, 153, 0.7);
+}
+
+.icon span:nth-child(7) {
+    --n: 7;
+    --c: rgba(155, 89, 182, 0.7);
+}
+
+.icon span:nth-child(8) {
+    --n: 8;
+    --c: rgba(242, 38, 19, 0.7);
+}
+
+/* 增加鼠标悬停效果，当悬停时运行矩形色块展开的动画 */
+.icon:hover span {
+    animation: rotating 2s ease-in-out forwards;
+}
+
+@keyframes rotating {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(calc((var(--n) - 1) * 45deg));
+    }
+}
