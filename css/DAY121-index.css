@@ -1,0 +1,95 @@
+/* 设置页面样式为全屏并且没有滚动条 */
+body {
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #222;
+    overflow: hidden;
+}
+
+/* 定义鱼的容器尺寸，--r 是一个基本尺寸单位，后续所有尺寸都是基于它计算的 */
+.fish {
+    position: absolute;
+
+    /* 鱼的大小的变量 --size，数值越大尺寸越大 */
+    /* --size: 5; */
+    --r: calc(var(--size) * 1vw);
+    width: calc(var(--r) + var(--r) / 3);
+    height: calc(var(--r) * 2);
+
+    /* 鱼出现的高度，数据越大越靠近页面下部 */
+    /* --top: 100; */
+    top: calc(var(--top) * 1px);
+}
+
+/* 画出鱼的身体，同时把鱼的颜色声明到父类中，因为下面还会用到这个颜色 */
+.fish {
+    /* 鱼的颜色变量 --color，表示色相环的角度 */
+    /* --color: 0; */
+    color: hsl(var(--color), 50%, 50%);
+}
+
+.fish .body {
+    position: absolute;
+    border: var(--r) solid transparent;
+    border-right-color: currentColor;
+    border-left-style: none;
+}
+
+/* 画出鱼的眼睛 */
+.fish .eye {
+    position: absolute;
+    --r1: calc(var(--r) / 4);
+    width: var(--r1);
+    height: var(--r1);
+    background-color: #111;
+    border-radius: 50%;
+    top: 35%;
+    left: 30%;
+}
+
+/* 画出鱼的背鳍 */
+.fish .fin {
+    position: absolute;
+    --r2: calc(var(--r) / 2);
+    border-bottom: var(--r2) solid;
+    border-left: var(--r2) solid transparent;
+    filter: brightness(2.5);
+    left: calc(var(--r) - var(--r2));
+}
+
+/* 画出鱼的尾巴 */
+.fish .tail {
+    position: absolute;
+    --r3: calc(var(--r) / 3);
+    border: var(--r3) solid transparent;
+    border-right-color: currentColor;
+    border-left-style: none;
+    right: 0;
+    top: calc(var(--r) - var(--r3));
+}
+
+/* 增加让鱼游动的动画效果，不是循环执行，而是执行一次 */
+/* 再增加鱼游动时摇摆的动画效果 */
+.fish {
+    right: calc((var(--r) + var(--r) / 3) * -1);
+    /* --duration: 3; */
+    animation: run calc(var(--duration) * 1s) linear forwards,
+        shake 0.3s linear infinite;
+}
+
+@keyframes run {
+    to {
+        right: 100%;
+    }
+}
+
+@keyframes shake {
+    50% {
+        transform: rotateY(-30deg);
+    }
+
+    100% {
+        transform: rotateY(30deg);
+    }
+}

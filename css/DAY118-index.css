@@ -1,0 +1,122 @@
+/* 居中显示 */
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: gainsboro;
+}
+
+/* 定义容器尺寸，并设置子元素整体布局 */
+.loader {
+    width: 4.3em;
+    height: 9.8em;
+    font-size: 10px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* 画出两个正方形 */
+.top,
+.bottom {
+    width: 3.5em;
+    height: 3.5em;
+    border-style: solid;
+    border-color: saddlebrown;
+}
+
+/* 通过边框、圆角和旋转，把 2 个正方形变成沙漏形状 */
+.top,
+.bottom {
+    border-width: 0.2em 0.2em 0.6em 0.6em;
+    border-radius: 50% 100% 50% 30%;
+
+    /* 隐藏沙漏上半部和下半部容器外的部分 */
+    overflow: hidden;
+}
+
+.top {
+    transform: rotate(-45deg);
+}
+
+.bottom {
+    transform: rotate(135deg);
+}
+
+/* 用伪元素画出沙子，上部的沙子的顶部是大圆弧，下部的沙子顶部是小圆弧 */
+.top::before,
+.bottom::before {
+    content: '';
+    position: absolute;
+    width: inherit;
+    height: inherit;
+    background-color: deepskyblue;
+
+    /* 定义沙子的动画属性 */
+    animation: 2s linear infinite;
+}
+
+.top::before {
+    border-radius: 0 100% 0 0;
+    animation-name: drop-sand;
+}
+
+.bottom::before {
+    border-radius: 0 0 0 35%;
+    transform: translate(2.5em, -2.5em);
+    animation-name: fill-sand;
+}
+
+/* 增加沙子从沙漏的上部落下的动画效果 */
+@keyframes drop-sand {
+    to {
+        transform: translate(-2.5em, 2.5em);
+    }
+}
+
+/* 增加沙子的沙漏在下半部堆积的动画效果 */
+@keyframes fill-sand {
+    to {
+        transform: translate(0, 0);
+    }
+}
+
+/* 用外层容器的伪元素制作一个窄长条，模拟流动的沙子 */
+.loader::after {
+    content: '';
+    position: absolute;
+    width: 0.2em;
+    height: 4.8em;
+    background-color: deepskyblue;
+    top: 1em;
+}
+
+/* 增加沙子流动的动画效果 */
+.loader::after {
+    animation: flow 2s linear infinite;
+}
+
+@keyframes flow {
+    10%, 100% {
+        transform: translateY(3.2em);
+    }
+}
+
+/* 最后，增加沙漏的翻转动画 */
+.loader {
+    animation: rotating 2s linear infinite;
+}
+
+@keyframes rotating {
+    0%, 90% {
+        transform: rotate(0);
+    }
+
+    100% {
+        transform: rotate(0.5turn);
+    }
+}
