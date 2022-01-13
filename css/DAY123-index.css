@@ -1,0 +1,189 @@
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: skyblue;
+}
+
+.plane {
+    width: 28em;
+    height: 13em;
+    font-size: 10px;
+    display: flex;
+    justify-content: center;
+    position: relative;
+
+    /* 定义基本色 */
+    color: black;
+}
+
+/* 定义子元素整体布局和共有属性 */
+.plane > * {
+    position: absolute;
+}
+
+.plane > *::before,
+.plane > *::after {
+    content: '';
+    position: absolute;
+}
+
+/* 画出双翼： */
+.wings {
+    width: inherit;
+    display: flex;
+    justify-content: center;
+}
+
+.wings::before {
+    content: '';
+    width: inherit;
+    height: 0.5em;
+    background-color: currentColor;
+}
+
+.wings::after {
+    content: '';
+    top: 4em;
+    width: 90%;
+    height: 0.4em;
+    background-color: currentColor;
+}
+
+/* 画出螺旋桨的中心 */
+.fans {
+    width: 11em;
+    height: 11em;
+    background: radial-gradient(
+        black 2.5em,
+        transparent 2.5em
+    );
+}
+
+/* 定义叶片的形状为半圆形 */
+.fans span {
+    position: absolute;
+    width: inherit;
+    height: inherit;
+
+    /* 增加螺旋桨旋转的动画效果 */
+    animation: fans-rotating 0.8s linear infinite;
+    animation-delay: calc(var(--n) * 0.1s);
+}
+
+@keyframes fans-rotating {
+    to {
+        transform: rotate(-1turn);
+    }
+}
+
+.fans span::before {
+    content: '';
+    position: absolute;
+    width: inherit;
+    height: 50%;
+    background-color: rgba(255, 255, 255, 0.4);
+    border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+
+    /* 分别旋转叶片的角度，使 4 个叶片均匀分布在一个圆内 */
+    transform-origin: bottom;
+    transform: rotate(calc((var(--n) - 1) * 90deg));
+}
+
+.fans span:nth-child(1) {
+    --n: 1;
+}
+
+.fans span:nth-child(2) {
+    --n: 2;
+}
+
+.fans span:nth-child(3) {
+    --n: 3;
+}
+
+.fans span:nth-child(4) {
+    --n: 4;
+}
+
+/* 画出两个轮子 */
+.wheels {
+    width: 16em;
+    height: 2em;
+    bottom: 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.wheels span {
+    position: static;
+    width: 1em;
+    height: inherit;
+    background-color: currentColor;
+    border-radius: 0.5em;
+
+    display: flex;
+    justify-content: center;
+}
+
+/* 画出轮子的两个支架 */
+.wheels span::before {
+    position: absolute;
+    content: '';
+    width: 0.2em;
+    height: 8em;
+    background-color: currentColor;
+    transform-origin: bottom;
+    bottom: 1em;
+    z-index: -1;
+}
+
+.wheels .left::before {
+    transform: rotate(45deg);
+}
+
+.wheels .right::before {
+    transform: rotate(-45deg);
+}
+
+/* 增加飞机飞行的动画效果 */
+/* 增加飞机旋转的动画效果 */
+.plane {
+    animation:
+     fly 5s infinite,
+     plane-rotating 10s infinite;
+}
+
+@keyframes fly {
+    10%, 50%, 100% {
+        top: 0;
+    }
+
+    25% {
+        top: 1em;
+    }
+
+    75% {
+        top: -1em;
+    }
+}
+
+@keyframes plane-rotating {
+    10%, 30%, 50% {
+        transform: rotate(0deg);
+    }
+
+    20% {
+        transform: rotate(-4deg);
+    }
+
+    80% {
+        transform: rotate(8deg);
+    }
+
+    100% {
+        transform: rotate(-1turn);
+    }
+}
