@@ -1,0 +1,85 @@
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+}
+
+/* 定义容器尺寸 */
+.container {
+    width: 17em;
+    height: 17em;
+    font-size: 16px;
+    position: relative;
+}
+
+.container div {
+    position: absolute;
+    width: inherit;
+    height: inherit;
+
+    /* 在子元素的正中画一个黄色的小方块 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container span {
+    position: absolute;
+    width: 1em;
+    height: 1em;
+    background-color: yellow;
+
+    /* 增加小方块左右移动的动画效果 */
+    /* 增加变形动画，使它看起来有下蹲起跳的拟人效果 */
+    --duration: 2s;
+    animation:
+      move var(--duration) cubic-bezier(0.6, -0.3, 0.7, 0) infinite,
+      morph var(--duration) ease-in-out infinite;
+}
+
+@keyframes move {
+    0%, 100% {
+        left: calc(10% - 0.5em);
+    }
+
+    50% {
+        left: calc(90% - 0.5em);
+    }
+}
+
+@keyframes morph {
+    0%, 50%, 100% {
+        transform: scale(0.75, 1);
+    }
+
+    25%, 75% {
+        transform: scale(1.5, 0.5);
+    }
+}
+
+/* 为子元素设置 css 下标变量 */
+.container div:nth-child(1) {--n: 1;}
+.container div:nth-child(2) {--n: 2;}
+.container div:nth-child(3) {--n: 3;}
+.container div:nth-child(4) {--n: 4;}
+.container div:nth-child(5) {--n: 5;}
+.container div:nth-child(6) {--n: 6;}
+.container div:nth-child(7) {--n: 7;}
+.container div:nth-child(8) {--n: 8;}
+.container div:nth-child(9) {--n: 9;}
+.container div:nth-child(10) {--n: 10;}
+
+/* 旋转子元素，使小方块分布均匀的在容器的四周，围合成一个圆形 */
+.container div {
+    transform: rotate(calc(var(--n) * 40deg));
+}
+
+.container span {
+    animation-delay: calc(var(--duration) / 9 * var(--n) * -1);
+    
+    /* 上色 */
+    background-color: hsl(calc(var(--n) * 80deg), 100%, 70%);
+}
