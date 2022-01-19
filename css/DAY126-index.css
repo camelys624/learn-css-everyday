@@ -1,0 +1,96 @@
+/* 居中显示 */
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: lightyellow;
+}
+
+/* 隐藏列表前端的引导符号 */
+nav ul {
+    padding: 0;
+    list-style-type: none;
+}
+
+/* 设置容器尺寸 */
+nav li {
+    width: 8em;
+    height: 2em;
+    font-size: 25px;
+    margin: 0.8em;
+}
+
+/* 设置文字样式 */
+nav li {
+    font-size: 25px;
+    text-align: center;
+    line-height: 2em;
+    font-family: sans-serif;
+    text-transform: capitalize;
+
+    position: relative;
+}
+
+/* 添加伪元素，伪元素是两个小球 */
+nav li::before,
+nav li::after {
+    content: '';
+    position: absolute;
+    width: 0.6em;
+    height: 0.6em;
+    background-color: gainsboro;
+    border-radius: 50%;
+}
+
+/* 把小球定位在左右两侧 */
+nav li::before {
+    top: calc(50% - 0.6em / 2);
+    left: 0;
+    z-index: -1;
+}
+
+nav li::after {
+    top: calc(50% - 0.6em / 2);
+    right: 0;
+    z-index: -2;
+}
+
+/* 让鼠标悬停在按钮上时,让小球变为与容器大小相等的矩形 */
+nav li:hover::before,
+nav li:hover::after {
+    width: 100%;
+    height: 100%;
+    border-radius: 0;
+}
+
+/* 第一个矩形向右下角错位,并且加深它的颜色,形成阴影效果 */
+nav li:hover::before {
+    top: 0;
+}
+
+nav li:hover::after {
+    right: -0.4em;
+    filter: brightness(0.8);
+}
+
+/* 设置悬停时的颜色,伪元素的矩形背景变为蓝色,文字变为白色 */
+nav li:hover {
+    color: white;
+}
+
+nav li:hover::before,
+nav li:hover::after {
+    background-color: dodgerblue;
+}
+
+/* 设置缓动时间,伪元素的缓动时间函数用拟人的动画效果 */
+nav li {
+    transition: 0.5s;
+}
+
+nav li::before,
+nav li::after {
+    transition: 0.5s cubic-bezier(0.5, -0.5, 0.25, 1.5);
+}
