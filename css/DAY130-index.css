@@ -1,0 +1,68 @@
+/* 引入字体文件 */
+@import url("https://fonts.googleapis.com/css?family=Product+Sans");
+
+:root {
+    --blue: #4285f4;
+    --red: #ea4335;
+    --yellow: #fbbc05;
+    --green: #34a853;
+}
+
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'product sans';
+    text-align: center;
+}
+
+/* 用伪元素制作 logo，content 内容是 "google_log" 不是 "Google" */
+.logo::before {
+    content: 'google_logo';
+    font-size: 10vw;
+    background-image: linear-gradient(
+        to right,
+        var(--blue) 0%, var(--blue) 26.5%,
+        var(--red) 26.5%, var(--red) 43.5%,
+        var(--yellow) 43.5%, var(--yellow) 61.5%,
+        var(--blue) 61.5%, var(--blue) 78.5%,
+        var(--green) 78.5%, var(--green) 84.5%,
+        var(--red) 84.5%, var(--red) 100%
+    );
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* 设置说明文本的样式 */
+.desc {
+    font-size: 1.5vw;
+    font-weight: normal;
+    color: dimgray;
+    margin-top: 2em;
+}
+
+/* 设置数字的样式 */
+.zeros {
+    font-size: 3vw;
+    font-weight: bold;
+    margin-top: 0.2em;
+    text-align: center;
+    width: 25.5em;
+    word-wrap: break-word;
+}
+
+/* 为数字上色 */
+.zeros span {
+    color: var(--c);
+}
+
+.zeros span:nth-child(1) {
+    margin-right: 0.2em;
+}
+
+.logo {
+    margin-top: -10vh;
+}

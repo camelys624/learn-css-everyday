@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>用 CSS 在线字体和 D3 创作一个 Google & googol 信息图</title>
+    <link rel="stylesheet" href="../css/DAY130-index.css">
+</head>
+<body>
+    <!-- 定义dom，只有1个空元素，其中不包含任何文本 -->
+    <div class="logo">
+        <p class="desc">The name of Google originated from a misspelling of the word "googol", the number 1 followed by 100 zeros.</p>
+
+        <div class="zeros"></div>
+    </div>
+</body>
+<script>
+    function getColor(excludedColor) {
+        let colors = new Set(['blue', 'red', 'yellow', 'green']);
+        colors.delete(excludedColor);
+        return Array.from(colors)[Math.floor(Math.random() * colors.size)];
+    }
+
+    const ZEROS = new Array(100).fill(0);
+    const ONE = {
+        number: 1,
+        color: 'blue'
+    }
+
+    let numbers = ZEROS.reduce((numberObjects, d) => {
+        numberObjects.push({
+            number: d,
+            color: getColor(numberObjects[numberObjects.length - 1].color)
+        });
+        return numberObjects;
+    }, [ONE]);
+
+    const zerosDom = document.querySelector('.zeros');
+    numbers.forEach(element => {
+        const span = document.createElement('span');
+        span.style.setProperty('--c', `var(--${element.color})`);
+        span.innerText = element.number;
+        zerosDom.appendChild(span);
+    });
+</script>
+</html>
