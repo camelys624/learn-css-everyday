@@ -5,6 +5,7 @@ console.clear();
  *  这是一个典型的例子，开始时只是一个简单的项目
  * 然后滚雪球般的超出了它的预期规模。它有点笨重
  * 但无论如何，这就是它 :)
+ * https://codepen.io/MillerTime/pen/XgpNwb?editors=0010
  */
 
 const IS_MOBILE = window.innerWidth <= 640;
@@ -72,4 +73,101 @@ const PI_HALF = Math.PI * 0.5;
 
 // Stage.disableHighDPI = true;
 const trailsStage = new Stage('trails-canvas');
+const mainStage = new Stage('main-canvas');
+const stages = [
+  trailsStage,
+  mainStage
+];
 
+// Fullscreen helpers, using Fscreen for prefixes
+function fullscreenEnabled() {
+  return fscreen.fullscreenEnabled;
+}
+
+// Note here
+function isFullscreen() {
+  return !!fscreen.fullscreenElement;
+}
+
+// Note
+function toggleFullscreen() {
+  if (fullscreenEnabled()) {
+    if (isFullscreen()) {
+      fscreen.exitFullscreen();
+    } else {
+      fscreen.requestFullscreen(document.documentElement);
+    }
+  }
+}
+
+// Note
+fscreen.addEventListener('fullscreenchange', () => {
+  StorageEvent.setState({fullscreen: isFullscreen()});
+});
+
+// Note
+const store = {
+  _listeners: new Set(),
+  _dispatch(prevState) {
+    this._listeners.forEach(listener => listener(this.state, prevState))
+  },
+  state: {
+    // Note
+    paused: true,
+    soundEnabled: false,
+    menuOpen: false,
+    openHelpTopic: null,
+    fullscreen: isFullscreen(),
+    // Note
+    config: {
+      quality: String(IS_HIGH_END_DEVICE ? QUALITY_HIGH : QUALITY_NORMAL),  // Note
+      shell: 'Random',
+      size: IS_DESKTOP
+        ? '3' // Desktop default
+        : IS_HEADER
+          ? '1.2' // Profile header default (doesn't need to be an int)
+          : '2',  // Mobile default
+      autoLaunch: true,
+      finale: false,
+      skyLighting: SKY_LIGHT_NORMAL + '',
+      hideControls: IS_HEADER,
+      longExposure: false,
+      scaleFactor: getDefaultScaleFactor()
+    }
+  },
+  setState(nextState) {
+    const prevState = this.state;
+    this.state = Object.assign({}, this.state, nextState);
+    this._dispatch(prevState);
+    this.persist();
+  },
+  subscribe(listener) {
+    this._listeners.add(listener);
+    return () => this._listeners.remove(listener);
+  },
+  // Note
+  load() {
+    const serializedData = localStorage.getItem('cm_fireworks_data');
+    if (serializedData) {
+      const {schemaVersion, data} = JSON.parse(serializedData);
+
+      const config = this.state.config;
+      switch(schemaVersion) {
+        case '1.1': 
+          config.quality = data.quality;
+          config.size = data.size;
+          config.skyLighting = data.skyLighting;
+          break;
+        case '1.2':
+          config.quality = data.quality;
+          config.size = data.size;
+          config.skyLighting = data.skyLighting;
+          config.scaleFactor = data.scaleFactor;
+          break;
+        default:
+          throw new Error('version switch should be exhaustive');
+      }
+      console.log(`Loaded config (schema version ${schemaVersion})`);
+    }
+  }
+}
