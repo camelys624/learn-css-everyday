@@ -1,0 +1,76 @@
+:root {
+  --small-bp: 640px;
+  --large-bp: 840px;
+  --ui-opacity: 0.5;
+  --ui-color: rgba(255, 255, 255, var(--ui-opacity));
+  --font: 'Russo One', arial, sans-serif;
+  --letter-spacing: 0.06em;
+}
+
+body {
+  height: 100vh;
+  background-color: #000;
+  box-sizing: border-box;
+  margin: 0;
+  position: relative;
+  overflow: hidden;
+  color: var(--ui-color);
+  font-family: var(--font);
+  line-height: 1.25;
+  letter-spacing: var(--letter-spacing);
+}
+
+.remove {
+  display: none !important;
+}
+
+.container {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loading-init {
+  width: 100%;
+  align-self: center;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.loading-init__header {
+  font-size: 2.2em;
+}
+
+.loading-init__status {
+  margin-top: 1em;
+  font-size: 0.8em;
+  opacity: 0.75;
+}
+
+.stage-container {
+  overflow: hidden;
+  box-sizing: initial;
+  border: 1px solid #222;
+  margin: -1px;
+}
+
+.canvas-container {
+  width: 100%;
+  height: 100%;
+  transition: filter 0.3s;
+}
+
+.canvas-container canvas {
+  position: absolute;
+  mix-blend-mode: lighten;
+  transform: translateZ(0);
+}
+
+
+@media (max-width: var(--large-bp)) {
+  .stage-container {
+    border: none;
+    margin: 0;
+  }
+}

@@ -1,0 +1,60 @@
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: black;
+}
+
+/* 定义容器尺寸，并设置子元素水平居中 */
+.sapling {
+  position: relative;
+  width: 5em;
+  height: 17.5em;
+  font-size: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+/* 画出树枝 */
+.branch {
+  position: absolute;
+  width: 0.2em;
+  height: inherit;
+  border-radius: 25%;
+  background: burlywood;
+  transform-origin: bottom;
+}
+
+/* 定义树叶容器，设置为叶片在垂直方向均匀分布，并且从下到上排列 */
+.leaves {
+  position: absolute;
+  width: inherit;
+  height: 15em;
+  top: 1em;
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+/* 设置叶片的尺寸和背景颜色 */
+.leaves span {
+  width: 2.5em;
+  height: 2.5em;
+  background-color: limegreen;
+}
+
+/* 设置左右叶片各自的样式 */
+.leaves span:nth-child(odd) {
+  border-bottom-left-radius: 3em;
+  border-top-right-radius: 3em;
+  transform-origin: right bottom;
+  align-self: flex-start;
+}
+
+.leaves span:nth-child(even) {
+  border-bottom-right-radius: 3em;
+  border-top-left-radius: 3em;
+  transform-origin: left bottom;
+  align-self: flex-end;
+}

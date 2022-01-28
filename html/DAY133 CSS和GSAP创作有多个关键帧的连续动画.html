@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS 和 GSAP 创作有多个关键帧的连续动画</title>
+  <link rel="stylesheet" href="../css/DAY133-index.css">
+</head>
+<body>
+  <!-- 定义 dom，容器中包含 10 个 div 子元素，每个 div 中包含 1 个 span 元素 -->
+  <figure class="container">
+    <div><span></span></div>
+    <div><span></span></div>
+    <div><span></span></div>
+    <div><span></span></div>
+    <div><span></span></div>
+    <div><span></span></div>
+    <div><span></span></div>
+    <div><span></span></div>
+    <div><span></span></div>
+    <div><span></span></div>
+  </figure>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.2/TweenMax.min.js"></script>
+<script>
+  let queryStr = '.container div span';
+
+  // 声明一个时间线对象
+  let animation = new TimelineMax({repeat: -1, repeatDelay: 1});
+
+  animation.from(queryStr, 1, {scale: 0})
+    .to(queryStr, 1, {y: '-100px', scaleX: 0.25})   // 让子元素变成竖长条，向四周散开
+    .to(queryStr, 1, {scaleY: 0.25, rotation: 180}) // 让竖长条旋转着变成小方块
+    .to(queryStr, 1, {scaleX: 1})                   // 让小方块变成横长条
+    .to(queryStr, 1, {y: '-60px', scaleY: 0.1})     // 让圆形向内收敛，同时线条变细
+    .to(queryStr, 1, {x: '-30px'})                  // 让线条向左摆动
+    .to(queryStr, 1, {x: '30px'})                  // 让线条向右摆动
+    .to(queryStr, 1, {x: '0', scaleX: 0.1, scaleY: 1})  // 再把横线变竖线
+    .to(queryStr, 1, {scaleX: 0.5, scaleY: 0.1})    // 再把竖线变横线
+    .to(queryStr, 1, {y: '-80px', scaleY: 0.5, borderRadius: '50%'})  // 横线向外扩散，变为圆点
+    .to(queryStr, 1, {y: '-10px', scaleX: 0.1, scaleY: 0.5, borderRadius: '0%', rotation: 0}) // 让圆点变形为竖线，并向内收缩
+    .to(queryStr, 1, {y: '-300px', delay: 0.5})     // 让竖线从中心向外快速扩展，暂停片刻，像线条是被发射出去一样
+    .timeScale(2);  // 用时间尺度缩放函数让动画播放速度加快一倍
+</script>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS 和 GSAP 创作一个树枝发芽的 loader</title>
+  <link rel="stylesheet" href="../css/DAY134-index.css">
+</head>
+<body>
+  <!-- 定义 dom，容器中包含 2 个元素，branch 代表树枝，leaves 代表树叶，叶有 6 个子元素，代表 6 个叶片 -->
+  <figure class="sapling">
+    <div class="branch"></div>
+    <div class="leaves">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </figure>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.2/TweenMax.min.js"></script>
+<script>
+  // 声明一个时间线对象
+  let animation = new TimelineMax({repeat: -1, repeatDelay: 0.5});
+
+  animation.from('.branch', 4, {scaleY: 0, ease: Power1.easeOut}, 'branch') // 增加树枝的入场动画效果,并未这个动画设置一个标签 branch
+  .staggerFrom('.leaves span', 0.5, {scale: 0, ease: Power1.easeOut}, 0.5, 0.5, 'branch') // 增加树叶的入场动画效果,它的参数中有3个0.5,分别表示动画时长,多个叶片动画的间隔时长.相对branch标签动画的延迟时间
+  .to(['.branch', '.leaves span'], 3, {backgroundColor: 'yellow'})  // 增加树叶变黄的动画效果
+  .to(['.branch', '.leaves span'], 1, {autoAlpha: 0}); // 增加淡入效果
+
+</script>
+</html>
