@@ -20,8 +20,17 @@ body {
   letter-spacing: var(--letter-spacing);
 }
 
+.hide {
+  opacity: 0;
+  visibility: hidden;
+}
+
 .remove {
   display: none !important;
+}
+
+.blur {
+  filter: blur(12px);
 }
 
 .container {
@@ -67,10 +76,45 @@ body {
   transform: translateZ(0);
 }
 
-
 @media (max-width: var(--large-bp)) {
   .stage-container {
     border: none;
     margin: 0;
   }
+}
+
+.controls {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  padding-bottom: 50px;
+  display: none;
+  justify-content: space-between;
+  transition: opacity 0.3s, visibility 0.3s;
+}
+
+@media (min-width: var(--large-bp)) {
+  .controls {
+    visibility: visible;
+  }
+
+  .controls.hide:hover {
+    opacity: 1;
+  }
+}
+
+.menu {
+  display: none;
+}
+
+.close-menu-btn {
+  display: none;
+}
+
+.btn {
+  display: none;
+}
+
+.help-modal {
+  display: none;
 }
