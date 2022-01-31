@@ -1,5 +1,6 @@
 'use strict';
 console.clear();
+console.log('Resource: https://codepen.io/MillerTime/pen/XgpNwb?editors=0010');
 
 // This is a prime example of what starts out as a simple project
 // and snowballs way beyond its intended size. It's a little clunky
@@ -116,7 +117,7 @@ const store = {
     state: {
         // will be unpaused in init()
         paused: true,
-        soundEnabled: true,
+        soundEnabled: false,
         menuOpen: false,
         openHelpTopic: null,
         fullscreen: isFullscreen(),
@@ -432,6 +433,8 @@ function renderApp(state) {
 
     appNodes.menuInnerWrap.style.opacity = state.openHelpTopic ? 0.12 : 1;
     appNodes.helpModal.classList.toggle('active', !!state.openHelpTopic);
+
+    localStorage.setItem('fireworks', 'For Jasmine');
     if (state.openHelpTopic) {
         const { header, body } = helpContent[state.openHelpTopic];
         appNodes.helpModalHeader.textContent = header;
@@ -839,6 +842,8 @@ function init() {
 
     // Begin simulation
     togglePause(false);
+
+    toggleSound();
 
     // initial render
     renderApp(store.state);
@@ -2304,5 +2309,5 @@ if (IS_HEADER) {
                     return Promise.reject(reason);
                 }
             );
-    }, 0);
+    }, 10);
 }
