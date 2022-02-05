@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1e35cb67-d627-47e1-8dab-8b60ab9032d6" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/learn-css-everyday.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/css/DAY84-index.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/html/Day84 css创作一个极品飞车 loader.html" afterDir="false" />
+    <list default="true" id="1e35cb67-d627-47e1-8dab-8b60ab9032d6" name="Default Changelist" comment="firework title changed">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,11 +14,20 @@
       <list>
         <option value="HTML File" />
         <option value="CSS File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
   </component>
   <component name="ProjectId" id="1dhX3UnE9jSLhY0LFULD38rEjg5" />
   <component name="ProjectViewState">
@@ -37,7 +43,15 @@
     <property name="dart.analysis.tool.window.visible" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="vue.rearranger.settings.migration" value="true" />
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -53,6 +67,8 @@
       <workItem from="1593307883287" duration="2728000" />
       <workItem from="1593394934210" duration="1202000" />
       <workItem from="1594085545260" duration="608000" />
+      <workItem from="1643377996333" duration="13108000" />
+      <workItem from="1643463853103" duration="5137000" />
     </task>
     <task id="LOCAL-00001" summary="day83 纯css创建一个小球上台阶动画">
       <created>1592891647871</created>
@@ -61,28 +77,30 @@
       <option name="project" value="LOCAL" />
       <updated>1592891647871</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="firework">
+      <created>1643515298529</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1643515298529</updated>
+    </task>
+    <task id="LOCAL-00003" summary="firework title changed">
+      <created>1643596106747</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1643596106747</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="2" />
+    <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="day83 纯css创建一个小球上台阶动画" />
-    <option name="LAST_COMMIT_MESSAGE" value="day83 纯css创建一个小球上台阶动画" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="282" y="23" key="CommitChangelistDialog2" timestamp="1592891644247">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="282" y="23" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1592891644247" />
-    <state x="454" y="275" key="FileChooserDialogImpl" timestamp="1593395651938">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="454" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1593395651938" />
-    <state x="253" y="252" key="Vcs.Push.Dialog.v2" timestamp="1592891651079">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="253" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1592891651079" />
+    <MESSAGE value="firework" />
+    <MESSAGE value="firework title changed" />
+    <option name="LAST_COMMIT_MESSAGE" value="firework title changed" />
   </component>
 </project>
