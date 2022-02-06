@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>使用D3和GSAP创作一个横条loader</title>
+    <link rel="stylesheet" href="../css/DAY136-index.css">
+</head>
+<body>
+    <!-- 定义 dom，容器中包含 1 个 span 元素 -->
+    <div class="loader"></div>
+</body>
+<script>
+    const HUE_DEG = 12;
+    const COUNT = 360 / HUE_DEG;
+    const loader = document.querySelector('.loader');
+
+    for (let i = 0; i < COUNT; i++) {
+        let _index = i + 1;
+        let span = document.createElement('span');
+        span.style.backgroundColor = _index % 2 !== 0
+          ? `hsl(${_index * HUE_DEG}, 100%, 65%)`
+          : 'black';
+
+        loader.appendChild(span);
+    }
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.2/TweenMax.min.js"></script>
+<script>
+    let animation = new TimelineMax({repeat: -1});
+    animation.staggerFrom('.loader span', 0.5, {scaleX: 0}, 0.4)
+</script>
+</html>

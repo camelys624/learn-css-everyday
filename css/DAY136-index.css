@@ -1,0 +1,25 @@
+/* 居中显示 */
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+}
+
+/* 定义容器尺寸 */
+.loader {
+    width: 40em;
+    height: 1em;
+    font-size: 10px;
+    position: relative;
+}
+
+/* 设置容器中 span 的样式，是一个彩色细长条 */
+.loader span {
+    position: absolute;
+    width: inherit;
+    height: inherit;
+    background-color: hsl(24, 100%, 65%);
+}
