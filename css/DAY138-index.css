@@ -1,0 +1,212 @@
+/* 居中显示 */
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(lightblue, skyblue);
+}
+
+/* 定义容器尺寸 */
+.wall {
+    width: 60em;
+    height: 40em;
+    border: 1em solid rgba(255, 255, 255, 0.5);
+    border-radius: 2em;
+    font-size: 10px;
+    overflow: hidden;
+}
+
+/* 用 grid 布局，把容器分为 2 个部分，左侧 80% 为背景墙，左侧 20% 为侧边墙 */
+.wall {
+    display: grid;
+    grid-template-columns: 0 4fr 1fr;
+}
+
+/* 分别设置背景墙和侧边墙的背景色 */
+.back {
+    background: linear-gradient(
+        to right,
+        #555,
+        #ddd
+    );
+}
+
+.side {
+    background:
+        radial-gradient(
+            at 0% 50%,
+            rgba(0, 0, 0, 0.2) 25%,
+            rgba(0, 0, 0, 0) 90%
+        ),
+        linear-gradient(
+            to right,
+            #ddd,
+            #ccc
+        );
+}
+
+.back, .side {
+    display: flex;
+    align-items: center;
+}
+
+.back {
+    justify-content: flex-end;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+/* 设置标题样式 */
+h1 {
+    position: relative;
+    width: 20em;
+    margin: 1em;
+    color: white;
+    font-family: sans-serif;
+}
+
+/* 设置列表项的高度和颜色 */
+.back ul {
+    width: 75%;
+}
+
+.side ul {
+    width: 100%;
+}
+
+ul li {
+    height: 5em;
+    background-color: var(--c);
+}
+
+ul li:nth-child(1) {
+    --c: tomato;
+}
+
+ul li:nth-child(2) {
+    --c: coral;
+}
+
+ul li:nth-child(3) {
+    --c: lightsalmon;
+}
+
+ul li:nth-child(4) {
+    --c: deepskyblue;
+}
+
+/* 横条的宽度根据与商品的上限售价 --high-price 成正比，以最贵的售价 --max-price 作为全长，
+其他横条的宽度为上限售价与最高售价的百分比 */
+ul {
+    display: flex;
+    flex-direction: column;
+    --max-price: 1449;
+}
+
+.back ul {
+    align-items: flex-end;
+}
+
+/* 在横条中区分售价，--low-price 的位置，比起售价高的区域填充更深的颜色 */
+ul li.xs-max {
+    --high-price: 1449;
+    --low-price: 1099;
+    --c2: orangered;
+    z-index: 5;
+}
+
+ul li.xs {
+    --high-price: 1349;
+    --low-price: 999;
+    --c2: tomato;
+    z-index: 4;
+}
+
+ul li.xr {
+    --high-price: 899;
+    --low-price: 749;
+    --c2: coral;
+    z-index: 3;
+}
+
+ul li.x {
+    --high-price: 1149;
+    --low-price: 999;
+    --c2: dodgerblue;
+    z-index: 2;
+}
+
+.back ul li {
+    width: calc(var(--high-price) / var(--max-price) * 100%);
+    --percent: calc(var(--low-price) / var(--high-price) * 100%);
+    background: linear-gradient(
+        to left,
+        var(--c) var(--percent),
+        var(--c2) var(--percent)
+    );
+    position: relative;
+
+    /* 为各横条增加阴影，增强立体感 */
+    filter: drop-shadow(0 1em 1em rgba(0, 0, 0, 0.3));
+    animation-delay: 1s;
+}
+
+/* 在横线的顶端画出一个向左的三角形 */
+.back ul li::before {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    transform: translateX(-3em);
+    border-right: 3em solid var(--c2);
+    border-top: 2.5em solid transparent;
+    border-bottom: 2.5em solid transparent;
+}
+
+/* 设置价格文字样式 */
+.back ul li span {
+    position: absolute;
+    width: 95%;
+    text-align: right;
+    color: white;
+    font-size: 1.25em;
+    line-height: 4em;
+    font-family: sans-serif;
+}
+
+/* 设置侧边墙的样式，设置景深，并使列表倾斜 */
+.side {
+    perspective: 1000px;
+}
+
+.side ul {
+    transform-origin: left;
+    transform: rotateY(-75deg) scaleX(4);
+}
+
+/* 设置侧边墙的文字样式 */
+.side ul li {
+    padding-right: 30%;
+    text-align: right;
+    color: white;
+    font-family: sans-serif;
+    line-height: 5em;
+}
+
+/* 最后加入入场动画 */
+ul li {
+    animation: show 1s linear forwards;
+    transform-origin: right;
+    transform: scaleX(0);
+}
+
+@keyframes show {
+    to {
+        transform: scaleX(1);
+    }
+}

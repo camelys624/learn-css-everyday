@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>纯 CSS 创作一张 iPhone 价格信息图</title>
+    <link rel="stylesheet" href="../css/DAY138-index.css">
+</head>
+<body>
+    <!-- 定义 dom，容器中包含3个元素，h1 是图表标题，.back 表示背景墙，
+    .side 表示侧边墙，.back和.side中都包含一个无序列表，背景墙展示价格，侧边墙展示名称 -->
+    <div class="wall">
+        <h1>iPhone Price Comparison</h1>
+        <div class="back">
+            <ul>
+                <li class="xs-max"><span>$1099 ~ $1449</span></li>
+                <li class="xs"><span>$999 ~ $1349</span></li>
+                <li class="xr"><span>$749 ~ $899</span></li>
+                <li class="x"><span>$999 ~ $1149</span></li>
+            </ul>
+        </div>
+        <div class="side">
+            <ul>
+                <li class="xs-max">iPhone XS Max</li>
+                <li class="xs">iPhone XS</li>
+                <li class="xr">iPhone XR</li>
+                <li class="x">iPhone X</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
