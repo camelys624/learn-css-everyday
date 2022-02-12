@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS 和 JS 创作光斑粒子交相辉映的动画</title>
+    <link rel="stylesheet" href="../css/DAY139-index.css">
+</head>
+<body>
+    <!-- 定义 dom，容器中包含 3 个子元素 -->
+    <div class="container"></div>
+</body>
+
+<script>
+    const COUNT = 200;
+
+    const container = document.querySelector('.container');
+    for (let i = 0; i < COUNT; i++) {
+        const span = document.createElement('span');
+        span.style.cssText = `
+            --x: ${1 + Math.round(Math.random() * 98)};
+            --y: ${1 + Math.round(Math.random() * 98)};
+            --n: ${i + 1};
+            --dark-color: hsl(${70 + (i+1) * 0.1}, 100%, 50%);
+            --bright-color: hsla(${70 + (i+1) * 0.1}, 100%, 80%);
+        `;
+
+        container.appendChild(span);
+    }
+</script>
+</html>
