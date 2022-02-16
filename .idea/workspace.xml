@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1e35cb67-d627-47e1-8dab-8b60ab9032d6" name="Default Changelist" comment="firework title changed">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="1e35cb67-d627-47e1-8dab-8b60ab9032d6" name="Default Changelist" comment="firework title changed" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -69,6 +67,7 @@
       <workItem from="1594085545260" duration="608000" />
       <workItem from="1643377996333" duration="13108000" />
       <workItem from="1643463853103" duration="5137000" />
+      <workItem from="1644935135707" duration="16000" />
     </task>
     <task id="LOCAL-00001" summary="day83 纯css创建一个小球上台阶动画">
       <created>1592891647871</created>
