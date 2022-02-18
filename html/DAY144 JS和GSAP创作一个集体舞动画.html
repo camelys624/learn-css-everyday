@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>用JS和GASP创作一个集体舞动画</title>
+    <link rel="stylesheet" href="../css/DAY144-index.css">
+</head>
+<body>
+    <!-- 定义dom，容器中包含2个子容器，.horizontal代表水平的线段，.vertical代表垂直的线段，每个子容器中包含4个子元素 -->
+    <div class="container">
+        <div class="horizontal"></div>
+        <div class="vertical"></div>
+    </div>
+</body>
+<script>
+    const SIDE_LENGTH = 5;
+    let container = document.querySelector('.container');
+    container.style.setProperty('--side-length', SIDE_LENGTH);
+
+    let horizontal = document.querySelector('.horizontal');
+    let vertical = document.querySelector('.vertical');
+
+    for (let i = 0; i < SIDE_LENGTH * SIDE_LENGTH; i ++) {
+        const span = document.createElement('span');
+
+        vertical.appendChild(span);
+        horizontal.appendChild(span.cloneNode(true));
+    }
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.2/TweenMax.min.js"></script>
+<script>
+    // 声明动画变量animation，声明表示dom元素的变量$horizontalSpan和$verticalSpan
+    let animation = new TimelineMax({repeat: -1});
+    let $horizontalSpan = '.container .horizontal span';
+    let $verticalSpan = '.container .vertical span';
+    
+    animation.to($horizontalSpan, 1, {rotation: 45}, 'step1')
+        .to($horizontalSpan, 1, {x: '-10px', y: '-10px'}, 'step2')
+        .to($horizontalSpan, 1, {rotation: 0, x: '0', y: '0', scaleY: 2, scaleX: 0.5}, 'step3')
+        .to($horizontalSpan, 1, {rotation: 90, scaleY: 1, scaleX: 1}, 'step4');
+    animation.to($verticalSpan, 1, {rotation: 45}, 'step1')
+        .to($verticalSpan, 1, {x: '10px', y: '10px'}, 'step2')
+        .to($verticalSpan, 1, {x: '0', y: '0', scaleX: 2, scaleY: 0.5}, 'step3')
+        .to($verticalSpan, 1, {rotation: 90, scaleX: 1, scaleY: 1}, 'step4')
+        .timeScale(2);
+</script>
+</html>
