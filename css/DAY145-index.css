@@ -1,0 +1,104 @@
+:root {
+    --font-size: 16px;
+}
+
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #eee;
+    font-size: var(--font-size);
+}
+
+/* 定义控件的样式，把控件设置为透明，但仍可与用户交互。
+其中字号大小是变量，因为 input 控件的字号与正文字号不同，所以需要单独设置 */
+.toggle {
+    position: absolute;
+    font-size: var(--font-size);
+    width: 5em;
+    height: 8em;
+    margin: 0;
+    filter: opacity(0);
+    cursor: pointer;
+    z-index: 2;
+}
+
+/* 设置开关的轮廓 */
+.switch {
+    position: absolute;
+    width: 5em;
+    height: 8em;
+    border-radius: 1.2em;
+    background: linear-gradient(#d2d4d6, white);
+
+    /* 用阴影使开关变得立体 */
+    box-shadow: 
+        inset 0 -0.2em 0.4em rgba(212, 212, 212, 0.75),
+        inset 0 -0.8em 0 0.1em rgba(156, 156, 156, 0.85),
+        0 0 0 0.1em rgba(116, 116, 116, 0.8),
+        0 0.6em 0.6em rgba(41, 41, 41, 0.3),
+        0 0 0 0.4em #d4d7d8;
+}
+
+/* 用伪元素设置on和off文本，目前是处于off状态 */
+.toggle ~ .switch::before,
+.toggle ~ .switch::after {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    font-size: 1.4em;
+    font-family: sans-serif;
+    text-transform: uppercase;
+}
+
+.toggle ~ .switch::before {
+    content: '|';
+    bottom: 1em;
+    color: rgba(0, 0, 0, 0.5);
+    text-shadow: 0 0.1em 0 rgba(255, 255, 255, 0.8);
+}
+
+.toggle ~ .switch::after {
+    content: 'O';
+    top: 0.6em;
+    color: rgba(0, 0, 0, 0.45);
+    text-shadow: 0 0.1em 0 rgba(255, 255, 255, 0.4);
+}
+
+/* 把input控件设置为checked状态，以便设置处于on状态的样式 */
+.toggle:checked ~ .switch {
+    background: linear-gradient(#a1a2a3, #f0f0f0);
+    box-shadow:
+        inset 0 0.2em 0.4em rgba(212, 205, 199, 0.75),
+        inset 0 0.8em 0 0.1em rgba(255, 255, 255, 0.77),
+        0 0 0 0.1em rgba(116, 116, 118, 0.8),
+        0 -0.2em 0.2em rgba(41, 41, 41, 0.18),
+        0 0 0 0.4em #d4d7d8;
+}
+
+/* 设置处于on状态的文本样式 */
+.toggle:checked ~ .switch::before {
+    bottom: 0.3em;
+    text-shadow: 0 0.1em 0 rgba(255, 255, 255, 0.5);
+}
+
+.toggle:checked ~ .switch::after {
+    top: 1.2em;
+    text-shadow: 0 0.1em 0 rgba(255, 255, 255, 0.15);
+}
+
+/* 设置off状态的黑暗效果 */
+.toggle ~ .light {
+    width: 100vw;
+    height: 100vh;
+    background-color: #0a0a16;
+    z-index: 1;
+    filter: opacity(0.7);
+}
+
+/* 设置处于on状态的明亮效果 */
+.toggle:checked ~ .light {
+    filter: opacity(0);
+}
