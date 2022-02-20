@@ -1,0 +1,64 @@
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: cornsilk;
+}
+
+/* 去掉列表项前面的符号 */
+ul {
+    padding: 0;
+    list-style-type: none;
+}
+
+/* 设置按钮的边框和背景的样式，背景采用渐变色，但渐变的方向依次交替 */
+ul li {
+    box-sizing: border-box;
+    width: 15em;
+    height: 3em;
+    font-size: 20px;
+    border-radius: 0.5em;
+    margin: 0.5em;
+    box-shadow: 0 0 1em rgba(0, 0, 0, 0.2);
+
+    /* 设置按钮上文字的样式，依次交替居左或者居右 */
+    color: white;
+    font-family: sans-serif;
+    text-transform: capitalize;
+    line-height: 3em;
+
+    /* 设置缓动时间，使效果转换变得平滑 */
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+ul li:nth-child(odd) {
+    background-image: linear-gradient(to right, orange, tomato);
+    text-align: left;
+    padding-left: 10%;
+
+    /* 设置按钮的透视效果，依次交替向左旋转和向右旋转，此时透视的距离是500px
+       注意 perspective() 函数和 rotateY() 函数的顺序不能写反 */
+    transform: perspective(500px) rotateY(45deg);
+}
+
+ul li:nth-child(even) {
+    background-image: linear-gradient(to left, orange, tomato);
+    text-align: right;
+    padding-right: 10%;
+
+    transform: perspective(500px) rotateY(-45deg);
+}
+
+/* 为按钮增加悬停效果，使悬停时的透视距离变短为200px，透视距离越短，旋转的幅度看起来就越大 */
+ul li:nth-child(odd):hover {
+    transform: perspective(200px) rotateY(45deg);
+    padding-left: 5%;
+}
+
+ul li:nth-child(even):hover {
+    transform: perspective(200px) rotateY(-45deg);
+    padding-right: 5%;
+}
