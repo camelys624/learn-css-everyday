@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>用CSS和D3创作一个集体舞动画</title>
+    <link rel="stylesheet" href="../css/DAY150-index.css">
+</head>
+<body>
+    <!-- 定义dom，容器中包含1个.square子容器，子容器中包含4个span，每个span代表一个对角扇形 -->
+    <figure class="container">
+    </figure>
+</body>
+<script>
+    const COLUMNS = 4;
+
+    const container = document.querySelector('.container');
+    container.style.setProperty('--columns', COLUMNS);
+    for (let i = 0; i < COLUMNS * COLUMNS; i++) {
+        const square = document.createElement('div');
+        square.className = 'square';
+
+        for (let j = 0; j < 4; j++) {
+            const span = document.createElement('span');
+            square.appendChild(span);
+        }
+
+        container.appendChild(square);
+    }
+</script>
+</html>
