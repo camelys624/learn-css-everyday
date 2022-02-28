@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>用CSS和JS创作一组tooltip提示框</title>
+    <link rel="stylesheet" href="../css/DAY153-index.css">
+</head>
+<body>
+    <!-- 定义dom，容器中包含一个名为emoji的子容器，代表一个头像，它的子元素eye，left，right，mouth分别代表左眼、右眼和嘴巴 -->
+    <section class="container">
+        <div class="emoji">
+            <span class="eye left"></span>
+            <span class="eye right"></span>
+            <span class="mouth"></span>
+        </div>
+
+        <!-- 在dom中增加4个元素，每个元素的内容是一个@字符 -->
+        <span class="tip top" data-tip="look up">@</span>
+        <span class="tip left" data-tip="look left">@</span>
+        <span class="tip right" data-tip="look right">@</span>
+        <span class="tip bottom" data-tip="look bottom">@</span>
+    </section>
+</body>
+<script>
+    const DIRECTIONS = ['top', 'bottom', 'left', 'right'];
+    const EVENTS = ['mouseover', 'mouseout'];
+    const $ = function fakeQuery (className) {
+        return document.querySelector(className);
+    }
+
+    DIRECTIONS.forEach(direction => {
+        EVENTS.forEach(e => {
+            $(`.tip.${direction}`).addEventListener(e, () => {
+                $('.emoji').classList.toggle(direction);
+            });
+        });
+    });
+</script>
+</html>
