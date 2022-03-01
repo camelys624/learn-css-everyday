@@ -1,0 +1,51 @@
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: black;
+}
+
+/* 设置容器中子元素的布局方式 */
+.container {
+    display: grid;
+    --column: 3;
+    grid-template-columns: repeat(var(--columns), 1fr);
+}
+
+/* 定义子元素样式 */
+.container span {
+    width: 25px;
+    height: 25px;
+    color: lime;
+    background-color: currentColor;
+
+    transform: scale(0);
+    animation: spin 5s linear infinite;
+
+    /* 设置动画延时,使各子元素的动画随机延时4秒之内的任意时间 */
+    animation-delay: calc(var(--delay) * 1s);
+}
+
+/* 增加子元素的动画效果,总时长5秒,其中第一秒(0% - 20%)有动画,其余4秒静止 */
+@keyframes spin {
+    0% {
+        transform: rotate(0deg) scale(1);
+    }
+
+    5%, 15% {
+        transform: rotate(90deg) scale(0);
+        background: white;
+    }
+
+    17.5% {
+        transform: rotate(180deg) scale(1);
+        background-color: currentColor;
+    }
+
+    20%, 100% {
+        transform: rotate(90deg) scale(0);
+    }
+}
+

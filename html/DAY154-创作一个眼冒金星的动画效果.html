@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DAY154创作一个眼冒金星的动画效果</title>
+    <link rel="stylesheet" href="../css/DAY154-index.css">
+</head>
+<body>
+    <!-- 定义dom -->
+    <div class="container"></div>
+</body>
+<script>
+    const COLUMNS = 15;
+
+    const container = document.querySelector('.container');
+    container.style.setProperty('--columns', COLUMNS);
+
+    for (let i = 0; i < COLUMNS * COLUMNS; i++) {
+        const span = document.createElement('span');
+        span.style.setProperty('--delay', Math.random() * 4);
+        container.appendChild(span);
+    }
+</script>
+</html>
