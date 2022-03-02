@@ -1,0 +1,114 @@
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(deepskyblue, skyblue, lightblue 20%);
+}
+
+/* 定义容器的尺寸，子元素.envelope和.basket纵向居中布局 */
+.balloon {
+    width: 12em;
+    height: 19em;
+    font-size: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    animation: drift 2s infinite alternate;
+}
+
+/* 先画伞盖，定义伞盖的尺寸 */
+.envelope {
+    position: relative;
+    width: inherit;
+    height: 16em;
+    overflow: hidden;
+}
+
+/* 伞盖上端为球形，下端为圆锥形，所以我们现在上部画一个圆，再在下部画一个三角形 */
+.envelope span {
+    position: absolute;
+    width: inherit;
+    height: 12em;
+    border-radius: 50%;
+    color: orange;
+    background-color: currentColor;
+}
+
+/* 在用伪元素画出下部的等腰三角形 */
+.envelope span::before {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-width: 10em 5.5em 0 5.5em;
+    border-style: solid;
+    border-color: currentColor transparent transparent transparent;
+    left: calc(50% - 5.5em);
+    top: 8.45em;
+}
+
+/* 让.envelope的第二个span元素变形、变色、使伞盖形成竖条纹的花纹 */
+.envelope span:nth-child(2) {
+    transform: scaleX(0.4);
+    filter: brightness(0.85) contrast(1.4);
+}
+
+/* 接下来画吊篮 */
+.basket {
+    position: relative;
+    width: 2em;
+    height: 3em;
+}
+
+/* 用伪元素画出篮子 */
+.basket::before {
+    content: '';
+    position: absolute;
+    width: inherit;
+    height: 1.6em;
+    background-color: peru;
+    bottom: 0;
+    border-radius: 0 0 0.5em 0.5em;
+}
+
+/* 用::after伪元素画出篮子的顶边 */
+.basket::after {
+    content: '';
+    position: absolute;
+    width: 105%;
+    height: 0.3em;
+    background-color: saddlebrown;
+    left: calc((100% - 105%) / 2);
+    top: 1.3em;
+    border-radius: 0.3em;
+}
+
+/* .basket下共有4个span元素，代表4根缆绳，设置它们的样式为竖直线 */
+.basket span {
+    position: absolute;
+    width: 0.1em;
+    height: 1.5em;
+    background-color: burlywood;
+}
+
+/* 定位缆绳，并倾斜不同的角度 */
+.basket span {
+    left: calc((var(--n) - 1) * 0.6em);
+    transform-origin: bottom;
+    transform: rotate(calc(var(--r) * 7deg));
+}
+
+.basket span:nth-child(1) { --n: 1; --r: -2; }
+.basket span:nth-child(2) { --n: 2; --r: -1; }
+.basket span:nth-child(3) { --n: 3; --r: 1; }
+.basket span:nth-child(4) { --n: 4; --r: 2; }
+
+/* 最后，增加热气球微微浮动的动画效果 */
+@keyframes drift {
+    to {
+        transform: translateY(-5%);
+    }
+}
