@@ -1,0 +1,132 @@
+:root {
+    --font-size: 10px;
+}
+
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: linear-gradient(skyblue, lightblue);
+}
+
+/* 设置伪元素的共有属性 */
+.umbrella *::before,
+.umbrella *::after {
+    content: '';
+    position: absolute;
+}
+
+.umbrella {
+    position: relative;
+    width: 25em;
+    height: 26em;
+    font-size: var(--font-size);
+}
+
+/* 定义伞盖的尺寸 */
+.umbrella .canopy {
+    position: absolute;
+    width: inherit;
+    height: 5.5em;
+    top: 2.5em;
+    transform-origin: top;
+    transform: scale(0.08, 4);
+}
+
+/* 用::before伪元素画出伞盖的上半部分，方法先画出一个半圆，然后在垂直方向上压缩它 */
+.umbrella .canopy::before {
+    width: inherit;
+    height: 12.5em;
+    background: rgb(100, 100, 100);
+    border-radius: 12.5em 12.5em 0 0;
+    transform: scaleY(0.4);
+    top: -4em;
+}
+
+/* 用::after伪元素画出伞盖的下半部分 */
+.umbrella .canopy::after {
+    width: inherit;
+    height: 1.5em;
+    background-color: #333;
+    top: 4em;
+    border-radius: 50%;
+}
+
+/* 画出伞柄的长杆 */
+.umbrella .shaft {
+    position: absolute;
+    width: 0.8em;
+    height: 18em;
+    background-color: rgba(100, 100, 100, 0.7);
+    top: 5.5em;
+    left: calc((100% - 0.8em) / 2);
+}
+
+/* 用伪元素画出伞杆顶部露出伞盖的尖头，方法和画伞盖上半部分类似，先画出半圆，然后在水平方向上压缩它 */
+.umbrella .shaft::before {
+    width: 6em;
+    height: 3em;
+    background-color: rgba(100, 100, 100, 0.7);
+    left: calc((100% - 6em) / 2);
+    top: -5.5em;
+    border-radius: 6em 6em 0 0;
+    transform: scaleX(0.1);
+}
+
+/* 画出雨伞的勾形把手 */
+.umbrella .shaft::after {
+    box-sizing: border-box;
+    width: 4em;
+    height: 2.5em;
+    border: 1em solid #333;
+    top: 100%;
+    left: calc(50% - 4em + 1em / 2);
+    border-radius: 0 0 2.5em 2.5em;
+    border-top: none;
+}
+
+/* 接下来通过变形画出雨伞合上时的样子，方法是在水平方向向上压缩，在垂直方向上拉伸 */
+/* 隐藏伞盖的下半部分 */
+.umbrella .canopy::after {
+    transform: scaleY(0);
+}
+
+/* 让伞倾斜,因为竖着的伞有点呆板 */
+.umbrella {
+    transform: rotate(-30deg);
+}
+
+/* 设置控件与雨伞一样大，并至于雨伞图层的上层 */
+.toggle {
+    position: absolute;
+    filter: opacity(0);
+    width: 25em;
+    height: 26em;
+    font-size: var(--font-size);
+    cursor: pointer;
+    z-index: 2;
+}
+
+/* checkbox控件的未选中状态对应雨伞合上时的样子，也就是现在的样子，所以要指定控件被选中时对应的雨伞的样子 */
+.toggle:checked ~ .umbrella {
+    transform: rotate(0deg);
+}
+
+/* 把伞盖打开 */
+.toggle:checked ~ .umbrella .canopy {
+    transform: scale(1, 1);
+}
+
+/* 再显示出伞盖的下半部分 */
+.toggle:checked ~ .umbrella .canopy::after {
+    transform: scaleY(1);
+}
+
+/* 最后，设置以上几个元素的缓动效果 */
+.umbrella,
+.umbrella .canopy,
+.umbrella .canopy::after {
+    transition: 0.3s cubic-bezier(0.5, -0.25, 0.5, 1.25);
+}
