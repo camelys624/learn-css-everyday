@@ -42,7 +42,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="dart.analysis.tool.window.visible" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../nova-style-guide" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -74,6 +74,7 @@
       <workItem from="1645013651986" duration="69000" />
       <workItem from="1645237712975" duration="1384000" />
       <workItem from="1645709647422" duration="826000" />
+      <workItem from="1646828242312" duration="22000" />
     </task>
     <task id="LOCAL-00001" summary="day83 纯css创建一个小球上台阶动画">
       <created>1592891647871</created>

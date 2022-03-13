@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>用CSS和原生JS创作一个展示苹果设备的交互动画</title>
+    <link rel="stylesheet" href="../css/DAY159-index.css">
+</head>
+<body>
+    <!-- 定义dom，包含5个子元素，分别代表ipone, mini, ipad, imac 这五种设备 -->
+    <div class="container">
+        <div class="device iphone"></div>
+        <div class="buttons">
+            <span class="left"></span>
+            <span class="right"></span>
+        </div>
+    </div>
+</body>
+<script>
+    // 定义一个存放设备米曾的数组
+    let devices = ['iphone', 'mini', 'ipad', 'macbook', 'imac']
+
+    let loop = {
+        left() {
+            devices.unshift(devices.pop())
+        },
+        right() {
+            devices.push(devices.shift())
+        }
+    }
+
+    let buttons = document.querySelectorAll('.buttons > span')
+
+    ;[...buttons].forEach(button => {
+        button.addEventListener('click', e => {
+            loop[e.target.className]()
+            let device = document.querySelector('.device')
+            device.className = 'device ' + devices[0]
+        })
+    })
+</script>
+</html>
