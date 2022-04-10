@@ -75,6 +75,7 @@
       <workItem from="1645237712975" duration="1384000" />
       <workItem from="1645709647422" duration="826000" />
       <workItem from="1646828242312" duration="22000" />
+      <workItem from="1647753216035" duration="730000" />
     </task>
     <task id="LOCAL-00001" summary="day83 纯css创建一个小球上台阶动画">
       <created>1592891647871</created>
@@ -113,7 +114,6 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="day83 纯css创建一个小球上台阶动画" />
