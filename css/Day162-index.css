@@ -1,0 +1,181 @@
+/* 居中显示 */
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #383838;
+}
+
+/* 定义应用容器的尺寸 */
+.app {
+  width: 320px;
+  height: 630px;
+  font-family: sans-serif;
+  position: relative;
+  overflow: hidden;
+}
+
+/* 令两个表单控件横向排列 */
+form {
+  height: 50px;
+  background-color: rgba(255, 255, 255, .2);
+  border-radius: 2px;
+  box-sizing: border-box;
+  padding: 8px;
+  display: flex;
+}
+
+/* 分别设置2个表单控件的样式 */
+input {
+  border: node;
+  font-size: 14px;
+  outline: none;
+  border-radius: inherit;
+  padding: 0 8px;
+}
+
+#username {
+  flex-grow: 1;
+  background-color:rgba(255, 255, 255, .9);
+  color: #42452e;
+}
+
+#search {
+  background-color: rgba(0, 97, 145, .75);
+  color: rgba(255, 255, 255, .8);
+  font-weight: bold;
+  margin-left: 8px;
+  cursor: pointer;
+}
+
+/* 为按钮增加悬停和点击的交互效果 */
+#search:hover {
+  background-color: rgba(0, 97, 145, .45);
+}
+
+#search:active {
+  transform: scale(.98);
+  background-color: rgba(0, 97, 145, .75);
+}
+
+/* 令卡片上半部分和下半部分竖向排列，并分别设置两部分的高度 */
+/* 大约是上半部分占卡片高度的三分之二，下半部分占卡片的三分之一，此时可以看出卡片的轮廓了 */
+.profile {
+  width: 320px;
+  position: absolute;
+  margin: 20px 0 0 0;
+  display: flex;
+  flex-direction: column;
+  border-radius: 5px;
+  /* 设置头像图片，样式为描边的圆形，因为头像图片后面还会用到，所以把它存储在变量中 */
+  /* --avatar: url('https://avatars3.githubusercontent.com/u/583231?v=4') */
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 380px;
+  background-color: rgba(0, 97, 145, .45);
+}
+
+.footer {
+  height: 180px;
+  background-color: rgba(0, 97, 145, .75);
+}
+
+
+.avatar {
+  width: 140px;
+  height: 140px;
+  background-image: var(--avatar);
+  margin: 70px 0 0 0;
+  background-position: center;
+  background-size: cover;
+  border-radius: 50%;
+  box-shadow: 0 0 0 0.8em rgba(0, 0, 0, .2),
+    0 0 0 1em rgba(161, 220, 255, .35);
+}
+
+/* 设置名字和位置信息的样式，文字为白色 */
+.name {
+  margin: 50px 0 0 0;
+  color: white;
+  font-size: 28px;
+  font-weight: normal;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, .15);
+}
+
+.location {
+  margin: 5px 0 0 0;
+  color: rgba(255, 255, 255, .75);
+  font-weight: normal;
+}
+
+/* 接下来布局下班部分 */
+.footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* 横向排列三组数据，每项之间加入细分割线 */
+.details {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  margin: 40px 0 0 0;
+}
+
+.details li {
+  color: rgba(255, 255, 255, .6);
+  text-align: center;
+  padding: 0 6px;
+}
+
+.details li span {
+  display: block;
+  color: rgba(255, 255, 255, .8);
+}
+
+.details li:not(:first-child) {
+  border-left: 2px solid rgba(255, 255, 255, .15);
+}
+
+/* 设置跳转到 github 的链接样式和悬停效果 */
+.to-github {
+  width: 200px;
+  height: 40px;
+  background-color: rgba(255, 255, 255, .5);
+  text-align: center;
+  line-height: 40px;
+  color: rgba(0, 0, 0, .75);
+  text-decoration: none;
+  text-transform: uppercase;
+  border-radius: 20px;
+  transition: .3s;
+}
+
+.to-github:hover {
+  background-color: rgba(255, 255, 255, .8);
+}
+
+/* 用伪类把头像图片作为整体背景 */
+.profile {
+  position: relative;
+  overflow: hidden;
+}
+
+.profile::before {
+  content: '';
+  position: absolute;
+  width: calc(100% + 20px * 2);
+  height: calc(100% + 20px * 2);
+  background-image: var(--avatar);
+  background-size: cover;
+  z-index: -1;
+  margin: -20px;
+  filter: blur(10px);
+}

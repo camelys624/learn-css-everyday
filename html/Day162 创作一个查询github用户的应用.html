@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>创作一个查询 github 用户的应用</title>
+  <link rel="stylesheet" href="../css/Day162-index.css">
+</head>
+
+<body>
+  <!-- 定义dom，整体结构分成上部的表单和下部的用户卡片 -->
+  <div class="app">
+    <form>
+      <!-- 表单的dom结构，2个表单空间分别是文本输入框 #username 和搜索按钮 #search，因为后面的脚本要 -->
+      <!-- 引用这两个控件，所以为它们定义了id属性，接下来在css中也使用id选择器 -->
+      <input placeholder="Who are you looking for?" id="username">
+      <input type="button" value="Search" id="search">
+    </form>
+    <div id="template">
+      <div class="profile">
+        <div class="header">
+          <div class="avatar"></div>
+          <h2 class="name">{%= o.name %}</h2>
+          <h3 class="location">{%= o.location %}</h3>
+        </div>
+        <div class="footer">
+          <ul class="details">
+            <li>Repositories<span>{%= o.public_repos %}</span></li>
+            <li>Followers<span>{%= o.followers %}</span></li>
+            <li>Following<span>{%= o.following %}</span></li>
+          </ul>
+          <a href="{%= o.html_url %}" class="to-github">go to github</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+<!-- 为了绑定数据，我们引入一个羽量级的模板库 -->
+<script src="https://blueimp.github.io/JavaScript-Templates/js/tmpl.min.js"></script>
+<script>
+  let mockData = {
+    avatar_url: 'https://avatars3.githubusercontent.com/u/583231?v=4',
+    name: 'The Octocat',
+    location: 'San Francisco',
+    public_repos: 111,
+    followers: 222,
+    following: 333,
+    html_url: 'https://github.com/octocat'
+  }
+
+  window.onload = getData('octocat')
+
+  function render(container, data) {
+    container.innerHTML = tmpl('template', data)
+    container.style.setProperty('--avatar', `url(${data.avatar_url})`)
+  }
+
+  function getData(username) {
+    let apiUrl = `https://api.github.com/users/${username}`
+    fetch(apiUrl)
+      .then(Response => Response.json())
+      .then(update)
+  }
+
+  document.getElementById('search').addEventListener('click', () => {
+    let username = document.getElementById('username').value.replace(/[ ]/g, '')
+    if (username === '') return
+    getData(username)
+  })
+
+  function update(data) {
+    let current = document.getElementsByClassName('profile')[0]
+    let isInitial = current.innerHTML === ''
+
+    if (isInitial) {
+      render(current, data)
+      return
+    }
+
+    let next = document.createElement('div')
+    next.className = 'profile'
+    next.style.left = '100%'
+    render(next, data)
+    current.after(next)
+
+    const animationOut = {
+      keyframes: [
+        {left: '0', opacity: 1, offset: 0},
+        {left: '-100%', opacity: 0, offset: 1}
+      ],
+      options: {
+        duration: 500,
+        fill: 'forwards'
+      }
+    }
+
+    const animationIn = {
+      keyframes: [
+        {left: '100%', opacity: 0, offset: 0},
+        {left: '0', opacity: 1, offset: 1}
+      ],
+      options: {
+        duration: 500,
+        fill: 'forwards'
+      }
+    }
+
+    let animate = current.animate(animationOut.keyframes, animationIn.options)
+    animate.onfinish = () => {
+      current.remove()
+      next.animate(animationIn.keyframes, animationIn.options)
+    }
+  }
+</script>
+</html>
