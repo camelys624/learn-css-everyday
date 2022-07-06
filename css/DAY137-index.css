@@ -1,0 +1,88 @@
+/* 居中显示 */
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: black;
+}
+
+/* 定义容器尺寸 */
+.container {
+  width: 30em;
+  height: 30em;
+  font-size: 10px;
+
+  /* 用 grid 布局把 9 个子元素排列成 3 * 3 的网格状 */
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+
+  /* 旋转容器，让它的尖端向上 */
+  transform: rotate(-135deg);
+}
+
+/* 设置容器中子元素的样式，通过伪元素来设置 */
+.container span {
+  position: relative;
+}
+
+.container span::before,
+.container span::after {
+  content: '';
+  position: absolute;
+  box-sizing: border-box;
+  border-style: none solid solid none;
+  border-width: 1em;
+  border-color: gold;
+  width: 100%;
+  height: 100%;
+
+  /* 增加子元素尺寸由小到大变化的动画 */
+  /* 增加子元素边框颜色变化的动画 */
+  /* 增加子元素边框宽度变化的动画 */
+  animation:
+    animate-border-width 1.6s linear infinite,
+    animate-border-color 1.6s linear infinite,
+    animate-scale 1.6s linear infinite;
+}
+
+.container span::after {
+  animation-delay: -0.8s;
+}
+
+@keyframes animate-scale {
+  from {
+    width: 1%;
+    height: 1%;
+  }
+
+  to {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+@keyframes animate-border-color {
+  0%, 25% {
+    border-color: tomato;
+  }
+
+  50%, 75% {
+    border-color: gold;
+  }
+
+  100% {
+    border-color: black;
+  }
+}
+
+@keyframes animate-border-width {
+  0%, 100% {
+    border-width: 0.1em;
+  }
+
+  25% {
+    border-width: 1.5em;
+  }
+}
