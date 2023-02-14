@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>原生JS创作一个多选一场景交互游戏</title>
+    <link rel="stylesheet" href="../css/Day163-index.css" />
+  </head>
+  <body>
+    <!-- 多选一的场景是很常见的，浏览器自带的<input type="radio">控件就适用这样的场景。本项目将设计一个多选一的交互场景，用css进行页面布局、用gasp制作动画效果、用原生js编写程序逻辑。
+  这个游戏的逻辑很简单，在页面上部展示出一个动物的全身像，请用户在下面的小图片中选择这个动物对应的头像，如果选对了，就可再玩一次。
+  整个游戏分为3个步骤开发：静态的页面布局、程序逻辑和动画效果。 -->
+    <div class="app">
+      <h1>Which face is the animal's?</h1>
+      <div class="whole-body">🐄</div>
+      <div class="bingo">
+        Bingo!
+        <span class="again">Play Again</span>
+      </div>
+      <div class="selector">
+        <span class="slider"></span>
+        <span class="face">🐭</span>
+        <span class="face">🐶</span>
+        <span class="face">🐷</span>
+        <span class="face">🐮</span>
+        <span class="face">🐯</span>
+      </div>
+    </div>
+  </body>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.11/lodash.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.2/TweenMax.min.js"></script>
+  <script>
+    const animals = {
+      "🐭": "🐁",
+      "🐶": "🐕",
+      "🐷": "🐖",
+      "🐮": "🐄",
+      "🐯": "🐅",
+      "🐔": "🐓",
+      "🐵": "🐒",
+      "🐲": "🐉",
+      "🐴": "🐎",
+      "🐰": "🐇",
+    }
+
+    const doms = {
+      wholeBody: document.querySelector(".whole-body"),
+      bingo: document.querySelector(".bingo"),
+      again: document.querySelector(".again"),
+      faces: [...document.querySelectorAll(".face")],
+      slider: document.querySelector(".slider"),
+    }
+
+    const animation = {
+      frameOut: () => {
+        return new Promise((resolve) => {
+          new TimelineMax()
+            .to(doms.bingo, 0, { visibility: "hidden" })
+            .to(doms.slider, 1, { scale: 0 }, "t1")
+            .staggerTo(doms.faces, 1, { scale: 0 }, 0.25, "t1")
+            .to(doms.wholeBody, 1, { scale: 0 }, "t1")
+            .timeScale(5)
+            .eventCallback("onComplete", resolve)
+        })
+      },
+      frameIn: () => {
+        return new Promise((resolve) => {
+          new TimelineMax()
+            .to(doms.slider, 0, { left: "0px" })
+            .to(doms.wholeBody, 2, { scale: 1, delay: 1 })
+            .staggerTo(doms.faces, 1, { scale: 1 }, 0.25)
+            .to(doms.slider, 1, { scale: 1 })
+            .timeScale(5)
+            .eventCallback("onComplete", resolve)
+        })
+      },
+      moveSlider: (position) => {
+        return new Promise((resolve) => {
+          new TimelineMax()
+            .to(doms.slider, 1, { scale: 0.3 })
+            .to(doms.slider, 1, { left: (25 + 60) * position + "px" })
+            .to(doms.slider, 1, { scale: 1 })
+            .timeScale(5)
+            .eventCallback("onComplete", resolve)
+        })
+      },
+      showBingo: () => {
+        return new Promise((resolve) => {
+          new TimelineMax()
+            .to(doms.bingo, 0, { visibility: "visible" })
+            .to(doms.bingo, 1, { rotation: -5 })
+            .to(doms.bingo, 1, { rotation: 5 })
+            .to(doms.bingo, 1, { rotation: 0 })
+            .timeScale(8)
+            .eventCallback("onComplete", resolve)
+        })
+      },
+    }
+
+    let options = []
+    let answer = {}
+    let canSelect = false
+
+    const shuffle = () => {
+      options = _.slice(_.shuffle(_.entries(animals)), -5)
+      answer = _.sample(_.slice(options, -4))
+
+      doms.faces.forEach((face, i) => {
+        face.innerText = options[i][0]
+      })
+      doms.wholeBody.innerText = answer[1]
+    }
+
+    const newGame = () => {
+      animation.frameOut()
+      shuffle()
+      animation.frameIn()
+      canSelect = true
+    }
+
+    const select = async (e) => {
+      if (!canSelect) return
+
+      let position = _.findIndex(options, (o) => o[0] === e.target.innerText)
+      await animation.moveSlider(position)
+
+      if (animals[e.target.innerText] === answer[1]) {
+        canSelect = false
+        await animation.showBingo()
+      }
+    }
+
+    const init = () => {
+      doms.faces.forEach((element) => {
+        element.addEventListener("click", select)
+      })
+
+      doms.again.addEventListener("click", newGame)
+      newGame()
+    }
+
+    window.onload = init
+  </script>
+</html>
